@@ -1,10 +1,11 @@
-import React from 'react'; 
-import {View, Text} from 'react-native'; 
+import React from 'react';
+import { NavigationContainer } from "@react-navigation/native";
+import Manager from './screens/manager';
 
-export default function App1(){ 
+export default function(){ 
   return( 
-    <View> 
-      <Text>Hello World</Text> 
-    </View> 
+    <NavigationContainer>
+      <Manager/>
+    </NavigationContainer>
   ); 
 }; 
