@@ -14,6 +14,11 @@ export default function(){
                 component={Calculadora}
                 options={{title: "Calculadora"}}
             />
+            <DrawerNavigator.Screen
+                name="adicionar"
+                component={Adicionar}
+                options={{title: "Adicionar"}}
+            />
         </DrawerNavigator.Navigator>
     );
 };
