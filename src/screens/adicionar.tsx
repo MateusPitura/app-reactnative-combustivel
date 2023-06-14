@@ -1,10 +1,13 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 
-export default function(){
+export default function({navigation}: any){
     return(
         <View>
-            <Text>Adicionar</Text>
+            <Button
+                title="Go back"
+                onPress={()=>navigation.goBack()}
+            />
         </View>
     );
 }
