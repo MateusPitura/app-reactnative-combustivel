@@ -1,5 +1,5 @@
 import React from 'react';
-import Manager from './screens/manager';
+import Manager from './screen/manager';
 
 export default function(){ 
   return( 
