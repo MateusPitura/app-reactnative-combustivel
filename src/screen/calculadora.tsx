@@ -16,7 +16,7 @@ import Stack from '../asset/icon/stack-drawer-navigation.svg';
 
 //Import Component
 import Input from "../component/input";
-import Shadow from 'react-native-linear-gradient';
+import Shadow from "../component/shadow";
 
 export default function({navigation}: any){
     return(
@@ -28,10 +28,7 @@ export default function({navigation}: any){
                     <Stack width={50} height={50}/>
                 </View>
             </TouchableWithoutFeedback>
-            <Shadow
-                colors={[Color.vermelho, Color.vermelhoEscuro]}
-                style={Style.shadow}
-            >
+            <Shadow style={Style.shadow}>
                 <View style={Style.corner}></View>
             </Shadow>
             <View style={Style.container}>

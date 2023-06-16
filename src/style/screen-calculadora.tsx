@@ -12,7 +12,7 @@ export default StyleSheet.create({
         paddingTop: 10,
     },
     shadow:{
-        height: 50, 
+        height: 50,
     },
     corner:{
         height: 50,
