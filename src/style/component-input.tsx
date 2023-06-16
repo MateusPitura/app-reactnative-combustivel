@@ -6,5 +6,8 @@ export default StyleSheet.create({
     container:{
         backgroundColor: Color.cinzaClaro,
         height: 50,
+        borderRadius: 10,
+        marginVertical: 20,
+        paddingLeft: 15,
     }
 });

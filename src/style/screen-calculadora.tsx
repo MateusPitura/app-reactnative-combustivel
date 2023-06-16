@@ -3,11 +3,14 @@ import { StyleSheet } from "react-native";
 import Color from "./color";
 
 export default StyleSheet.create({
-    header:{
+    background:{
         flex: 1,
         backgroundColor: Color.vermelhoEscuro,
     },
-    main:{
+    header:{
+        padding: 10,
+    },
+    container:{
         flex: 1,
         backgroundColor: Color.branco,
         borderTopStartRadius: 30, //Canto superior esquerdo

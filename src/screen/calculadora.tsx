@@ -7,7 +7,7 @@ import {
 } from "react-native";
 
 //Import Style
-import Style from '../style/screen-calculadora';
+import Style from "../style/screen-calculadora";
 import Texts from "../style/text";
 
 //Import Asset
@@ -18,22 +18,26 @@ import Input from "../component/input";
 
 export default function({navigation}: any){
     return(
-        <View style={Style.header}>
+        <View style={Style.background}>
             <TouchableWithoutFeedback
                 onPress={()=>navigation.toggleDrawer()}
             >
-                <Stack width={50} height={50}/>
+                <View style={Style.header}>
+                    <Stack width={50} height={50}/>
+                </View>
             </TouchableWithoutFeedback>
-            <View style={Style.main}>
-                <Text>
+            <View style={Style.container}>
+                <Text style={Texts.regular}>
                     Preço da gasolina
                 </Text>
                 <Input
+                    placeholder="5.43"
                 />
-                <Text style={Texts.button}>
+                <Text style={Texts.regular}>
                     Preço do etanol
                 </Text>
                 <Input
+                    placeholder="3.84"
                 />
                 <Button
                     title="CALCULAR"
