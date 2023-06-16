@@ -9,7 +9,6 @@ import {
 //Import Style
 import Style from "../style/screen-calculadora";
 import Typography from "../style/text";
-import Color from '../style/color'
 
 //Import Asset
 import Stack from '../asset/icon/stack-drawer-navigation.svg';
