@@ -8,13 +8,15 @@ import {
 
 //Import Style
 import Style from "../style/screen-calculadora";
-import Texts from "../style/text";
+import Typography from "../style/text";
+import Color from '../style/color'
 
 //Import Asset
 import Stack from '../asset/icon/stack-drawer-navigation.svg';
 
 //Import Component
 import Input from "../component/input";
+import Shadow from 'react-native-linear-gradient';
 
 export default function({navigation}: any){
     return(
@@ -26,14 +28,20 @@ export default function({navigation}: any){
                     <Stack width={50} height={50}/>
                 </View>
             </TouchableWithoutFeedback>
+            <Shadow
+                colors={[Color.vermelho, Color.vermelhoEscuro]}
+                style={Style.shadow}
+            >
+                <View style={Style.corner}></View>
+            </Shadow>
             <View style={Style.container}>
-                <Text style={Texts.regular}>
+                <Text style={Typography.regular}>
                     Preço da gasolina
                 </Text>
                 <Input
                     placeholder="5.43"
                 />
-                <Text style={Texts.regular}>
+                <Text style={Typography.regular}>
                     Preço do etanol
                 </Text>
                 <Input

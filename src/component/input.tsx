@@ -10,7 +10,7 @@ export default function(props: any){
         <TextInput
             style={[Style.container, Text.regular]}
             placeholder={props.placeholder}
-            cursorColor={Color.vermelhoEscuro}
+            cursorColor={Color.vermelho}
             inputMode="numeric"
             maxLength={4}
         />
