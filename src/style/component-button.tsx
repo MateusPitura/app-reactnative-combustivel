@@ -4,10 +4,12 @@ import Color from "./color";
 
 export default StyleSheet.create({
     container:{
-        backgroundColor: Color.cinzaClaro,
+        backgroundColor: Color.vermelho,
         height: 50,
+        marginVertical: 20, 
+        elevation: 5,
         borderRadius: 10,
-        marginVertical: 20,
-        paddingLeft: 15,
-    },
+        alignItems: "center",
+        justifyContent: "center",
+    }
 });

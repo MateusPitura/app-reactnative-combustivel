@@ -2,7 +2,7 @@ import React from "react";
 import { TextInput } from "react-native";
 
 import Style from "../style/component-input";
-import Text from "../style/text";
+import Text from "../style/typography";
 import Color from "../style/color";
 
 export default function(props: any){

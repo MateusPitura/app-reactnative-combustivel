@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
 
+import Color from "./color";
+
 export default StyleSheet.create({
     header:{
         fontFamily: "ubuntu-regular",
@@ -13,5 +15,7 @@ export default StyleSheet.create({
     button:{
         fontFamily: "ubuntu-regular",
         fontSize: 20,
+        textTransform: "uppercase",
+        color: Color.branco,
     }
 });

@@ -2,13 +2,12 @@ import React from "react";
 import { 
     View, 
     Text, 
-    Button, 
-    TouchableWithoutFeedback, 
+    TouchableWithoutFeedback,
 } from "react-native";
 
 //Import Style
 import Style from "../style/screen-calculadora";
-import Typography from "../style/text";
+import Typography from "../style/typography";
 
 //Import Asset
 import Stack from '../asset/icon/stack-drawer-navigation.svg';
@@ -16,6 +15,7 @@ import Stack from '../asset/icon/stack-drawer-navigation.svg';
 //Import Component
 import Input from "../component/input";
 import Shadow from "../component/shadow";
+import Button from "../component/button";
 
 export default function({navigation}: any){
     return(
@@ -24,7 +24,7 @@ export default function({navigation}: any){
                 onPress={()=>navigation.toggleDrawer()}
             >
                 <View style={Style.header}>
-                    <Stack width={50} height={50}/>
+                    <Stack fill={"#fff"} width={50} height={50}/>
                 </View>
             </TouchableWithoutFeedback>
             <Shadow style={Style.shadow}>
@@ -44,8 +44,7 @@ export default function({navigation}: any){
                     placeholder="3.84"
                 />
                 <Button
-                    title="CALCULAR"
-                    onPress={()=>{}}
+                    title="calcular"
                 />
             </View>
         </View>

@@ -8,23 +8,24 @@ export default StyleSheet.create({
         backgroundColor: Color.vermelho,
     },
     header:{
-        paddingLeft: 10,
-        paddingTop: 10,
+        paddingLeft: 5,
+        paddingTop: 5,
+        marginBottom: -10,
     },
     shadow:{
-        height: 50,
+        height: 40,
     },
     corner:{
-        height: 50,
+        height: 40,
         marginTop: 20,
         backgroundColor: Color.branco,
-        borderTopStartRadius: 30, //Canto superior esquerdo
-        borderTopEndRadius: 30, //Canto superior direito
+        borderTopStartRadius: 20, //Canto superior esquerdo
+        borderTopEndRadius: 20, //Canto superior direito
     },
     container:{
         flex: 1,
         backgroundColor: Color.branco,
-        paddingHorizontal: 50,
+        paddingHorizontal: 30,
         paddingVertical: 10,
     },
 });
