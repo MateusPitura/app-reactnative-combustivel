@@ -16,6 +16,7 @@ import Stack from '../asset/icon/stack-drawer-navigation.svg';
 import Input from "../component/input";
 import Shadow from "../component/shadow";
 import Button from "../component/button";
+import Modal from "../component/modal";
 
 export default function({navigation}: any){
     return(
@@ -46,6 +47,11 @@ export default function({navigation}: any){
                 <Button
                     title="calcular"
                 />
+                <Modal>
+                    <Button
+                        title="ok"
+                    />
+                </Modal>
             </View>
         </View>
     );

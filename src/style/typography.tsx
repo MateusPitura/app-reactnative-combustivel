@@ -7,10 +7,16 @@ export default StyleSheet.create({
         fontFamily: "ubuntu-regular",
         fontWeight: "bold",
         fontSize: 22,
+        textAlign: "center",
     },
     regular:{
         fontFamily: "ubuntu-regular",
         fontSize: 18,
+    },
+    modal:{
+        fontFamily: "ubuntu-regular",
+        fontSize: 18,
+        textAlign: "center",
     },
     button:{
         fontFamily: "ubuntu-regular",
