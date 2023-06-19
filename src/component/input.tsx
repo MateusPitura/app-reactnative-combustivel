@@ -13,6 +13,7 @@ export default function(props: any){
             cursorColor={Color.vermelho}
             inputMode="numeric"
             maxLength={4}
+            onChangeText={text=>props.setState(text)}
         />
     );
 }

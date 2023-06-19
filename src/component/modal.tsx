@@ -9,7 +9,7 @@ export default function(props: any){
     return(
         <Modal
             animationType="slide"
-            visible={true}
+            visible={props.visible}
             transparent={true}
         >
             <View style={Style.background}>
@@ -18,10 +18,10 @@ export default function(props: any){
                         Resultado{'\n'}
                     </Text>
                     <Text style={Typography.modal}>
-                        O etanol está custando 76% da gasolina{'\n'}
+                        O etanol está custando {props.comparacaoCombustivel}% da gasolina{'\n'}
                     </Text>
                     <Text style={Typography.modal}>
-                        Portanto, é mais vantajoso abastecer com gasolina{'\n'}
+                        Portanto é mais vantajoso abastecer com {props.combustivelMaisVantajoso}{'\n'}
                     </Text>
                     <View style={Style.button}>
                         {props.children}

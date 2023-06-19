@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState} from "react";
 import { 
     View, 
     Text, 
@@ -20,6 +20,25 @@ import Button from "../component/button";
 import Modal from "../component/modal";
 
 export default function({navigation}: any){
+
+    const [precoEtanol, setPrecoEtanol] = useState("");
+    const [precoGasolina, setPrecoGasolina] = useState("");
+    const [comparacaoCombustivel, setComparacaoCombustivel] = useState(0);
+    const [modalIsVisible, setModalIsVisible] = useState(false);
+
+    const handleCalcularComparacao = () => {
+        setComparacaoCombustivel((parseFloat(precoEtanol)/parseFloat(precoGasolina))*100); //Calcula a relação entre etanol e gasolina (etanol/gasolina) e multiplica por 100 para transformar em porcentagem
+    }
+
+    const handleToggleModalIsVisible = () => {
+        setModalIsVisible(!modalIsVisible);
+    }
+
+    const handleCalcularComparacaoAndToggleModalIsVisible = () => {
+        handleCalcularComparacao();
+        handleToggleModalIsVisible();
+    }
+
     return(
         <View style={Style.background}>
             <TouchableWithoutFeedback
@@ -34,23 +53,31 @@ export default function({navigation}: any){
             </Shadow>
             <View style={Style.container}>
                 <Text style={Typography.regular}>
-                    Preço da gasolina
-                </Text>
-                <Input
-                    placeholder="5.43"
-                />
-                <Text style={Typography.regular}>
                     Preço do etanol
                 </Text>
                 <Input
                     placeholder="3.84"
+                    setState={setPrecoEtanol}
+                />
+                <Text style={Typography.regular}>
+                    Preço da gasolina
+                </Text>
+                <Input
+                    placeholder="5.43"
+                    setState={setPrecoGasolina}
                 />
                 <Button
                     title="calcular"
+                    onPress={handleCalcularComparacaoAndToggleModalIsVisible}
                 />
-                <Modal>
+                <Modal
+                    visible={modalIsVisible}
+                    comparacaoCombustivel={comparacaoCombustivel}
+                    combustivelMaisVantajoso={"Etanol"}
+                >
                     <Button
                         title="ok"
+                        onPress={handleToggleModalIsVisible}
                     />
                 </Modal>
             </View>
