@@ -8,6 +8,7 @@ import {
 //Import Style
 import Style from "../style/screen-calculadora";
 import Typography from "../style/typography";
+import Color from "../style/color";
 
 //Import Asset
 import Stack from '../asset/icon/stack-drawer-navigation.svg';
@@ -25,7 +26,7 @@ export default function({navigation}: any){
                 onPress={()=>navigation.toggleDrawer()}
             >
                 <View style={Style.header}>
-                    <Stack fill={"#fff"} width={50} height={50}/>
+                    <Stack fill={Color.branco} width={50} height={50}/>
                 </View>
             </TouchableWithoutFeedback>
             <Shadow style={Style.shadow}>
