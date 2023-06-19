@@ -72,13 +72,22 @@ export default function({navigation}: any){
                 />
                 <Modal
                     visible={modalIsVisible}
-                    comparacaoCombustivel={comparacaoCombustivel}
-                    combustivelMaisVantajoso={"Etanol"}
                 >
-                    <Button
-                        title="ok"
-                        onPress={handleToggleModalIsVisible}
-                    />
+                    <Text style={Typography.header}>
+                        Resultado{'\n'}
+                    </Text>
+                    <Text style={Typography.modal}>
+                        O etanol está custando {comparacaoCombustivel}% da gasolina{'\n'}
+                    </Text>
+                    <Text style={Typography.modal}>
+                        Portanto é mais vantajoso abastecer com etanol{'\n'}
+                    </Text>
+                    <View style={Style.button}>
+                        <Button
+                            title="ok"
+                            onPress={handleToggleModalIsVisible}
+                        />
+                    </View>
                 </Modal>
             </View>
         </View>

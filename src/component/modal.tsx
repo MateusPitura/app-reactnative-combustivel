@@ -14,18 +14,7 @@ export default function(props: any){
         >
             <View style={Style.background}>
                 <View style={Style.container}>
-                    <Text style={Typography.header}>
-                        Resultado{'\n'}
-                    </Text>
-                    <Text style={Typography.modal}>
-                        O etanol está custando {props.comparacaoCombustivel}% da gasolina{'\n'}
-                    </Text>
-                    <Text style={Typography.modal}>
-                        Portanto é mais vantajoso abastecer com {props.combustivelMaisVantajoso}{'\n'}
-                    </Text>
-                    <View style={Style.button}>
-                        {props.children}
-                    </View>
+                    {props.children}
                 </View>
             </View>
         </Modal>

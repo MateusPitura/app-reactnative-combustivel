@@ -14,8 +14,4 @@ export default StyleSheet.create({
         backgroundColor: Color.branco,
         borderRadius: 20, 
     },
-    button:{
-        flex: 1,
-        justifyContent: "flex-end",
-    }
 });

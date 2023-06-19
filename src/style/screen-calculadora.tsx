@@ -28,4 +28,8 @@ export default StyleSheet.create({
         paddingHorizontal: 30,
         paddingVertical: 10,
     },
+    button:{
+        flex: 1,
+        justifyContent: "flex-end",
+    },
 });
