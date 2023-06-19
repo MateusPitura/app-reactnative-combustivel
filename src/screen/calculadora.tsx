@@ -34,11 +34,6 @@ export default function({navigation}: any){
         setModalIsVisible(!modalIsVisible);
     }
 
-    const handleCalcularComparacaoAndToggleModalIsVisible = () => {
-        handleCalcularComparacao();
-        handleToggleModalIsVisible();
-    }
-
     return(
         <View style={Style.background}>
             <TouchableWithoutFeedback
@@ -68,7 +63,10 @@ export default function({navigation}: any){
                 />
                 <Button
                     title="calcular"
-                    onPress={handleCalcularComparacaoAndToggleModalIsVisible}
+                    onPress={()=>{
+                        handleCalcularComparacao();
+                        handleToggleModalIsVisible();
+                    }}
                 />
                 <Modal
                     visible={modalIsVisible}
