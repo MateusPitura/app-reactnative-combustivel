@@ -18,6 +18,17 @@ export default StyleSheet.create({
         fontSize: 18,
         textAlign: "center",
     },
+    drawerHeader:{
+        fontFamily: "ubuntu-regular",
+        fontSize: 20,
+        fontWeight: "bold",
+        color: Color.branco,
+    },
+    drawerRegular:{
+        fontFamily: "ubuntu-regular",
+        fontSize: 18,
+        color: Color.branco,
+    },
     button:{
         fontFamily: "ubuntu-regular",
         fontSize: 20,

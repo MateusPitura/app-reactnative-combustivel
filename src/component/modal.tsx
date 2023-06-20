@@ -1,6 +1,6 @@
 import React from "react";
 
-import {View, Text, Modal} from "react-native";
+import {View, Modal} from "react-native";
 
 import Style from "../style/component-modal"
 import Typography from "../style/typography";

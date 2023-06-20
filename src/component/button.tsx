@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableHighlight, Text, Alert } from "react-native";
+import { TouchableHighlight, Text } from "react-native";
 
 import Style from "../style/component-button"
 import Typography from "../style/typography";
