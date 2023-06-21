@@ -14,7 +14,18 @@ export default StyleSheet.create({
         padding: 10,
     },
     display:{
+        flex: 1,
         flexDirection: "row",
+    },
+    icon:{
+        flex: 1,
+        alignItems: "flex-end",
+        justifyContent: "center",
+    },
+    text:{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
     },
     list:{
         flex: 10,
