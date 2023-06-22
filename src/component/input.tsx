@@ -14,6 +14,10 @@ export default function(props: any){
             inputMode="numeric"
             maxLength={4}
             onChangeText={text=>props.setState(text)}
+            blurOnSubmit={false}
+            ref={(input)=>{props.identifier.current = input}}
+            returnKeyType={props.returnKeyType}
+            onSubmitEditing={()=>props.next.current.focus()}
         />
     );
 }
