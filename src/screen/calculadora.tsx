@@ -3,6 +3,7 @@ import {
     View, 
     Text, 
     TouchableWithoutFeedback,
+    StatusBar
 } from "react-native";
 
 //Import Style
@@ -36,6 +37,9 @@ export default function({navigation}: any){
 
     return(
         <View style={Style.background}>
+            <StatusBar
+                backgroundColor={Color.vermelho}
+            />
             <TouchableWithoutFeedback
                 onPress={()=>navigation.toggleDrawer()}
             >
@@ -71,6 +75,9 @@ export default function({navigation}: any){
                 <Modal
                     visible={modalIsVisible}
                 >
+                    <StatusBar
+                        backgroundColor={Color.vermelhoAcinzentado}
+                    />
                     <Text style={Typography.header}>
                         Resultado{'\n'}
                     </Text>

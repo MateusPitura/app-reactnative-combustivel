@@ -25,7 +25,7 @@ export default function(props: any){
                         <Text style={Typography.drawerRegular}>
                             G: 10km/l{'\n'}
                             E: 7km/l{'\n'}
-                            R: 70%
+                            R: 70%{'\n'}
                         </Text>
                     </View>
                 </View>
