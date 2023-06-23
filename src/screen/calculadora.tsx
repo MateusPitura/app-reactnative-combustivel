@@ -35,9 +35,7 @@ export default function({navigation}: any){
         setModalIsVisible(!modalIsVisible);
     }
 
-    const input001 = useRef(null); //colocar {useRef} no componente
-    const input002 = useRef(null);
-    const input003 = useRef(null);
+    const inputPrecoEtanol = useRef(null);
 
     return(
         <View style={Style.background}>
@@ -62,8 +60,7 @@ export default function({navigation}: any){
                     placeholder="3.84"
                     setState={setPrecoEtanol}
                     returnKeyType="next"
-                    identifier={input001}
-                    next={input002}
+                    next={inputPrecoEtanol}
                 />
                 <Text style={Typography.regular}>
                     Preço da gasolina
@@ -72,8 +69,7 @@ export default function({navigation}: any){
                     placeholder="5.43"
                     setState={setPrecoGasolina}
                     returnKeyType="done"
-                    identifier={input002}
-                    next={input003}
+                    identifier={inputPrecoEtanol}
                 />
                 <Button
                     title="calcular"
