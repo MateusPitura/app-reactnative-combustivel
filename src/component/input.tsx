@@ -21,7 +21,18 @@ export default function(props: any){
             returnKeyType={props.returnKeyType}
             //Caso o botão de retorno do teclado seja "done", o teclado será escondido ao clicar
             //no botão. Caso seja diferente de "done" irá redirecionar para o próximo input
-            onSubmitEditing={props.returnKeyType=="done"?Keyboard.dismiss:()=>props.next.current.focus()}
+            onSubmitEditing=
+            {
+                props.returnKeyType=="done"
+                ?
+                    props.action
+                    ?
+                    ()=>props.action()
+                    :
+                    Keyboard.dismiss
+                :
+                ()=>props.next.current.focus()
+            }
         />
     );
 }

@@ -35,6 +35,11 @@ export default function({navigation}: any){
         setModalIsVisible(!modalIsVisible);
     }
 
+    const handleBtnCalcular = () => {
+        handleCalcularComparacao();
+        handleToggleModalIsVisible();
+    }
+
     const inputPrecoEtanol = useRef(null);
 
     return(
@@ -70,13 +75,11 @@ export default function({navigation}: any){
                     setState={setPrecoGasolina}
                     returnKeyType="done"
                     identifier={inputPrecoEtanol}
+                    action={()=>{handleBtnCalcular()}}
                 />
                 <Button
                     title="calcular"
-                    onPress={()=>{
-                        handleCalcularComparacao();
-                        handleToggleModalIsVisible();
-                    }}
+                    onPress={()=>{handleBtnCalcular()}}
                 />
                 <Modal
                     visible={modalIsVisible}
