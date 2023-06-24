@@ -53,6 +53,7 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>ubuntu-bold.ttf</string>
 		<string>ubuntu-regular.ttf</string>
 	</array>
 </dict>

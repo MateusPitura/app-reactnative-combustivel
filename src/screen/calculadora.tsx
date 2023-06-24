@@ -24,11 +24,11 @@ export default function({navigation}: any){
 
     const [precoEtanol, setPrecoEtanol] = useState("");
     const [precoGasolina, setPrecoGasolina] = useState("");
-    const [comparacaoCombustivel, setComparacaoCombustivel] = useState(0);
+    const [comparacaoCombustivel, setComparacaoCombustivel] = useState("");
     const [modalIsVisible, setModalIsVisible] = useState(false);
 
     const handleCalcularComparacao = () => {
-        setComparacaoCombustivel((parseFloat(precoEtanol)/parseFloat(precoGasolina))*100); //Calcula a relação entre etanol e gasolina (etanol/gasolina) e multiplica por 100 para transformar em porcentagem
+        setComparacaoCombustivel(((parseFloat(precoEtanol)/parseFloat(precoGasolina))*100).toFixed(2)); //Calcula a relação entre etanol e gasolina (etanol/gasolina) e multiplica por 100 para transformar em porcentagem. Então limita a 2 casas decimais
     }
 
     const handleToggleModalIsVisible = () => {
@@ -87,7 +87,7 @@ export default function({navigation}: any){
                     <StatusBar
                         backgroundColor={Color.vermelhoAcinzentado}
                     />
-                    <Text style={Typography.header}>
+                    <Text style={Typography.header}> 
                         Resultado{'\n'}
                     </Text>
                     <Text style={Typography.modal}>

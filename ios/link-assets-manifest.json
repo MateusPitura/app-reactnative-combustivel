@@ -2,7 +2,11 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/ubuntu-regular.ttf",
+      "path": "src/asset/font/ubuntu-bold.ttf",
+      "sha1": "020aaec9cdeb59aa8ebd2e4c693527cddb2d1577"
+    },
+    {
+      "path": "src/asset/font/ubuntu-regular.ttf",
       "sha1": "8238e55f0320c3abc74057c988367c2f25fa3727"
     }
   ]

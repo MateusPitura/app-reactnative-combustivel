@@ -4,8 +4,7 @@ import Color from "./color";
 
 export default StyleSheet.create({
     header:{
-        fontFamily: "ubuntu-regular",
-        fontWeight: "bold",
+        fontFamily: "ubuntu-bold",
         fontSize: 22,
         textAlign: "center",
     },
@@ -19,9 +18,8 @@ export default StyleSheet.create({
         textAlign: "center",
     },
     drawerHeader:{
-        fontFamily: "ubuntu-regular",
+        fontFamily: "ubuntu-bold",
         fontSize: 20,
-        fontWeight: "bold",
         color: Color.branco,
     },
     drawerRegular:{
