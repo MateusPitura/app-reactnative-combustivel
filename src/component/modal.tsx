@@ -3,7 +3,6 @@ import React from "react";
 import {View, Modal} from "react-native";
 
 import Style from "../style/component-modal"
-import Typography from "../style/typography";
 
 export default function(props: any){
     return(
