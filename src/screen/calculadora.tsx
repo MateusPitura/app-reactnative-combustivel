@@ -46,6 +46,7 @@ export default function({navigation}: any){
         <View style={Style.background}>
             <StatusBar
                 backgroundColor={Color.vermelho}
+                barStyle={"light-content"}
             />
             <TouchableWithoutFeedback
                 onPress={()=>navigation.toggleDrawer()}

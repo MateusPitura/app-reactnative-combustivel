@@ -8,9 +8,17 @@ export default StyleSheet.create({
     },
     header:{
         paddingHorizontal: 10,
+        backgroundColor: Color.branco,
     },
     container:{
         flex: 1,
-        backgroundColor: "#00f"
-    }
+        paddingHorizontal: 30,
+        backgroundColor: Color.branco,
+    },
+    criarCarro:{
+        paddingBottom: 50,
+    },
+    pesquisarCarro:{
+        paddingBottom: 100,
+    },
 });

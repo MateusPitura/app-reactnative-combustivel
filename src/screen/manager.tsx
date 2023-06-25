@@ -12,7 +12,7 @@ export default function(){
     return(
         <NavigationContainer>
             <DrawerNavigator.Navigator
-                initialRouteName="Adicionar"
+                initialRouteName="Calculadora"
                 drawerContent={(props) => <Drawer {...props}/>}
                 screenOptions={{
                     headerShown: false,
@@ -23,7 +23,8 @@ export default function(){
                     name="Calculadora"
                     component={Calculadora}
                     options={{
-                        drawerItemStyle: {height: 0} //Oculta o item da lista do drawer
+                        drawerItemStyle: {height: 0}, //Oculta o item da lista do drawer
+                        unmountOnBlur:true
                     }}
                 />
                 <DrawerNavigator.Screen
@@ -31,6 +32,7 @@ export default function(){
                     component={Adicionar}
                     options={{
                         swipeEnabled: false, //Desativa o movimento de "puxar" o drawer
+                        unmountOnBlur:true
                     }}
                 />
             </DrawerNavigator.Navigator>
