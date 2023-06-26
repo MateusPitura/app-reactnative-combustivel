@@ -1,16 +1,31 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useState } from "react";
+import { View, Text, FlatList, Alert, Button } from "react-native";
 import { 
     DrawerContentScrollView, 
     DrawerItemList, 
     DrawerItem } 
 from "@react-navigation/drawer";
+import AsyncStorage from "@react-native-community/async-storage";
 
 import Style from "../style/screen-drawer";
 import Car from "../asset/icon/car-light-off.svg"
 import Typography from "../style/typography";
 
 export default function(props: any){
+
+    const [carro, setCarro] = useState([]);
+
+    const readCar = async () => {
+        try{
+            const response = await AsyncStorage.getItem("@meucarroflex:carro");
+            const data = response ? JSON.parse(response) : [];
+            setCarro(data);
+            Alert.alert("Carro lidos");
+        } catch(error){
+            console.log(error);
+        }
+    }
+
     return(
         <View style={Style.container}>
             <View style={Style.header}>
@@ -30,12 +45,22 @@ export default function(props: any){
                     </View>
                 </View>
             </View>
+            <Button
+                title="Listar"
+                onPress={()=>readCar()}
+            />
             <View style={Style.list}>
                 <DrawerContentScrollView {...props}>
                     <DrawerItemList {...props}/>
-                    <DrawerItem
-                        label="Carro A"
-                        onPress={()=>{}}
+                    <FlatList
+                        data={carro}
+                        keyExtractor={item=>item.id}
+                        renderItem={({item})=>
+                            <DrawerItem
+                                label={item.nomeCarro}
+                                onPress={()=>{}}
+                            />
+                        }
                     />
                 </DrawerContentScrollView>
             </View>

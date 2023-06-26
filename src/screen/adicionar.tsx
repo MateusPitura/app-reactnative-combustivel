@@ -1,5 +1,7 @@
 import React, { useState, useRef} from "react";
-import { View, StatusBar, TouchableWithoutFeedback, Text, ScrollView, SafeAreaView } from "react-native";
+import { View, StatusBar, TouchableWithoutFeedback, Text, ScrollView, SafeAreaView, Alert } from "react-native";
+import AsyncStorage from '@react-native-community/async-storage'
+import Uuid from 'react-native-uuid';
 
 //Import Style
 import Style from "../style/screen-adicionar";
@@ -28,6 +30,27 @@ export default function({navigation}: any){
 
     const inputModelo = useRef(null);
     const inputAno = useRef(null);
+
+    const createCar = async () => {
+        try{
+            const id = Uuid.v4();
+
+            const newData = [{
+                id,
+                nomeCarro,
+                consumoEtanol,
+                consumoGasolina,
+            }]
+    
+            const response = await AsyncStorage.getItem("@meucarroflex:carro");
+            const previousData = response? JSON.parse(response) : [];
+            const data = [...previousData, ...newData]
+            AsyncStorage.setItem("@meucarroflex:carro", JSON.stringify(data));
+            Alert.alert("Carro inserido");
+        } catch(error){
+            console.log(error);
+        }
+    }
 
     return(
         <SafeAreaView style={Style.layout}>
@@ -77,7 +100,7 @@ export default function({navigation}: any){
                     />
                     <Button
                         title={"Adicionar um novo carro"}
-                        onPress={()=>{}}
+                        onPress={()=>{createCar()}}
                     />
                 </View>
                 <View  style={Style.pesquisarCarro}>
@@ -89,7 +112,7 @@ export default function({navigation}: any){
                     </Text>
                     <Input
                         placeholder="Toyota"
-                        //setState={setNomeCarro}
+                        setState={setMarca}
                         returnKeyType="next"
                         next={inputModelo}
                     />
@@ -98,7 +121,7 @@ export default function({navigation}: any){
                     </Text>
                     <Input
                         placeholder="Corolla"
-                        //setState={setConsumoEtanol}
+                        setState={setModelo}
                         returnKeyType="next"
                         identifier={inputModelo}
                         next={inputAno}
@@ -108,7 +131,7 @@ export default function({navigation}: any){
                     </Text>
                     <Input
                         placeholder="2008"
-                        //setState={setConsumoGasolina}
+                        setState={setAno}
                         returnKeyType="done"
                         identifier={inputAno}
                     />
