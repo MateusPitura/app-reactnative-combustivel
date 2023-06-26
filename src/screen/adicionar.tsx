@@ -25,12 +25,6 @@ export default function({navigation}: any){
     const [modelo, setModelo] = useState("");
     const [ano, setAno] = useState("");
 
-    const inputConsumoEtanol = useRef(null);
-    const inputConsumoGasolina = useRef(null);
-
-    const inputModelo = useRef(null);
-    const inputAno = useRef(null);
-
     const createCar = async () => {
         try{
             const id = Uuid.v4();
@@ -51,6 +45,12 @@ export default function({navigation}: any){
             console.log(error);
         }
     }
+
+    const inputConsumoEtanol = useRef(null);
+    const inputConsumoGasolina = useRef(null);
+
+    const inputModelo = useRef(null);
+    const inputAno = useRef(null);
 
     return(
         <SafeAreaView style={Style.layout}>
@@ -75,25 +75,31 @@ export default function({navigation}: any){
                     </Text>
                     <Input
                         placeholder="Prisma Joy 2008"
+                        inputMode="text"
+                        maxLength={255}
                         setState={setNomeCarro}
                         returnKeyType="next"
                         next={inputConsumoEtanol}
                     />
                     <Text style={Typography.regular}>
-                        Consumo de etanol
+                        Consumo de etanol em km/l
                     </Text>
                     <Input
-                        placeholder="7 km/l"
+                        placeholder="7"
+                        inputMode="numeric"
+                        maxLength={5}
                         setState={setConsumoEtanol}
                         returnKeyType="next"
                         identifier={inputConsumoEtanol}
                         next={inputConsumoGasolina}
                     />
                     <Text style={Typography.regular}>
-                        Consumo de gasolina
+                        Consumo de gasolina em km/l
                     </Text>
                     <Input
-                        placeholder="10 km/l"
+                        placeholder="10"
+                        inputMode="numeric"
+                        maxLength={5}
                         setState={setConsumoGasolina}
                         returnKeyType="done"
                         identifier={inputConsumoGasolina}
@@ -112,6 +118,8 @@ export default function({navigation}: any){
                     </Text>
                     <Input
                         placeholder="Toyota"
+                        inputMode="text"
+                        maxLength={255}
                         setState={setMarca}
                         returnKeyType="next"
                         next={inputModelo}
@@ -121,6 +129,8 @@ export default function({navigation}: any){
                     </Text>
                     <Input
                         placeholder="Corolla"
+                        inputMode="text"
+                        maxLength={255}
                         setState={setModelo}
                         returnKeyType="next"
                         identifier={inputModelo}
@@ -131,8 +141,10 @@ export default function({navigation}: any){
                     </Text>
                     <Input
                         placeholder="2008"
+                        inputMode="numeric"
+                        maxLength={7}
                         setState={setAno}
-                        returnKeyType="done"
+                        returnKeyType="search"
                         identifier={inputAno}
                     />
                     <Button

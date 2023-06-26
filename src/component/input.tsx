@@ -11,8 +11,8 @@ export default function(props: any){
             style={[Style.container, Text.regular]}
             placeholder={props.placeholder}
             cursorColor={Color.vermelho}
-            inputMode="numeric"
-            maxLength={4}
+            inputMode={props.inputMode}
+            maxLength={props.maxLength}
             onChangeText={text=>props.setState(text)}
             blurOnSubmit={false}
             ref={props.identifier?(input)=>{props.identifier.current = input}:useRef(null)} //Caso seja informado a propriedade identifier (props.identifier != null) ref receberá uma referência. Caso não seja informado ref receberá uma referência genérica/qualquer

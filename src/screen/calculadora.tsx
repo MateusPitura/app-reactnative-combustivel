@@ -64,6 +64,7 @@ export default function({navigation}: any){
                 </Text>
                 <Input
                     placeholder="3.84"
+                    inputMode="numeric"
                     setState={setPrecoEtanol}
                     returnKeyType="next"
                     next={inputPrecoEtanol}
@@ -73,6 +74,7 @@ export default function({navigation}: any){
                 </Text>
                 <Input
                     placeholder="5.43"
+                    inputMode="numeric"
                     setState={setPrecoGasolina}
                     returnKeyType="done"
                     identifier={inputPrecoEtanol}
