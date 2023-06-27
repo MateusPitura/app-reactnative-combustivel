@@ -15,10 +15,10 @@ export default StyleSheet.create({
         paddingHorizontal: 30,
         backgroundColor: Color.branco,
     },
-    criarCarro:{
+    criar:{
         paddingBottom: 50,
     },
-    pesquisarCarro:{
+    pesquisar:{
         paddingBottom: 100,
     },
 });

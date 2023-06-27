@@ -24,11 +24,11 @@ export default function({navigation}: any){
 
     const [precoEtanol, setPrecoEtanol] = useState("");
     const [precoGasolina, setPrecoGasolina] = useState("");
-    const [comparacaoCombustivel, setComparacaoCombustivel] = useState("");
+    const [relacaoCombustivel, setRelacaoCombustivel] = useState("");
     const [modalIsVisible, setModalIsVisible] = useState(false);
 
-    const handleCalcularComparacao = () => {
-        setComparacaoCombustivel(((parseFloat(precoEtanol)/parseFloat(precoGasolina))*100).toFixed(2)); //Calcula a relação entre etanol e gasolina (etanol/gasolina) e multiplica por 100 para transformar em porcentagem. Então limita a 2 casas decimais
+    const handleCalcularRelacao = () => {
+        setRelacaoCombustivel(((parseFloat(precoEtanol)/parseFloat(precoGasolina))*100).toFixed(2)); //Calcula a relação entre etanol e gasolina (etanol/gasolina) e multiplica por 100 para transformar em porcentagem. Então limita a 2 casas decimais
     }
 
     const handleToggleModalIsVisible = () => {
@@ -36,7 +36,7 @@ export default function({navigation}: any){
     }
 
     const handleBtnCalcular = () => {
-        handleCalcularComparacao();
+        handleCalcularRelacao();
         handleToggleModalIsVisible();
     }
 
@@ -63,7 +63,7 @@ export default function({navigation}: any){
                     Preço do etanol
                 </Text>
                 <Input
-                    placeholder="3.84"
+                    placeholder="3,84"
                     inputMode="numeric"
                     setState={setPrecoEtanol}
                     returnKeyType="next"
@@ -73,7 +73,7 @@ export default function({navigation}: any){
                     Preço da gasolina
                 </Text>
                 <Input
-                    placeholder="5.43"
+                    placeholder="5,43"
                     inputMode="numeric"
                     setState={setPrecoGasolina}
                     returnKeyType="done"
@@ -94,7 +94,7 @@ export default function({navigation}: any){
                         Resultado{'\n'}
                     </Text>
                     <Text style={Typography.modal}>
-                        O etanol está custando {comparacaoCombustivel}% da gasolina{'\n'}
+                        O etanol está custando {relacaoCombustivel}% da gasolina{'\n'}
                     </Text>
                     <Text style={Typography.modal}>
                         Portanto é mais vantajoso abastecer com etanol{'\n'}

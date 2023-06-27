@@ -1,10 +1,15 @@
-import React, { useState } from "react";
-import { View, Text, FlatList, Alert, Button } from "react-native";
+import React, { useState, useEffect, useCallback } from "react";
 import { 
-    DrawerContentScrollView, 
+    View, 
+    Text, 
+    FlatList, 
+    Alert, 
+} from "react-native";
+import { 
     DrawerItemList, 
-    DrawerItem } 
-from "@react-navigation/drawer";
+    DrawerItem,
+    useDrawerStatus
+} from "@react-navigation/drawer";
 import AsyncStorage from "@react-native-community/async-storage";
 
 import Style from "../style/screen-drawer";
@@ -14,6 +19,18 @@ import Typography from "../style/typography";
 export default function(props: any){
 
     const [carro, setCarro] = useState([]);
+
+    const isDrawerOpen = useDrawerStatus() === 'open';
+
+    useEffect(
+        useCallback(
+            ()=>{
+                if(isDrawerOpen){
+                    readCar();
+                }
+            }, [isDrawerOpen]
+        ), [isDrawerOpen]
+    );
 
     const readCar = async () => {
         try{
@@ -30,7 +47,7 @@ export default function(props: any){
         <View style={Style.container}>
             <View style={Style.header}>
                 <View style={Style.title}>
-                    <Text style={Typography.drawerHeader}>Prisma Joy 2008</Text>
+                    <Text style={Typography.drawerHeader}>Prisma Joy 1.4</Text>
                 </View>
                 <View style={Style.display}>
                     <View style={Style.icon}>
@@ -38,31 +55,25 @@ export default function(props: any){
                     </View>
                     <View style={Style.text}>
                         <Text style={Typography.drawerRegular}>
-                            G: 10km/l{'\n'}
-                            E: 7km/l{'\n'}
-                            R: 70%{'\n'}
+                            E: 7 km/l{'\n'}
+                            G: 10,40 km/l{'\n'}
+                            R: 67,30%{'\n'}
                         </Text>
                     </View>
                 </View>
             </View>
-            <Button
-                title="Listar"
-                onPress={()=>readCar()}
-            />
             <View style={Style.list}>
-                <DrawerContentScrollView {...props}>
-                    <DrawerItemList {...props}/>
-                    <FlatList
-                        data={carro}
-                        keyExtractor={item=>item.id}
-                        renderItem={({item})=>
-                            <DrawerItem
-                                label={item.nomeCarro}
-                                onPress={()=>{}}
-                            />
-                        }
-                    />
-                </DrawerContentScrollView>
+                <DrawerItemList {...props}/>
+                <FlatList
+                    data={carro}
+                    keyExtractor={item=>item.id}
+                    renderItem={({item})=>
+                        <DrawerItem
+                            label={item.nomeCarro}
+                            onPress={()=>{}}
+                        />
+                    }
+                />
             </View>
         </View>
     );

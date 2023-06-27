@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import Calculadora from "./calculadora";
+import Calcular from "./calcular";
 import Adicionar from "./adicionar";
 import Drawer from "./drawer";
 
@@ -12,7 +12,7 @@ export default function(){
     return(
         <NavigationContainer>
             <DrawerNavigator.Navigator
-                initialRouteName="Calculadora"
+                initialRouteName="Calcular"
                 drawerContent={(props) => <Drawer {...props}/>}
                 screenOptions={{
                     headerShown: false,
@@ -20,8 +20,8 @@ export default function(){
                 }}
             >
                 <DrawerNavigator.Screen
-                    name="Calculadora"
-                    component={Calculadora}
+                    name="Calcular"
+                    component={Calcular}
                     options={{
                         drawerItemStyle: {height: 0}, //Oculta o item da lista do drawer
                         unmountOnBlur:true
