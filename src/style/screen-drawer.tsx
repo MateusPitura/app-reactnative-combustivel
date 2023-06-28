@@ -12,6 +12,7 @@ export default StyleSheet.create({
     },
     title:{
         padding: 10,
+        paddingLeft: 20,
     },
     display:{
         flex: 1,
@@ -19,7 +20,7 @@ export default StyleSheet.create({
     },
     icon:{
         flex: 1,
-        alignItems: "flex-end",
+        alignItems: "center",
         justifyContent: "center",
     },
     text:{

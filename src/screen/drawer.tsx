@@ -3,17 +3,19 @@ import {
     View, 
     Text, 
     FlatList, 
-    Alert, 
+    TouchableWithoutFeedback,
+    LayoutAnimation,
 } from "react-native";
 import { 
     DrawerItemList, 
     DrawerItem,
     useDrawerStatus
 } from "@react-navigation/drawer";
-import AsyncStorage from "@react-native-community/async-storage";
 
+import AsyncStorage from "@react-native-community/async-storage";
 import Style from "../style/screen-drawer";
 import Car from "../asset/icon/car-light-off.svg"
+import Bin from '../asset/icon/bin.svg';
 import Typography from "../style/typography";
 
 export default function(props: any){
@@ -37,11 +39,35 @@ export default function(props: any){
             const response = await AsyncStorage.getItem("@meucarroflex:carro");
             const data = response ? JSON.parse(response) : [];
             setCarro(data);
-            Alert.alert("Carro lidos");
         } catch(error){
             console.log(error);
         }
     }
+
+    const deleteCar = async(id: string) => {
+        try{
+            const response = await AsyncStorage.getItem("@meucarroflex:carro");
+            const previousData = response ? JSON.parse(response) : [];
+            const data = previousData.filter((item: any) => item.id !== id);
+            await AsyncStorage.setItem("@meucarroflex:carro", JSON.stringify(data));
+            setCarro(data);
+            LayoutAnimation.configureNext(layoutAnimConfig);
+        } catch(error){
+            console.log(error);
+        }
+    }
+
+    const layoutAnimConfig = {
+        duration: 300,
+        update: {
+            type: LayoutAnimation.Types.easeInEaseOut, 
+        },
+        delete: {
+            duration: 100,
+            type: LayoutAnimation.Types.easeInEaseOut,
+            property: LayoutAnimation.Properties.opacity,
+        },
+    };
 
     return(
         <View style={Style.container}>
@@ -70,6 +96,14 @@ export default function(props: any){
                     renderItem={({item})=>
                         <DrawerItem
                             label={item.nomeCarro}
+                            labelStyle={Typography.regular}
+                            icon={()=>
+                                <TouchableWithoutFeedback
+                                    onPress={()=>deleteCar(item.id)}
+                                >
+                                    <Bin width={20} height={"100%"}/>
+                                </TouchableWithoutFeedback>
+                            }
                             onPress={()=>{}}
                         />
                     }

@@ -5,6 +5,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Calcular from "./calcular";
 import Adicionar from "./adicionar";
 import Drawer from "./drawer";
+import Typography from "../style/typography";
 
 const DrawerNavigator = createDrawerNavigator();
 
@@ -31,6 +32,7 @@ export default function(){
                     name="Adicionar"
                     component={Adicionar}
                     options={{
+                        drawerLabelStyle: Typography.regular,
                         swipeEnabled: false, //Desativa o movimento de "puxar" o drawer
                         unmountOnBlur:true
                     }}
