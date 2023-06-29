@@ -5,18 +5,26 @@ import {
     FlatList, 
     TouchableWithoutFeedback,
     LayoutAnimation,
+    StatusBar,
+    Button,
 } from "react-native";
 import { 
     DrawerItemList, 
     DrawerItem,
     useDrawerStatus
 } from "@react-navigation/drawer";
-
 import AsyncStorage from "@react-native-community/async-storage";
+
+//Import Style
 import Style from "../style/screen-drawer";
+import Typography from "../style/typography";
+
+//Import Asset
 import Car from "../asset/icon/car-light-off.svg"
 import Bin from '../asset/icon/bin.svg';
-import Typography from "../style/typography";
+
+//Import Component
+import DrawerButton from "../component/drawer-button";
 
 export default function(props: any){
 
@@ -88,6 +96,10 @@ export default function(props: any){
                     </View>
                 </View>
             </View>
+            <DrawerButton
+                title="Adicionar"
+                onPress={()=>props.navigation.navigate('Adicionar')}
+            />
             <View style={Style.list}>
                 <DrawerItemList {...props}/>
                 <FlatList

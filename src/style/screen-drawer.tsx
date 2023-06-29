@@ -9,6 +9,9 @@ export default StyleSheet.create({
     header:{
         flex: 3,
         backgroundColor: Color.vermelho,
+        margin: 10,
+        borderRadius: 10,
+        elevation: 5,
     },
     title:{
         padding: 10,

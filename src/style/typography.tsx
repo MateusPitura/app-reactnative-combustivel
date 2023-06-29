@@ -32,5 +32,11 @@ export default StyleSheet.create({
         fontSize: 20,
         textTransform: "uppercase",
         color: Color.branco,
+    },
+    drawerButton:{
+        fontFamily: "ubuntu-regular",
+        fontSize: 20,
+        textTransform: "uppercase",
+        color: Color.preto,
     }
 });
