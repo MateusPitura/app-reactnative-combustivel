@@ -36,7 +36,7 @@ export default function({navigation}: any){
     const createCar = async () => {
         try{
             const id = Uuid.v4();
-            const rendimento = (consumoEtanol/consumoGasolina).toFixed(2);
+            const rendimento = ((consumoEtanol/consumoGasolina)*100).toFixed(2);
 
             const newData = [{
                 id,

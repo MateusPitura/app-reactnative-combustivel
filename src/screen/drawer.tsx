@@ -5,8 +5,6 @@ import {
     FlatList, 
     TouchableWithoutFeedback,
     LayoutAnimation,
-    StatusBar,
-    Button,
 } from "react-native";
 import { 
     DrawerItemList, 
@@ -25,6 +23,7 @@ import Bin from '../asset/icon/bin.svg';
 
 //Import Component
 import DrawerButton from "../component/drawer-button";
+import Global from "../component/global";
 
 export default function(props: any){
 
@@ -81,7 +80,7 @@ export default function(props: any){
         <View style={Style.container}>
             <View style={Style.header}>
                 <View style={Style.title}>
-                    <Text style={Typography.drawerHeader}>Prisma Joy 1.4</Text>
+                    <Text style={Typography.drawerHeader}>{Global.nomeCarro}</Text>
                 </View>
                 <View style={Style.display}>
                     <View style={Style.icon}>
@@ -89,9 +88,9 @@ export default function(props: any){
                     </View>
                     <View style={Style.text}>
                         <Text style={Typography.drawerRegular}>
-                            E: 7 km/l{'\n'}
-                            G: 10,40 km/l{'\n'}
-                            R: 67,30%{'\n'}
+                            E: {Global.consumoEtanol} km/l{'\n'}
+                            G: {Global.consumoGasolina} km/l{'\n'}
+                            R: {Global.rendimento}%{'\n'}
                         </Text>
                     </View>
                 </View>
@@ -116,7 +115,12 @@ export default function(props: any){
                                     <Bin width={20} height={"100%"}/>
                                 </TouchableWithoutFeedback>
                             }
-                            onPress={()=>{}}
+                            onPress={()=>{
+                                Global.nomeCarro = item.nomeCarro;
+                                Global.consumoEtanol = item.consumoEtanol;
+                                Global.consumoGasolina = item.consumoGasolina;
+                                Global.rendimento = item.rendimento;
+                            }}
                         />
                     }
                 />
