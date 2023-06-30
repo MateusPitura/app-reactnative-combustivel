@@ -45,7 +45,8 @@ export default function(props: any){
         try{
             const response = await AsyncStorage.getItem("@meucarroflex:carro");
             const data = response ? JSON.parse(response) : [];
-            setCarro(data);
+            const filterData = data.filter((item: any) => item.id !== Global.id);
+            setCarro(filterData);
         } catch(error){
             console.log(error);
         }
@@ -103,8 +104,8 @@ export default function(props: any){
                 <DrawerItemList {...props}/>
                 <FlatList
                     data={carro}
-                    keyExtractor={item=>item.id}
-                    renderItem={({item})=>
+                    keyExtractor={item => item.id}
+                    renderItem={({item}: any)=>
                         <DrawerItem
                             label={item.nomeCarro}
                             labelStyle={Typography.regular}
@@ -116,10 +117,12 @@ export default function(props: any){
                                 </TouchableWithoutFeedback>
                             }
                             onPress={()=>{
+                                Global.id = item.id;
                                 Global.nomeCarro = item.nomeCarro;
                                 Global.consumoEtanol = item.consumoEtanol;
                                 Global.consumoGasolina = item.consumoGasolina;
                                 Global.rendimento = item.rendimento;
+                                readCar();
                             }}
                         />
                     }
