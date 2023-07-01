@@ -23,7 +23,7 @@ import Bin from '../asset/icon/bin.svg';
 
 //Import Component
 import DrawerButton from "../component/drawer-button";
-import Global from "../component/global";
+import CarData from "../data/car";
 
 export default function(props: any){
 
@@ -45,7 +45,7 @@ export default function(props: any){
         try{
             const response = await AsyncStorage.getItem("@meucarroflex:carro");
             const data = response ? JSON.parse(response) : [];
-            const filterData = data.filter((item: any) => item.id !== Global.id);
+            const filterData = data.filter((item: any) => item.id !== CarData.id);
             setCarro(filterData);
         } catch(error){
             console.log(error);
@@ -81,7 +81,7 @@ export default function(props: any){
         <View style={Style.container}>
             <View style={Style.header}>
                 <View style={Style.title}>
-                    <Text style={Typography.drawerHeader}>{Global.nomeCarro}</Text>
+                    <Text style={Typography.drawerHeader}>{CarData.nomeCarro}</Text>
                 </View>
                 <View style={Style.display}>
                     <View style={Style.icon}>
@@ -89,19 +89,14 @@ export default function(props: any){
                     </View>
                     <View style={Style.text}>
                         <Text style={Typography.drawerRegular}>
-                            E: {Global.consumoEtanol} km/l{'\n'}
-                            G: {Global.consumoGasolina} km/l{'\n'}
-                            R: {Global.rendimento}%{'\n'}
+                            E: {CarData.consumoEtanol} km/l{'\n'}
+                            G: {CarData.consumoGasolina} km/l{'\n'}
+                            R: {CarData.rendimento}%{'\n'}
                         </Text>
                     </View>
                 </View>
             </View>
-            <DrawerButton
-                title="Adicionar"
-                onPress={()=>props.navigation.navigate('Adicionar')}
-            />
             <View style={Style.list}>
-                <DrawerItemList {...props}/>
                 <FlatList
                     data={carro}
                     keyExtractor={item => item.id}
@@ -117,15 +112,21 @@ export default function(props: any){
                                 </TouchableWithoutFeedback>
                             }
                             onPress={()=>{
-                                Global.id = item.id;
-                                Global.nomeCarro = item.nomeCarro;
-                                Global.consumoEtanol = item.consumoEtanol;
-                                Global.consumoGasolina = item.consumoGasolina;
-                                Global.rendimento = item.rendimento;
+                                CarData.id = item.id;
+                                CarData.nomeCarro = item.nomeCarro;
+                                CarData.consumoEtanol = item.consumoEtanol;
+                                CarData.consumoGasolina = item.consumoGasolina;
+                                CarData.rendimento = item.rendimento;
                                 readCar();
                             }}
                         />
                     }
+                />
+            </View>
+            <View style={Style.button}>
+                <DrawerButton
+                    title="Adicionar"
+                    onPress={()=>props.navigation.navigate('Adicionar')}
                 />
             </View>
         </View>

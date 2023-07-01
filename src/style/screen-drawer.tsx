@@ -34,4 +34,7 @@ export default StyleSheet.create({
     list:{
         flex: 10,
     },
+    button:{
+        alignItems: "flex-end",
+    }
 });

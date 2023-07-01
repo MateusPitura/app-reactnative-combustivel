@@ -4,29 +4,18 @@ import Color from "./color";
 
 export default StyleSheet.create({
     touchable:{
-        height: 50,
-        marginHorizontal: 10,
+        height: 60,
+        width: 60,
         marginTop: 10,
         elevation: 5,
-        borderRadius: 10,
-    },
-    container:{
-        borderRadius: 10,
-        flexDirection: "row",
-        backgroundColor: Color.branco,
+        borderRadius: 60,
+        backgroundColor: Color.vermelho,
+        margin: 20,
     },
     icon:{
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: Color.vermelho,
-        borderRadius: 10,
+        alignItems: "flex-end",
+        justifyContent: "flex-end",
+        borderRadius: 60,
     },
-    text:{
-        flex: 4,
-        alignItems: "center",
-        justifyContent: "center",
-        borderTopEndRadius: 10,
-        borderBottomEndRadius: 10,
-    }
 });

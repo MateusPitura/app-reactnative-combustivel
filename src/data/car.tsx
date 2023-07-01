@@ -1,4 +1,4 @@
-export default class Global{
+export default class CarData{
     static id: any;
     static nomeCarro: any;
     static consumoEtanol: any;
