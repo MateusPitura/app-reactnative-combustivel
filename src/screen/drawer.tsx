@@ -29,6 +29,8 @@ export default function(props: any){
 
     const [carro, setCarro] = useState([]);
 
+    const [firstInicialization, setfirstInicialization] = useState(false)
+
     const isDrawerOpen = useDrawerStatus() === 'open';
 
     useEffect(
@@ -44,24 +46,28 @@ export default function(props: any){
     useEffect(
         useCallback(
             ()=>{
-                if(isDrawerOpen){
-                    readCar();
+                if(!firstInicialization){
+                    dataRecovery();
                 }
             }, []
         ), []
     );
 
+    const dataRecovery = async() => {
+        if(!CarData.id){
+            CarData.id = await AsyncStorage.getItem("@meucarroflex:currentCarId");
+            CarData.nomeCarro = await AsyncStorage.getItem("@meucarroflex:currentCarNomeCarro");
+            CarData.consumoEtanol = await AsyncStorage.getItem("@meucarroflex:currentCarConsumoEtanol");
+            CarData.consumoGasolina = await AsyncStorage.getItem("@meucarroflex:currentCarConsumoGasolina");
+            CarData.rendimento = await AsyncStorage.getItem("@meucarroflex:currentCarRendimento");
+        }
+        setfirstInicialization(true);
+    }
+
     const readCar = async () => {
         try{
             const response = await AsyncStorage.getItem("@meucarroflex:carro");
             const data = response ? JSON.parse(response) : [];
-            if(!CarData.id){
-                CarData.id = await AsyncStorage.getItem("@meucarroflex:currentCarId");
-                CarData.nomeCarro = await AsyncStorage.getItem("@meucarroflex:currentCarNomeCarro");
-                CarData.consumoEtanol = await AsyncStorage.getItem("@meucarroflex:currentCarConsumoEtanol");
-                CarData.consumoGasolina = await AsyncStorage.getItem("@meucarroflex:currentCarConsumoGasolina");
-                CarData.rendimento = await AsyncStorage.getItem("@meucarroflex:currentCarRendimento");
-            }
             const filterData = data.filter((item: any) => item.id !== CarData.id);
             setCarro(filterData);
         } catch(error){
