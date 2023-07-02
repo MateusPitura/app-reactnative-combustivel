@@ -19,6 +19,7 @@ import Input from "../component/input";
 import Shadow from "../component/shadow";
 import Button from "../component/button";
 import Modal from "../component/modal";
+import CarData from "../data/car";
 
 export default function({navigation}: any){
 
@@ -94,10 +95,12 @@ export default function({navigation}: any){
                         Resultado{'\n'}
                     </Text>
                     <Text style={Typography.modal}>
-                        O etanol está custando {relacaoCombustivel}% da gasolina{'\n'}
+                        É mais vantajoso abastecer seu {CarData.nomeCarro} com
+                        <Text style={Typography.highlight}> {relacaoCombustivel<CarData.rendimento?"etanol":"gasolina"}</Text>
+                        {'\n'}
                     </Text>
                     <Text style={Typography.modal}>
-                        Portanto é mais vantajoso abastecer com etanol{'\n'}
+                        A relação entre etanol e gasolina é de {relacaoCombustivel}%, já o rendimento do seu {CarData.nomeCarro} é de {CarData.rendimento}%{'\n'}
                     </Text>
                     <View style={Style.button}>
                         <Button
