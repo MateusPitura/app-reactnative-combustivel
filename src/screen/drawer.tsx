@@ -41,10 +41,27 @@ export default function(props: any){
         ), [isDrawerOpen]
     );
 
+    useEffect(
+        useCallback(
+            ()=>{
+                if(isDrawerOpen){
+                    readCar();
+                }
+            }, []
+        ), []
+    );
+
     const readCar = async () => {
         try{
             const response = await AsyncStorage.getItem("@meucarroflex:carro");
             const data = response ? JSON.parse(response) : [];
+            if(!CarData.id){
+                CarData.id = await AsyncStorage.getItem("@meucarroflex:currentCarId");
+                CarData.nomeCarro = await AsyncStorage.getItem("@meucarroflex:currentCarNomeCarro");
+                CarData.consumoEtanol = await AsyncStorage.getItem("@meucarroflex:currentCarConsumoEtanol");
+                CarData.consumoGasolina = await AsyncStorage.getItem("@meucarroflex:currentCarConsumoGasolina");
+                CarData.rendimento = await AsyncStorage.getItem("@meucarroflex:currentCarRendimento");
+            }
             const filterData = data.filter((item: any) => item.id !== CarData.id);
             setCarro(filterData);
         } catch(error){
@@ -63,6 +80,14 @@ export default function(props: any){
         } catch(error){
             console.log(error);
         }
+    }
+
+    const setCurrentCar = () => {
+        AsyncStorage.setItem("@meucarroflex:currentCarId", CarData.id);
+        AsyncStorage.setItem("@meucarroflex:currentCarNomeCarro", CarData.nomeCarro);
+        AsyncStorage.setItem("@meucarroflex:currentCarConsumoEtanol", CarData.consumoEtanol);
+        AsyncStorage.setItem("@meucarroflex:currentCarConsumoGasolina", CarData.consumoGasolina);
+        AsyncStorage.setItem("@meucarroflex:currentCarRendimento", CarData.rendimento);
     }
 
     const layoutAnimConfig = {
@@ -117,6 +142,7 @@ export default function(props: any){
                                 CarData.consumoEtanol = item.consumoEtanol;
                                 CarData.consumoGasolina = item.consumoGasolina;
                                 CarData.rendimento = item.rendimento;
+                                setCurrentCar();
                                 readCar();
                             }}
                         />
