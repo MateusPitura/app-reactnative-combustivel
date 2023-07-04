@@ -3,7 +3,7 @@ import {
     View, 
     Text, 
     TouchableWithoutFeedback,
-    StatusBar
+    StatusBar,
 } from "react-native";
 
 //Import Style

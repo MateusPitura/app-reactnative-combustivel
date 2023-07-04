@@ -5,6 +5,7 @@ import {
     FlatList, 
     TouchableWithoutFeedback,
     LayoutAnimation,
+    Keyboard,
 } from "react-native";
 import { 
     DrawerItemList, 
@@ -37,6 +38,7 @@ export default function(props: any){
         useCallback(
             ()=>{
                 if(isDrawerOpen){
+                    Keyboard.dismiss();
                     readCar();
                 }
             }, [isDrawerOpen]
