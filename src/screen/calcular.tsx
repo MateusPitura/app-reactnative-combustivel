@@ -27,7 +27,7 @@ export default function({navigation}: any){
     const [precoGasolina, setPrecoGasolina] = useState("");
     const [relacaoCombustivel, setRelacaoCombustivel] = useState("");
     const [modalIsVisible, setModalIsVisible] = useState(false);
-    const [dataIsValid, setDataIsValid] = useState(false);
+    const [dataIsValid, setDataIsValid] = useState(true);
 
     const handleCalcularRelacao = () => {
         setRelacaoCombustivel(((parseFloat(precoEtanol)/parseFloat(precoGasolina))*100).toFixed(2)); //Calcula a relação entre etanol e gasolina (etanol/gasolina) e multiplica por 100 para transformar em porcentagem. Então limita a 2 casas decimais
@@ -61,7 +61,7 @@ export default function({navigation}: any){
                 <View style={Style.corner}></View>
             </Shadow>
             <View style={Style.container}>
-                <Text style={dataIsValid==false?Typography.regular:{backgroundColor:"#f0f"}}>
+                <Text style={dataIsValid==true?Typography.regular:{backgroundColor:"#f0f"}}>
                     Preço do etanol
                 </Text>
                 <Input
@@ -84,7 +84,7 @@ export default function({navigation}: any){
                 />
                 <Button
                     title="calcular"
-                    data={precoGasolina}
+                    data={[precoEtanol, precoGasolina]}
                     setDataIsValid={setDataIsValid}
                     onPress={handleBtnCalcular}
                 />

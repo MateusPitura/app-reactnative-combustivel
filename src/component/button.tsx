@@ -8,14 +8,16 @@ import Color from "../style/color";
 export default function(props: any){
 
     const checkInput = () => {
-        if(props.data==""){
-            console.log("true");
-            props.setDataIsValid(true);
-        } else{
-            console.log("false");
-            props.setDataIsValid(false);
-            props.onPress()
+        for(var i=0; i<props.data.length; i++){
+            if(props.data[i]==""){
+                console.log("true");
+                props.setDataIsValid(false);
+                return;
+            }
         }
+        console.log("false");
+        props.setDataIsValid(true);
+        props.onPress()
     }
 
     return(
@@ -23,13 +25,11 @@ export default function(props: any){
             style={Style.container}
             underlayColor={Color.vermelhoEscuro}
             onPress={
-                props.data!=undefined
+                props.data==undefined
                 ?
-                ()=>{
-                    checkInput()
-                }
-                :
                 props.onPress
+                :
+                checkInput
             }
         >
             <Text

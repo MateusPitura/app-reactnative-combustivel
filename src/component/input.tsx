@@ -21,11 +21,11 @@ export default function(props: any){
             {
                 props.returnKeyType=="done"
                 ?
-                    props.action
+                    props.action==undefined
                     ?
-                    ()=>props.action()
-                    :
                     Keyboard.dismiss
+                    :
+                    props.action
                 :
                 ()=>props.next.current.focus()
             } //Caso o botão de retorno do teclado seja "done", o teclado será será executado uma função ou será escondido ao clicar no botão. Caso seja diferente de "done" irá redirecionar para o próximo input 
