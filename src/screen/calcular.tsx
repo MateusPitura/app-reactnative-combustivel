@@ -37,9 +37,22 @@ export default function({navigation}: any){
         setModalIsVisible(!modalIsVisible);
     }
 
+    const checkInput = (data: any, setDataIsValid: any) => {
+        for(var i=0; i<data.length; i++){
+            if(data[i]==""){
+                setDataIsValid(false);
+                return false;
+            }
+        }
+        setDataIsValid(true);
+        return true;
+    }
+
     const handleBtnCalcular = () => {
-        handleCalcularRelacao();
-        handleToggleModalIsVisible();
+        if(checkInput([precoEtanol, precoGasolina], setDataIsValid)){
+            handleCalcularRelacao();
+            handleToggleModalIsVisible();
+        }
     }
 
     const inputPrecoEtanol = useRef(null);
@@ -61,10 +74,11 @@ export default function({navigation}: any){
                 <View style={Style.corner}></View>
             </Shadow>
             <View style={Style.container}>
-                <Text style={dataIsValid==true?Typography.regular:{backgroundColor:"#f0f"}}>
+                <Text style={Typography.regular}>
                     Preço do etanol
                 </Text>
                 <Input
+                    dataIsValid={dataIsValid}
                     placeholder="3,84"
                     inputMode="numeric"
                     setState={setPrecoEtanol}
@@ -75,6 +89,7 @@ export default function({navigation}: any){
                     Preço da gasolina
                 </Text>
                 <Input
+                    dataIsValid={dataIsValid}
                     placeholder="5,43"
                     inputMode="numeric"
                     setState={setPrecoGasolina}
@@ -84,8 +99,6 @@ export default function({navigation}: any){
                 />
                 <Button
                     title="calcular"
-                    data={[precoEtanol, precoGasolina]}
-                    setDataIsValid={setDataIsValid}
                     onPress={handleBtnCalcular}
                 />
                 <Modal

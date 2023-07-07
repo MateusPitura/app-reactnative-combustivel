@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
-import { TextInput, Keyboard } from "react-native";
+import { View, Text, TextInput, Keyboard } from "react-native";
 
 import Style from "../style/component-input";
-import Text from "../style/typography";
+import Typography from "../style/typography";
 import Color from "../style/color";
 
 export default function(props: any){
     return(
         <TextInput
-            style={[Style.container, Text.regular]}
+            style={[props.dataIsValid==true?Style.valid:Style.invalid, Typography.regular]}
             placeholder={props.placeholder}
             cursorColor={Color.vermelho}
             inputMode={props.inputMode}
