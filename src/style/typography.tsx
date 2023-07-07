@@ -41,5 +41,13 @@ export default StyleSheet.create({
     },
     highlight:{
         color: Color.vermelho,
+    },
+    aviso:{
+        fontFamily: "ubuntu-regular",
+        fontSize: 16,
+        color: Color.vermelhoAviso,
+    },
+    unable:{
+        display: 'none',
     }
 });

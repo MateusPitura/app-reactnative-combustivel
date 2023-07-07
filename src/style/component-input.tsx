@@ -20,4 +20,8 @@ export default StyleSheet.create({
         borderColor: Color.vermelhoAviso,
         borderWidth: 2,
     },
+    aviso:{
+        marginTop: -15,
+        marginBottom: 20,
+    }
 });
