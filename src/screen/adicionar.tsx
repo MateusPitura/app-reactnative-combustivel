@@ -26,17 +26,23 @@ import Button from "../component/button";
 export default function({navigation}: any){
 
     const [nomeCarro, setNomeCarro] = useState("");
-    const [consumoEtanol, setConsumoEtanol] = useState(0);
-    const [consumoGasolina, setConsumoGasolina] = useState(0);
+    const [consumoEtanol, setConsumoEtanol] = useState("");
+    const [consumoGasolina, setConsumoGasolina] = useState("");
 
     const [marca, setMarca] = useState("");
     const [modelo, setModelo] = useState("");
     const [ano, setAno] = useState("");
 
+    const [dataIsValid, setDataIsValid] = useState(true);
+
     const createCar = async () => {
         try{
             const id = Uuid.v4();
-            const rendimento = ((consumoEtanol/consumoGasolina)*100).toFixed(2);
+            const rendimento = ((
+                parseFloat(consumoEtanol.replace(',','.'))
+                /
+                parseFloat(consumoGasolina.replace(',','.'))
+            )*100).toFixed(2)
 
             const newData = [{
                 id,
@@ -56,9 +62,34 @@ export default function({navigation}: any){
         }
     }
 
+    const checkInputIsEmpty = (data: any, setDataIsValid: any) => {
+        for(var i=0; i<data.length; i++){
+            if(data[i]==""){
+                setDataIsValid(false);
+                return false;
+            }
+        }
+        setDataIsValid(true);
+        return true;
+    }
+
+    const checkInputIsValid = (data: any, setDataIsValid: any) => {
+        const regex = RegExp("^(?!0$)(^([0-9]{1,2})([\,][0-9]{1,2})?$)") //Rejeita apenas 0. Aceita 1 ou 2 números inteiros e, opcionalmente, seguido de ponto ou vírgula e 1 ou 2 números
+        for(var i=0; i<data.length; i++){
+            if(regex.test(data[i])==false){
+                setDataIsValid(false);
+                return false;
+            }
+        }
+        setDataIsValid(true);
+        return true;
+    }
+
     const handleBtnCriar = () => {
-        createCar();
-        navigation.goBack();
+        if(checkInputIsEmpty([nomeCarro], setDataIsValid) && checkInputIsValid([consumoEtanol, consumoGasolina], setDataIsValid)){
+            createCar();
+            navigation.goBack();
+        }
     }
 
     const inputConsumoEtanol = useRef(null);
@@ -89,6 +120,7 @@ export default function({navigation}: any){
                         Nome do carro
                     </Text>
                     <Input
+                        dataIsValid={dataIsValid}
                         placeholder="Prisma Joy 1.4"
                         inputMode="text"
                         maxLength={255}
@@ -100,6 +132,7 @@ export default function({navigation}: any){
                         Consumo de etanol em km/l
                     </Text>
                     <Input
+                        dataIsValid={dataIsValid}
                         placeholder="7"
                         inputMode="numeric"
                         maxLength={5}
@@ -112,17 +145,18 @@ export default function({navigation}: any){
                         Consumo de gasolina em km/l
                     </Text>
                     <Input
+                        dataIsValid={dataIsValid}
                         placeholder="10,40"
                         inputMode="numeric"
                         maxLength={5}
                         setState={setConsumoGasolina}
                         returnKeyType="done"
                         identifier={inputConsumoGasolina}
-                        action={()=>{handleBtnCriar()}}
+                        action={handleBtnCriar}
                     />
                     <Button
                         title={"Criar"}
-                        onPress={()=>{handleBtnCriar()}}
+                        onPress={handleBtnCriar}
                     />
                 </View>
                 <View  style={Style.pesquisar}>

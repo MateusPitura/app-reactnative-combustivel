@@ -3,5 +3,5 @@ export default class CarData{
     static nomeCarro: any;
     static consumoEtanol: any;
     static consumoGasolina: any;
-    static rendimento: any;
+    static rendimento: any = "";
 }

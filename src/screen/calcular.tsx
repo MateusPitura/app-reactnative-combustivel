@@ -42,7 +42,7 @@ export default function({navigation}: any){
     }
 
     const checkInput = (data: any, setDataIsValid: any) => {
-        const regex = RegExp("(^([0-9])([\.\,][0-9]{1,2})$)|(^([1-9])([\.\,][0-9]{1,2})?$)");
+        const regex = RegExp("^(?!0$)(^([0-9])([\,][0-9]{1,2})?$)"); //Rejeita apenas 0. Aceita 1 número inteiro e, opcionalmente, seguido de ponto ou vírgula e 1 ou 2 números
         for(var i=0; i<data.length; i++){
             if(regex.test(data[i])==false){
                 setDataIsValid(false);
@@ -123,7 +123,7 @@ export default function({navigation}: any){
                         {'\n'}
                     </Text>
                     <Text style={Typography.modal}>
-                        A relação entre etanol e gasolina é de {relacaoCombustivel}%, já o rendimento do seu {CarData.nomeCarro} é de {CarData.rendimento}%{'\n'}
+                        A relação entre etanol e gasolina é de {relacaoCombustivel.replace('.',',')}%, já o rendimento do seu {CarData.nomeCarro} é de {CarData.rendimento.replace('.',',')}%{'\n'}
                     </Text>
                     <View style={Style.button}>
                         <Button

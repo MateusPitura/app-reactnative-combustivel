@@ -49,13 +49,13 @@ export default function(props: any){
         useCallback(
             ()=>{
                 if(!firstInicialization){
-                    dataRecovery();
+                    recoveryData();
                 }
             }, []
         ), []
     );
 
-    const dataRecovery = async() => {
+    const recoveryData = async() => {
         if(!CarData.id){
             CarData.id = await AsyncStorage.getItem("@meucarroflex:currentCarId");
             CarData.nomeCarro = await AsyncStorage.getItem("@meucarroflex:currentCarNomeCarro");
@@ -124,7 +124,7 @@ export default function(props: any){
                         <Text style={Typography.drawerRegular}>
                             E: {CarData.consumoEtanol} km/l{'\n'}
                             G: {CarData.consumoGasolina} km/l{'\n'}
-                            R: {CarData.rendimento}%{'\n'}
+                            R: {CarData.rendimento.replace('.',',')}%{'\n'}
                         </Text>
                     </View>
                 </View>
