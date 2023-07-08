@@ -38,8 +38,9 @@ export default function({navigation}: any){
     }
 
     const checkInput = (data: any, setDataIsValid: any) => {
+        const regex = RegExp("(^([0-9])([\.\,][0-9]{1,2})$)|(^([1-9])([\.\,][0-9]{1,2})?$)");
         for(var i=0; i<data.length; i++){
-            if(data[i]==""){
+            if(regex.test(data[i])==false){
                 setDataIsValid(false);
                 return false;
             }
@@ -81,6 +82,7 @@ export default function({navigation}: any){
                     dataIsValid={dataIsValid}
                     placeholder="3,84"
                     inputMode="numeric"
+                    maxLength={4}
                     setState={setPrecoEtanol}
                     returnKeyType="next"
                     next={inputPrecoEtanol}
@@ -92,6 +94,7 @@ export default function({navigation}: any){
                     dataIsValid={dataIsValid}
                     placeholder="5,43"
                     inputMode="numeric"
+                    maxLength={4}
                     setState={setPrecoGasolina}
                     returnKeyType="done"
                     identifier={inputPrecoEtanol}
