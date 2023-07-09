@@ -15,9 +15,6 @@ export default StyleSheet.create({
         paddingHorizontal: 30,
         backgroundColor: Color.branco,
     },
-    criar:{
-        paddingBottom: 50,
-    },
     pesquisar:{
         paddingBottom: 100,
     },
