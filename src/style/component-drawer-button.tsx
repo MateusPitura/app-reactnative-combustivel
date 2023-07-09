@@ -1,13 +1,14 @@
 import { StyleSheet } from "react-native";
 
 import Color from "./color";
+import Material from './material'
 
 export default StyleSheet.create({
     touchable:{
         height: 60,
         width: 60,
         marginTop: 10,
-        elevation: 5,
+        elevation: Material.elevation,
         borderRadius: 60,
         backgroundColor: Color.vermelho,
         margin: 20,

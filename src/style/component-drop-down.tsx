@@ -1,28 +1,29 @@
 import { StyleSheet } from "react-native";
 
-import Color from "./color";
+import Color from "./color"
 import Material from './material'
 
 export default StyleSheet.create({
-    valid:{
+    input:{
         backgroundColor: Color.cinzaClaro,
         height: 50,
         borderRadius: Material.borderRadius,
         marginVertical: 20,
         paddingLeft: 15,
-        borderWidth: 0,
+        justifyContent: 'center',
     },
-    invalid:{
-        backgroundColor: Color.cinzaClaro,
-        height: 50,
+    container:{
+        flex: 1,
         borderRadius: Material.borderRadius,
-        marginVertical: 20,
-        paddingLeft: 15,
-        borderColor: Color.vermelhoAviso,
-        borderWidth: 2,
-    },
-    aviso:{
-        marginTop: -15,
+        backgroundColor: Color.branco,        
+        paddingHorizontal: 20,
+        paddingTop: 20,
+        paddingBottom: 5,
         marginBottom: 20,
+        elevation: Material.elevation,
+        height: 300,
+    },
+    list:{
+        paddingBottom: 15,
     }
 });

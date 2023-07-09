@@ -2,18 +2,18 @@ import React, { useState, useRef} from "react";
 import { 
     View,
     Text, 
-    Alert 
 } from "react-native";
 import AsyncStorage from '@react-native-community/async-storage'
 import Uuid from 'react-native-uuid';
 
 //Import Style
-import Style from "../style/screen-adicionar";
+import Style from "../style/screen-pesquisar";
 import Typography from "../style/typography";
 
 //Import Component
 import Input from "../component/input";
 import Button from "../component/button";
+import DropDown from "../component/drop-down";
 
 export default function({navigation}: any){
 
@@ -77,20 +77,15 @@ export default function({navigation}: any){
     const inputAno = useRef(null);
 
     return(
-        <View  style={Style.pesquisar}>
+        <View style={Style.pesquisar}>
             <Text style={Typography.header}>
                 Pesquisar{'\n'}
             </Text>
             <Text style={Typography.regular}>
                 Marca
             </Text>
-            <Input
-                placeholder="Chevrolet"
-                inputMode="text"
-                maxLength={255}
-                setState={setMarca}
-                returnKeyType="next"
-                next={inputModelo}
+            <DropDown
+
             />
             <Text style={Typography.regular}>
                 Modelo

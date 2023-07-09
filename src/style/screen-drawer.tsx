@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 
 import Color from "./color";
+import Material from './material'
 
 export default StyleSheet.create({
     container:{
@@ -10,8 +11,8 @@ export default StyleSheet.create({
         flex: 3,
         backgroundColor: Color.vermelho,
         margin: 10,
-        borderRadius: 10,
-        elevation: 5,
+        borderRadius: Material.borderRadius,
+        elevation: Material.elevation,
     },
     title:{
         padding: 10,

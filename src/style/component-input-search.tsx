@@ -5,12 +5,10 @@ import Material from './material'
 
 export default StyleSheet.create({
     container:{
-        backgroundColor: Color.vermelho,
+        backgroundColor: Color.cinzaClaro,
         height: 50,
-        marginVertical: 20, 
-        elevation: Material.elevation,
         borderRadius: Material.borderRadius,
-        alignItems: "center",
-        justifyContent: "center",
-    }
+        marginBottom: 20,
+        paddingLeft: 15,
+    },
 });

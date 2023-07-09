@@ -36,8 +36,10 @@ export default function({navigation}: any){
                 style={Style.container}
                 keyboardShouldPersistTaps='handled'
             >
-                <Criar navigation={navigation}/>
-                <Pesquisar navigation={navigation}/>
+                <View style={Style.border}>
+                    <Criar navigation={navigation}/>
+                    <Pesquisar navigation={navigation}/>
+                </View>
             </ScrollView>
         </SafeAreaView>
     );

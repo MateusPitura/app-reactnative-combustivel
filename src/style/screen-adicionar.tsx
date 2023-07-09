@@ -12,10 +12,11 @@ export default StyleSheet.create({
     },
     container:{
         flex: 1,
-        paddingHorizontal: 30,
+        paddingHorizontal: 20,
         backgroundColor: Color.branco,
     },
-    pesquisar:{
-        paddingBottom: 100,
-    },
+    border:{
+        flex: 1,
+        margin: 10,
+    }
 });
