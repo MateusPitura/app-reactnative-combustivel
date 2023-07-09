@@ -31,11 +31,16 @@ export default function(props: any){
                     ()=>props.next.current.focus()
                 } //Caso o botão de retorno do teclado seja "done", o teclado será será executado uma função ou será escondido ao clicar no botão. Caso seja diferente de "done" irá redirecionar para o próximo input 
             />
+            {props.dataIsValid==true
+            ?
+            null
+            :
             <View style={Style.aviso}>
-                <Text style={props.dataIsValid==true?Typography.unable:Typography.aviso}>
+                <Text style={Typography.aviso}>
                     Preencha este campo corretamente
                 </Text>
             </View>
+            }
         </View>
     );
 }

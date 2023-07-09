@@ -111,7 +111,10 @@ export default function({navigation}: any){
                     <Arrow height={50} width={50} fill={Color.vermelho}/>
                 </TouchableWithoutFeedback>
             </View>
-            <ScrollView style={Style.container}>
+            <ScrollView 
+                style={Style.container}
+                keyboardShouldPersistTaps='handled'
+            >
                 <View style={Style.criar}>
                     <Text style={Typography.header}>
                         Criar{'\n'}
