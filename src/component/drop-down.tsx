@@ -41,7 +41,7 @@ export default function(){
     }
 
     return(
-        <View style={{elevation: 5}}>
+        <View>
             <TouchableHighlight
                 style={Style.input}
                 onPress={()=>{setIsClicked(!isClicked)}}
@@ -60,6 +60,7 @@ export default function(){
                 />
                 <FlatList
                     data={data}
+                    nestedScrollEnabled={true}
                     renderItem={({item}) => {
                         return(
                             <TouchableHighlight
