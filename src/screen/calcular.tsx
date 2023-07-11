@@ -41,10 +41,9 @@ export default function({navigation}: any){
         setModalIsVisible(!modalIsVisible);
     }
 
-    const checkInput = (data: any, setDataIsValid: any) => {
-        const regex = RegExp("^(?!0$)(^([0-9])([\,][0-9]{1,2})?$)"); //Rejeita apenas 0. Aceita 1 número inteiro e, opcionalmente, seguido de ponto ou vírgula e 1 ou 2 números
+    const checkInput = (regex: any, data: any, setDataIsValid: any) => {
         for(var i=0; i<data.length; i++){
-            if(regex.test(data[i])==false){
+            if(RegExp(regex).test(data[i])==false){
                 setDataIsValid(false);
                 return false;
             }
@@ -54,7 +53,11 @@ export default function({navigation}: any){
     }
 
     const handleBtnCalcular = () => {
-        if(checkInput([precoEtanol, precoGasolina], setDataIsValid)){
+        if(checkInput(
+            "^(?!0$)(^([0-9])([\,][0-9]{1,2})?$)", //Rejeita apenas 0. Aceita 1 número inteiro e, opcionalmente, seguido de ponto ou vírgula e 1 ou 2 números
+            [precoEtanol, precoGasolina], 
+            setDataIsValid
+        )){
             handleCalcularRelacao();
             handleToggleModalIsVisible();
         }

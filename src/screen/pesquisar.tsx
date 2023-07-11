@@ -2,6 +2,7 @@ import React, { useState, useRef} from "react";
 import { 
     View,
     Text, 
+    Alert,
 } from "react-native";
 import AsyncStorage from '@react-native-community/async-storage'
 import Uuid from 'react-native-uuid';
@@ -11,17 +12,53 @@ import Style from "../style/screen-pesquisar";
 import Typography from "../style/typography";
 
 //Import Component
-import Input from "../component/input";
 import Button from "../component/button";
 import DropDown from "../component/drop-down";
 
 export default function({navigation}: any){
 
-    const [marca, setMarca] = useState("");
-    const [modelo, setModelo] = useState("");
-    const [ano, setAno] = useState("");
+    const listaMontadora = [
+        {field: "Chevrolet"},
+        {field: "Volkswagem"},
+        {field: "Ford"},
+        {field: "BMW"},
+        {field: "Audi"},
+        {field: "Fiat"},
+        {field: "Peogeot"},
+        {field: "Honda"},
+        {field: "Toyota"},
+        {field: "Jeep"},
+    ]
 
-    const [dataIsValid, setDataIsValid] = useState(true);
+    const listaModelo = [
+        {field: "Prisma"},
+        {field: "Gol"},
+        {field: "Fusion"},
+        {field: "i3"},
+        {field: "A3"},
+        {field: "Toro"},
+        {field: "208"},
+        {field: "Civic"},
+        {field: "Corolla"},
+        {field: "Renegade"},
+    ]
+
+    const listaAno = [
+        {field: "2001"},
+        {field: "2002"},
+        {field: "2003"},
+        {field: "2004"},
+        {field: "2005"},
+        {field: "2006"},
+        {field: "2007"},
+        {field: "2008"},
+        {field: "2009"},
+        {field: "2010"},
+    ]
+
+    const [marca, setMarca] = useState("Chevrolet");
+    const [modelo, setModelo] = useState("Prisma");
+    const [ano, setAno] = useState("2008");
 
     // const createCar = async () => {
     //     try{
@@ -50,32 +87,6 @@ export default function({navigation}: any){
     //     }
     // }
 
-    const checkInputIsEmpty = (data: any, setDataIsValid: any) => {
-        for(var i=0; i<data.length; i++){
-            if(data[i]==""){
-                setDataIsValid(false);
-                return false;
-            }
-        }
-        setDataIsValid(true);
-        return true;
-    }
-
-    const checkInputIsValid = (data: any, setDataIsValid: any) => {
-        const regex = RegExp("^(?!0$)(^([0-9]{1,2})([\,][0-9]{1,2})?$)") //Rejeita apenas 0. Aceita 1 ou 2 números inteiros e, opcionalmente, seguido de ponto ou vírgula e 1 ou 2 números
-        for(var i=0; i<data.length; i++){
-            if(regex.test(data[i])==false){
-                setDataIsValid(false);
-                return false;
-            }
-        }
-        setDataIsValid(true);
-        return true;
-    }
-
-    const inputModelo = useRef(null);
-    const inputAno = useRef(null);
-
     return(
         <View style={Style.pesquisar}>
             <Text style={Typography.header}>
@@ -84,35 +95,34 @@ export default function({navigation}: any){
             <Text style={Typography.regular}>
                 Marca
             </Text>
-            <DropDown
-
+            <DropDown 
+                list={listaMontadora}
+                state={marca}
+                setState={setMarca}
             />
             <Text style={Typography.regular}>
                 Modelo
             </Text>
-            <Input
-                placeholder="Prisma"
-                inputMode="text"
-                maxLength={255}
+            <DropDown 
+                list={listaModelo}
+                state={modelo}
                 setState={setModelo}
-                returnKeyType="next"
-                identifier={inputModelo}
-                next={inputAno}
             />
             <Text style={Typography.regular}>
                 Ano
             </Text>
-            <Input
-                placeholder="2008"
-                inputMode="numeric"
-                maxLength={4}
-                setState={setAno}
-                returnKeyType="search"
-                identifier={inputAno}
+            <DropDown 
+                list={listaAno}
+                state={ano}
+                setState={setAno}           
             />
             <Button
                 title={"Pesquisar"}
-                onPress={()=>{}}
+                onPress={()=>{
+                    console.log(marca)
+                    console.log(modelo)
+                    console.log(ano)
+                }}
             />
         </View>
     );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { 
     View,
-    TouchableHighlight,
+    TouchableOpacity,
     FlatList,
     Text,
 } from 'react-native';
@@ -10,44 +10,31 @@ import Style from '../style/component-drop-down';
 import Typography from "../style/typography";
 import InputSearch from "./input-search";
 
-export default function(){
-
-    const listMarca = [
-        {marca: "Chevrolet"},
-        {marca: "Volkswagem"},
-        {marca: "Ford"},
-        {marca: "BMW"},
-        {marca: "Audi"},
-        {marca: "Fiat"},
-        {marca: "Peogeot"},
-        {marca: "Honda"},
-        {marca: "Toyota"},
-        {marca: "Jeep"},
-    ]
+export default function(props: any){
     
     const [isClicked, setIsClicked] = useState(false);
-    const [selectedMarca, setSelectedMarca] = useState("Chevrolet");
-    const [data, setData] = useState(listMarca);
+    const [selected, setSelected] = useState(props.selected);
+    const [data, setData] = useState(props.list);
     
     const onSearch = (search: any) => {
         if(search !== ''){
             const filterData = data.filter(item => {
-                return item.marca.toLowerCase().indexOf(search.toLowerCase()) > -1; //Função que realiza a busca
+                return item.field.toLowerCase().indexOf(search.toLowerCase()) > -1; //Função que realiza a busca
             });
             setData(filterData);
         } else {
-            setData(listMarca);
+            setData(props.list);
         }
     }
 
     return(
         <View>
-            <TouchableHighlight
+            <TouchableOpacity
                 style={Style.input}
                 onPress={()=>{setIsClicked(!isClicked)}}
             >
-                <Text style={Typography.regular}>{selectedMarca}</Text>
-            </TouchableHighlight>
+                <Text style={Typography.regular}>{props.state}</Text>
+            </TouchableOpacity>
             {isClicked
             ?
             <View style={Style.container}>
@@ -63,17 +50,17 @@ export default function(){
                     nestedScrollEnabled={true}
                     renderItem={({item}) => {
                         return(
-                            <TouchableHighlight
+                            <TouchableOpacity
                                 onPress={()=>{
-                                    setSelectedMarca(item.marca);
+                                    props.setState(item.field);
                                     setIsClicked(!isClicked);
                                     onSearch('');
                                 }}
                             >
                                 <View style={Style.list}>
-                                    <Text style={Typography.regular}>{item.marca}</Text>
+                                    <Text style={Typography.regular}>{item.field}</Text>
                                 </View>
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         )
                     }}
                     ListEmptyComponent={

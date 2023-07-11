@@ -50,21 +50,9 @@ export default function({navigation}: any){
         }
     }
 
-    const checkInputIsEmpty = (data: any, setDataIsValid: any) => {
+    const checkInput = (regex: any, data: any, setDataIsValid: any) => {
         for(var i=0; i<data.length; i++){
-            if(data[i]==""){
-                setDataIsValid(false);
-                return false;
-            }
-        }
-        setDataIsValid(true);
-        return true;
-    }
-
-    const checkInputIsValid = (data: any, setDataIsValid: any) => {
-        const regex = RegExp("^(?!0$)(^([0-9]{1,2})([\,][0-9]{1,2})?$)") //Rejeita apenas 0. Aceita 1 ou 2 números inteiros e, opcionalmente, seguido de ponto ou vírgula e 1 ou 2 números
-        for(var i=0; i<data.length; i++){
-            if(regex.test(data[i])==false){
+            if(RegExp(regex).test(data[i])==false){
                 setDataIsValid(false);
                 return false;
             }
@@ -74,7 +62,15 @@ export default function({navigation}: any){
     }
 
     const handleBtnCriar = () => {
-        if(checkInputIsEmpty([nomeCarro], setDataIsValid) && checkInputIsValid([consumoEtanol, consumoGasolina], setDataIsValid)){
+        if(checkInput(
+            ".",
+            [nomeCarro], 
+            setDataIsValid
+        ) && checkInput(
+            "^(?!0$)(^([0-9]{1,2})([\,][0-9]{1,2})?$)", //Rejeita apenas 0. Aceita 1 ou 2 números inteiros e, opcionalmente, seguido de ponto ou vírgula e 1 ou 2 números
+            [consumoEtanol, consumoGasolina], 
+            setDataIsValid
+        )){
             createCar();
             navigation.goBack();
         }
