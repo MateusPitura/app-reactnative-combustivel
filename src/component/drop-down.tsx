@@ -9,11 +9,13 @@ import {
 import Style from '../style/component-drop-down';
 import Typography from "../style/typography";
 import InputSearch from "./input-search";
+import DropDownTop from "../asset/icon/drop-down-top.svg"
+import DropDownDown from "../asset/icon/drop-down-down.svg"
+import Color from "../style/color";
 
 export default function(props: any){
     
     const [isClicked, setIsClicked] = useState(false);
-    const [selected, setSelected] = useState(props.selected);
     const [data, setData] = useState(props.list);
     
     const onSearch = (search: any) => {
@@ -33,7 +35,19 @@ export default function(props: any){
                 style={Style.input}
                 onPress={()=>{setIsClicked(!isClicked)}}
             >
-                <Text style={Typography.regular}>{props.state}</Text>
+                <View style={Style.box}>
+                    <View style={Style.text}>
+                        <Text style={Typography.regular}>{props.state}</Text>
+                    </View>
+                    <View style={Style.icon}>
+                        {isClicked
+                        ?
+                        <DropDownTop fill={Color.preto} height={20} width={20}/>
+                        :
+                        <DropDownDown fill={Color.preto} height={20} width={20}/>
+                        }
+                    </View>
+                </View>
             </TouchableOpacity>
             {isClicked
             ?

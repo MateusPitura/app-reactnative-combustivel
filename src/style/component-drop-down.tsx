@@ -10,7 +10,19 @@ export default StyleSheet.create({
         borderRadius: Material.borderRadius,
         marginVertical: 20,
         paddingLeft: 15,
+    },
+    box:{
+        flex: 1,
+        flexDirection: 'row',
+    },
+    text:{
         justifyContent: 'center',
+        flex: 5
+    },
+    icon:{
+        alignItems: "center",
+        justifyContent: 'center',
+        flex: 1,
     },
     container:{
         flex: 1,
@@ -24,4 +36,5 @@ export default StyleSheet.create({
     list:{
         paddingBottom: 10,
     }
+
 });
