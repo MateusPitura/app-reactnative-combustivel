@@ -12,6 +12,11 @@ export default StyleSheet.create({
         fontFamily: "ubuntu-regular",
         fontSize: 18,
     },
+    placeholder:{
+        color: Color.cinza,
+        fontFamily: "ubuntu-regular",
+        fontSize: 18,
+    },
     modal:{
         fontFamily: "ubuntu-regular",
         fontSize: 18,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { 
     View,
     TouchableOpacity,
@@ -16,6 +16,7 @@ import Color from "../style/color";
 export default function(props: any){
     
     const [isClicked, setIsClicked] = useState(false);
+    const [selected, setSelected] = useState("");
     const [data, setData] = useState(props.list);
     
     const onSearch = (search: any) => {
@@ -29,6 +30,18 @@ export default function(props: any){
         }
     }
 
+    const input = useRef(null);
+
+    useEffect(()=>{
+        setTimeout(
+            ()=>{
+                if(isClicked==true){
+                    input.current?.focus();
+                }
+            },
+        ), 0}, [isClicked]
+    );
+
     return(
         <View>
             <TouchableOpacity
@@ -37,7 +50,12 @@ export default function(props: any){
             >
                 <View style={Style.box}>
                     <View style={Style.text}>
-                        <Text style={Typography.regular}>{props.state}</Text>
+                        {selected==""
+                        ?
+                        <Text style={Typography.placeholder}>{props.placeholder}</Text>
+                        :
+                        <Text style={Typography.regular}>{selected}</Text>
+                        }
                     </View>
                     <View style={Style.icon}>
                         {isClicked
@@ -57,6 +75,7 @@ export default function(props: any){
                     inputMode="text"
                     maxLength={255}
                     setState={onSearch}
+                    identifier={input}
                     returnKeyType="search"
                 />
                 <FlatList
@@ -67,6 +86,7 @@ export default function(props: any){
                             <TouchableOpacity
                                 onPress={()=>{
                                     props.setState(item.field);
+                                    setSelected(item.field);
                                     setIsClicked(!isClicked);
                                     onSearch('');
                                 }}

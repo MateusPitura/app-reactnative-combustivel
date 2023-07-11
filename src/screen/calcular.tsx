@@ -2,7 +2,7 @@ import React, { useState, useRef} from "react";
 import { 
     View, 
     Text, 
-    TouchableWithoutFeedback,
+    TouchableOpacity,
     StatusBar,
 } from "react-native";
 
@@ -71,13 +71,13 @@ export default function({navigation}: any){
                 backgroundColor={Color.vermelho}
                 barStyle={"light-content"}
             />
-            <TouchableWithoutFeedback
+            <TouchableOpacity
                 onPress={()=>navigation.toggleDrawer()}
             >
                 <View style={Style.header}>
                     <Stack fill={Color.branco} width={50} height={50}/>
                 </View>
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
             <Shadow style={Style.shadow}>
                 <View style={Style.corner}></View>
             </Shadow>

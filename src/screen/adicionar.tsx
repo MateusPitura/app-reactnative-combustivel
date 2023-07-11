@@ -2,7 +2,7 @@ import React from "react";
 import { 
     View, 
     StatusBar, 
-    TouchableWithoutFeedback, 
+    TouchableOpacity, 
     ScrollView, 
     SafeAreaView, 
 } from "react-native";
@@ -26,11 +26,11 @@ export default function({navigation}: any){
                 barStyle={"dark-content"}
             />
             <View style={Style.header}>
-                <TouchableWithoutFeedback
+                <TouchableOpacity
                     onPress={()=>navigation.goBack()}
                 >
                     <Arrow height={50} width={50} fill={Color.vermelho}/>
-                </TouchableWithoutFeedback>
+                </TouchableOpacity>
             </View>
             <ScrollView 
                 style={Style.container}

@@ -56,9 +56,9 @@ export default function({navigation}: any){
         {field: "2010"},
     ]
 
-    const [marca, setMarca] = useState("Chevrolet");
-    const [modelo, setModelo] = useState("Prisma");
-    const [ano, setAno] = useState("2008");
+    const [marca, setMarca] = useState("");
+    const [modelo, setModelo] = useState("");
+    const [ano, setAno] = useState("");
 
     // const createCar = async () => {
     //     try{
@@ -97,24 +97,24 @@ export default function({navigation}: any){
             </Text>
             <DropDown 
                 list={listaMontadora}
-                state={marca}
                 setState={setMarca}
+                placeholder="Chevrolet"
             />
             <Text style={Typography.regular}>
                 Modelo
             </Text>
             <DropDown 
                 list={listaModelo}
-                state={modelo}
                 setState={setModelo}
+                placeholder="Prisma"
             />
             <Text style={Typography.regular}>
                 Ano
             </Text>
             <DropDown 
                 list={listaAno}
-                state={ano}
-                setState={setAno}           
+                setState={setAno}   
+                placeholder="2008"        
             />
             <Button
                 title={"Pesquisar"}
