@@ -59,6 +59,18 @@ export default function({navigation}: any){
     const [marca, setMarca] = useState("");
     const [modelo, setModelo] = useState("");
     const [ano, setAno] = useState("");
+    const [dataIsValid, setDataIsValid] = useState(true);
+
+    const checkInput = (regex: any, data: any, setDataIsValid: any) => {
+        for(var i=0; i<data.length; i++){
+            if(RegExp(regex).test(data[i])==false){
+                setDataIsValid(false);
+                return false;
+            }
+        }
+        setDataIsValid(true);
+        return true;
+    }
 
     // const createCar = async () => {
     //     try{
@@ -87,6 +99,17 @@ export default function({navigation}: any){
     //     }
     // }
 
+    const handleBtnPesquisar = () => {
+        if(checkInput(
+            ".",
+            [marca, modelo, ano],
+            setDataIsValid
+        )){
+            //createCar();
+            navigation.goBack();
+        }
+    }
+
     return(
         <View style={Style.pesquisar}>
             <Text style={Typography.header}>
@@ -96,6 +119,7 @@ export default function({navigation}: any){
                 Marca
             </Text>
             <DropDown 
+                dataIsValid={dataIsValid}
                 list={listaMontadora}
                 setState={setMarca}
                 placeholder="Chevrolet"
@@ -104,6 +128,7 @@ export default function({navigation}: any){
                 Modelo
             </Text>
             <DropDown 
+                dataIsValid={dataIsValid}
                 list={listaModelo}
                 setState={setModelo}
                 placeholder="Prisma"
@@ -112,6 +137,7 @@ export default function({navigation}: any){
                 Ano
             </Text>
             <DropDown 
+                dataIsValid={dataIsValid}
                 list={listaAno}
                 setState={setAno}   
                 placeholder="2008"        
@@ -122,6 +148,7 @@ export default function({navigation}: any){
                     console.log(marca)
                     console.log(modelo)
                     console.log(ano)
+                    handleBtnPesquisar()
                 }}
             />
         </View>

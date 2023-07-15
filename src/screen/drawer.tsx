@@ -17,6 +17,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 //Import Style
 import Style from "../style/screen-drawer";
 import Typography from "../style/typography";
+import Color from "../style/color";
 
 //Import Asset
 import Car from "../asset/icon/car-light-off.svg"

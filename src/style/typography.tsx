@@ -4,20 +4,23 @@ import Color from "./color";
 
 export default StyleSheet.create({
     header:{
+        color: Color.cinzaEscuro,
         fontFamily: "ubuntu-bold",
         fontSize: 22,
         textAlign: "center",
     },
     regular:{
+        color: Color.cinzaEscuro,
         fontFamily: "ubuntu-regular",
         fontSize: 18,
     },
     placeholder:{
-        color: Color.cinza,
+        color: Color.placeholder,
         fontFamily: "ubuntu-regular",
         fontSize: 18,
     },
     modal:{
+        color: Color.cinzaEscuro,
         fontFamily: "ubuntu-regular",
         fontSize: 18,
         textAlign: "center",
@@ -37,12 +40,6 @@ export default StyleSheet.create({
         fontSize: 20,
         textTransform: "uppercase",
         color: Color.branco,
-    },
-    drawerButton:{
-        fontFamily: "ubuntu-regular",
-        fontSize: 20,
-        textTransform: "uppercase",
-        color: Color.preto,
     },
     highlight:{
         color: Color.vermelho,

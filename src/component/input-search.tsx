@@ -10,6 +10,7 @@ export default function(props: any){
         <TextInput
             style={[Style.container, Typography.regular]}
             placeholder={props.placeholder}
+            placeholderTextColor={Color.placeholder}
             cursorColor={Color.vermelho}
             inputMode={props.inputMode}
             maxLength={props.maxLength}

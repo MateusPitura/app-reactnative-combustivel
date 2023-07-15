@@ -11,7 +11,6 @@ import Typography from "../style/typography";
 import InputSearch from "./input-search";
 import DropDownTop from "../asset/icon/drop-down-top.svg"
 import DropDownDown from "../asset/icon/drop-down-down.svg"
-import Color from "../style/color";
 
 export default function(props: any){
     
@@ -45,7 +44,7 @@ export default function(props: any){
     return(
         <View>
             <TouchableOpacity
-                style={Style.input}
+                style={props.dataIsValid==true?Style.valid:Style.invalid}
                 onPress={()=>{setIsClicked(!isClicked)}}
             >
                 <View style={Style.box}>
@@ -60,13 +59,23 @@ export default function(props: any){
                     <View style={Style.icon}>
                         {isClicked
                         ?
-                        <DropDownTop fill={Color.preto} height={20} width={20}/>
+                        <DropDownTop height={20} width={20}/>
                         :
-                        <DropDownDown fill={Color.preto} height={20} width={20}/>
+                        <DropDownDown height={20} width={20}/>
                         }
                     </View>
                 </View>
             </TouchableOpacity>
+            {props.dataIsValid==true
+            ?
+            null
+            :
+            <View style={Style.aviso}>
+                <Text style={Typography.aviso}>
+                    Preencha este campo corretamente
+                </Text>
+            </View>
+            }
             {isClicked
             ?
             <View style={Style.container}>

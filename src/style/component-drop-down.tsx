@@ -4,12 +4,22 @@ import Color from "./color"
 import Material from './material'
 
 export default StyleSheet.create({
-    input:{
+    valid:{
         backgroundColor: Color.cinzaClaro,
         height: 50,
         borderRadius: Material.borderRadius,
         marginVertical: 20,
         paddingLeft: 15,
+        borderWidth: 0,
+    },
+    invalid:{
+        backgroundColor: Color.cinzaClaro,
+        height: 50,
+        borderRadius: Material.borderRadius,
+        marginVertical: 20,
+        paddingLeft: 15,
+        borderColor: Color.vermelhoAviso,
+        borderWidth: 2,
     },
     box:{
         flex: 1,
@@ -35,6 +45,9 @@ export default StyleSheet.create({
     },
     list:{
         paddingBottom: 10,
+    },
+    aviso:{
+        marginTop: -15,
+        marginBottom: 20,
     }
-
 });
