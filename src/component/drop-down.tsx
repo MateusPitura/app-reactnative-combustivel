@@ -90,6 +90,7 @@ export default function(props: any){
                 <FlatList
                     data={data}
                     nestedScrollEnabled={true}
+                    keyboardShouldPersistTaps='handled'
                     renderItem={({item}) => {
                         return(
                             <TouchableOpacity
