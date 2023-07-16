@@ -16,7 +16,8 @@ export default function(props: any){
     
     const [isClicked, setIsClicked] = useState(false);
     const [selected, setSelected] = useState("");
-    const [data, setData] = useState(props.list);
+    const [baseData, setBaseData] = useState([]);
+    const [data, setData] = useState([]);
     
     const onSearch = (search: any) => {
         if(search !== ''){
@@ -25,11 +26,9 @@ export default function(props: any){
             });
             setData(filterData);
         } else {
-            setData(props.list);
+            setData(baseData);
         }
     }
-
-    const input = useRef(null);
 
     useEffect(()=>{
         setTimeout(
@@ -41,11 +40,31 @@ export default function(props: any){
         ), 0}, [isClicked]
     );
 
+    const fetchData = async () => {
+        const response = await fetch(props.url) 
+        const data = await response.json()
+        var filterData: any = []
+        data.map((item: any) => {
+            const newData = {
+                field: item.nome
+            }
+            filterData.push(newData);
+        })
+        setData(filterData)
+        setBaseData(filterData)
+        console.log(data)
+    }
+
+    const input = useRef(null);
+
     return(
         <View>
             <TouchableOpacity
                 style={props.dataIsValid==true?Style.valid:Style.invalid}
-                onPress={()=>{setIsClicked(!isClicked)}}
+                onPress={()=>{
+                    setIsClicked(!isClicked)
+                    {isClicked==false?fetchData():null}
+                }}
             >
                 <View style={Style.box}>
                     <View style={Style.text}>

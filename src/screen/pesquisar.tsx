@@ -2,7 +2,7 @@ import React, { useState, useRef} from "react";
 import { 
     View,
     Text, 
-    ToastAndroid
+    ToastAndroid,
 } from "react-native";
 import AsyncStorage from '@react-native-community/async-storage'
 import Uuid from 'react-native-uuid';
@@ -16,6 +16,12 @@ import Button from "../component/button";
 import DropDown from "../component/drop-down";
 
 export default function({navigation}: any){
+
+    const [marca, setMarca] = useState("");
+    const [dataMarca, setDataMarca] = useState([])
+    const [modelo, setModelo] = useState("");
+    const [ano, setAno] = useState("");
+    const [dataIsValid, setDataIsValid] = useState(true);
 
     const listaMontadora = [
         {field: "Chevrolet"},
@@ -55,11 +61,6 @@ export default function({navigation}: any){
         {field: "2009"},
         {field: "2010"},
     ]
-
-    const [marca, setMarca] = useState("");
-    const [modelo, setModelo] = useState("");
-    const [ano, setAno] = useState("");
-    const [dataIsValid, setDataIsValid] = useState(true);
 
     const checkInput = (regex: any, data: any, setDataIsValid: any) => {
         for(var i=0; i<data.length; i++){
@@ -122,9 +123,11 @@ export default function({navigation}: any){
             <Text style={Typography.regular}>
                 Marca
             </Text>
-            <DropDown 
+            <DropDown
+                url="https://parallelum.com.br/fipe/api/v1/carros/marcas"
                 dataIsValid={dataIsValid}
-                list={listaMontadora}
+                // list={listaMontadora}
+                // list={dataMarca}
                 setState={setMarca}
                 placeholder="Chevrolet"
             />
@@ -149,9 +152,10 @@ export default function({navigation}: any){
             <Button
                 title={"Pesquisar"}
                 onPress={()=>{
-                    console.log(marca)
-                    console.log(modelo)
-                    console.log(ano)
+                    // console.log(marca)
+                    // console.log(modelo)
+                    // console.log(ano)
+                    fetchMontadora()
                     handleBtnPesquisar()
                 }}
             />
