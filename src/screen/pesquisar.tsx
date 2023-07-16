@@ -2,7 +2,7 @@ import React, { useState, useRef} from "react";
 import { 
     View,
     Text, 
-    Alert,
+    ToastAndroid
 } from "react-native";
 import AsyncStorage from '@react-native-community/async-storage'
 import Uuid from 'react-native-uuid';
@@ -93,11 +93,14 @@ export default function({navigation}: any){
     //         const previousData = response? JSON.parse(response) : [];
     //         const data = [...previousData, ...newData]
     //         AsyncStorage.setItem("@meucarroflex:carro", JSON.stringify(data));
-    //         Alert.alert("Carro inserido");
     //     } catch(error){
     //         console.log(error);
     //     }
     // }
+
+    const showToast = () => {
+        ToastAndroid.showWithGravityAndOffset('Carro adicionado', ToastAndroid.SHORT, ToastAndroid.TOP, 0, 50);
+    };
 
     const handleBtnPesquisar = () => {
         if(checkInput(
@@ -106,6 +109,7 @@ export default function({navigation}: any){
             setDataIsValid
         )){
             //createCar();
+            showToast();
             navigation.goBack();
         }
     }
