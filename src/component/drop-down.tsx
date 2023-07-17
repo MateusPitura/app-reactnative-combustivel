@@ -22,7 +22,7 @@ export default function(props: any){
     const onSearch = (search: any) => {
         if(search !== ''){
             const filterData = data.filter(item => {
-                return item.field.toLowerCase().indexOf(search.toLowerCase()) > -1; //Função que realiza a busca
+                return item.nome.toLowerCase().indexOf(search.toLowerCase()) > -1; //Função que realiza a busca
             });
             setData(filterData);
         } else {
@@ -41,18 +41,19 @@ export default function(props: any){
     );
 
     const fetchData = async () => {
-        const response = await fetch(props.url) 
-        const data = await response.json()
-        var filterData: any = []
-        data.map((item: any) => {
-            const newData = {
-                field: item.nome
+        try{
+            const response = await fetch(props.url) 
+            const json = await response.json()
+            if(props.placeholder=="Prisma"){
+                setData(json.modelos)
+                setBaseData(json.modelos)
+            } else {
+                setData(json)
+                setBaseData(json)
             }
-            filterData.push(newData);
-        })
-        setData(filterData)
-        setBaseData(filterData)
-        console.log(data)
+        } catch(error){
+            console.log(error)
+        }
     }
 
     const input = useRef(null);
@@ -114,14 +115,14 @@ export default function(props: any){
                         return(
                             <TouchableOpacity
                                 onPress={()=>{
-                                    props.setState(item.field);
-                                    setSelected(item.field);
+                                    props.setState(item.codigo);
+                                    setSelected(item.nome);
                                     setIsClicked(!isClicked);
                                     onSearch('');
                                 }}
                             >
                                 <View style={Style.list}>
-                                    <Text style={Typography.regular}>{item.field}</Text>
+                                    <Text style={Typography.regular}>{item.nome}</Text>
                                 </View>
                             </TouchableOpacity>
                         )

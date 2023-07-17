@@ -18,49 +18,9 @@ import DropDown from "../component/drop-down";
 export default function({navigation}: any){
 
     const [marca, setMarca] = useState("");
-    const [dataMarca, setDataMarca] = useState([])
     const [modelo, setModelo] = useState("");
     const [ano, setAno] = useState("");
     const [dataIsValid, setDataIsValid] = useState(true);
-
-    const listaMontadora = [
-        {field: "Chevrolet"},
-        {field: "Volkswagem"},
-        {field: "Ford"},
-        {field: "BMW"},
-        {field: "Audi"},
-        {field: "Fiat"},
-        {field: "Peogeot"},
-        {field: "Honda"},
-        {field: "Toyota"},
-        {field: "Jeep"},
-    ]
-
-    const listaModelo = [
-        {field: "Prisma"},
-        {field: "Gol"},
-        {field: "Fusion"},
-        {field: "i3"},
-        {field: "A3"},
-        {field: "Toro"},
-        {field: "208"},
-        {field: "Civic"},
-        {field: "Corolla"},
-        {field: "Renegade"},
-    ]
-
-    const listaAno = [
-        {field: "2001"},
-        {field: "2002"},
-        {field: "2003"},
-        {field: "2004"},
-        {field: "2005"},
-        {field: "2006"},
-        {field: "2007"},
-        {field: "2008"},
-        {field: "2009"},
-        {field: "2010"},
-    ]
 
     const checkInput = (regex: any, data: any, setDataIsValid: any) => {
         for(var i=0; i<data.length; i++){
@@ -126,36 +86,33 @@ export default function({navigation}: any){
             <DropDown
                 url="https://parallelum.com.br/fipe/api/v1/carros/marcas"
                 dataIsValid={dataIsValid}
-                // list={listaMontadora}
-                // list={dataMarca}
                 setState={setMarca}
                 placeholder="Chevrolet"
             />
             <Text style={Typography.regular}>
                 Modelo
             </Text>
-            <DropDown 
+            <DropDown
+                url={"https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marca+"/modelos"}
                 dataIsValid={dataIsValid}
-                list={listaModelo}
                 setState={setModelo}
                 placeholder="Prisma"
             />
             <Text style={Typography.regular}>
                 Ano
             </Text>
-            <DropDown 
+            <DropDown
+                url={"https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marca+"/modelos/"+modelo+"/anos"} 
                 dataIsValid={dataIsValid}
-                list={listaAno}
                 setState={setAno}   
                 placeholder="2008"        
             />
             <Button
                 title={"Pesquisar"}
                 onPress={()=>{
-                    // console.log(marca)
-                    // console.log(modelo)
-                    // console.log(ano)
-                    fetchMontadora()
+                    console.log(marca)
+                    console.log(modelo)
+                    console.log(ano)
                     handleBtnPesquisar()
                 }}
             />
