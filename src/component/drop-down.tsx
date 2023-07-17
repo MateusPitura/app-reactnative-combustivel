@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { 
     View,
     TouchableOpacity,
     FlatList,
     Text,
+    ActivityIndicator,
 } from 'react-native';
 
 import Style from '../style/component-drop-down';
@@ -11,11 +12,14 @@ import Typography from "../style/typography";
 import InputSearch from "./input-search";
 import DropDownTop from "../asset/icon/drop-down-top.svg"
 import DropDownDown from "../asset/icon/drop-down-down.svg"
+import Color from "../style/color";
 
 export default function(props: any){
     
     const [isClicked, setIsClicked] = useState(false);
     const [selected, setSelected] = useState("");
+    const [retrive, setRetrive] = useState(false);
+    const [falha, setFalha] = useState(false)
     const [baseData, setBaseData] = useState([]);
     const [data, setData] = useState([]);
     
@@ -42,6 +46,9 @@ export default function(props: any){
 
     const fetchData = async () => {
         try{
+            setRetrive(true)
+            setFalha(false)
+            console.log(props.url)
             const response = await fetch(props.url) 
             const json = await response.json()
             if(props.placeholder=="Prisma"){
@@ -51,7 +58,9 @@ export default function(props: any){
                 setData(json)
                 setBaseData(json)
             }
+            setRetrive(false)
         } catch(error){
+            setFalha(true)
             console.log(error)
         }
     }
@@ -129,7 +138,17 @@ export default function(props: any){
                     }}
                     ListEmptyComponent={
                         <View style={Style.list}>
-                            <Text style={Typography.regular}>Nada encontrado</Text>
+                            {retrive==true?
+                                <View>
+                                    {falha==true?
+                                        <Text style={Typography.regular}>Selecione um item antes</Text>
+                                    :
+                                        <ActivityIndicator size={'small'} color={Color.vermelho}/>
+                                    }
+                                </View>
+                            :
+                                <Text style={Typography.regular}>Nada encontrado</Text>
+                            }
                         </View>
                     }
                 />
