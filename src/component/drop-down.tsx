@@ -48,7 +48,6 @@ export default function(props: any){
         try{
             setRetrive(true)
             setFalha(false)
-            console.log(props.url)
             const response = await fetch(props.url) 
             const json = await response.json()
             if(props.placeholder=="Prisma"){
@@ -125,6 +124,7 @@ export default function(props: any){
                             <TouchableOpacity
                                 onPress={()=>{
                                     props.setState(item.codigo);
+                                    {props.setSelected==undefined?null:props.setSelected(item.nome)}
                                     setSelected(item.nome);
                                     setIsClicked(!isClicked);
                                     onSearch('');

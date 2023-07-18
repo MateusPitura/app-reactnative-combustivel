@@ -27,9 +27,9 @@ export default function({navigation}: any){
         try{
             const id = Uuid.v4();
             const rendimento = ((
-                parseFloat(consumoEtanol.replace(',','.'))
+                parseFloat(consumoEtanol?consumoEtanol.replace(',','.'):"0")
                 /
-                parseFloat(consumoGasolina.replace(',','.'))
+                parseFloat(consumoGasolina?consumoGasolina.replace(',','.'):"0")
             )*100).toFixed(2)
 
             const newData = [{

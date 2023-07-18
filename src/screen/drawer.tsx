@@ -125,7 +125,7 @@ export default function(props: any){
                         <Text style={Typography.drawerRegular}>
                             E: {CarData.consumoEtanol} km/l{'\n'}
                             G: {CarData.consumoGasolina} km/l{'\n'}
-                            R: {CarData.rendimento.replace('.',',')}%{'\n'}
+                            R: {CarData.rendimento?CarData.rendimento.replace('.',','):"0"}%{'\n'}
                         </Text>
                     </View>
                 </View>

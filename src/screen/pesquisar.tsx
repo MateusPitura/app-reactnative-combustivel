@@ -17,9 +17,10 @@ import DropDown from "../component/drop-down";
 
 export default function({navigation}: any){
 
-    const [marca, setMarca] = useState("");
-    const [modelo, setModelo] = useState("");
-    const [ano, setAno] = useState("");
+    const [nome, setNome] = useState("");
+    const [marcaId, setMarcaId] = useState("");
+    const [modeloId, setModeloId] = useState("");
+    const [anoId, setAnoId] = useState("");
     const [dataIsValid, setDataIsValid] = useState(true);
 
     const checkInput = (regex: any, data: any, setDataIsValid: any) => {
@@ -33,31 +34,27 @@ export default function({navigation}: any){
         return true;
     }
 
-    // const createCar = async () => {
-    //     try{
-    //         const id = Uuid.v4();
-    //         const rendimento = ((
-    //             parseFloat(consumoEtanol.replace(',','.'))
-    //             /
-    //             parseFloat(consumoGasolina.replace(',','.'))
-    //         )*100).toFixed(2)
+    const createCar = async () => {
+        try{
+            const id = Uuid.v4();
+            const nomeCarro = nome.toString();
 
-    //         const newData = [{
-    //             id,
-    //             nomeCarro,
-    //             consumoEtanol,
-    //             consumoGasolina,
-    //             rendimento,
-    //         }]
+            const newData = [{
+                id,
+                nomeCarro,
+                consumoEtanol: "10,2",
+                consumoGasolina: "14,6",
+                rendimento: "69,86",
+            }]
     
-    //         const response = await AsyncStorage.getItem("@meucarroflex:carro");
-    //         const previousData = response? JSON.parse(response) : [];
-    //         const data = [...previousData, ...newData]
-    //         AsyncStorage.setItem("@meucarroflex:carro", JSON.stringify(data));
-    //     } catch(error){
-    //         console.log(error);
-    //     }
-    // }
+            const response = await AsyncStorage.getItem("@meucarroflex:carro");
+            const previousData = response? JSON.parse(response) : [];
+            const data = [...previousData, ...newData]
+            AsyncStorage.setItem("@meucarroflex:carro", JSON.stringify(data));
+        } catch(error){
+            console.log(error);
+        }
+    }
 
     const showToast = () => {
         ToastAndroid.showWithGravityAndOffset('Carro adicionado', ToastAndroid.SHORT, ToastAndroid.TOP, 0, 50);
@@ -66,10 +63,10 @@ export default function({navigation}: any){
     const handleBtnPesquisar = () => {
         if(checkInput(
             ".",
-            [marca, modelo, ano],
+            [marcaId, modeloId, anoId],
             setDataIsValid
         )){
-            //createCar();
+            createCar();
             showToast();
             navigation.goBack();
         }
@@ -86,33 +83,31 @@ export default function({navigation}: any){
             <DropDown
                 url="https://parallelum.com.br/fipe/api/v1/carros/marcas"
                 dataIsValid={dataIsValid}
-                setState={setMarca}
+                setState={setMarcaId}
                 placeholder="Chevrolet"
             />
             <Text style={Typography.regular}>
                 Modelo
             </Text>
             <DropDown
-                url={"https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marca+"/modelos"}
+                url={"https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marcaId+"/modelos"}
+                setSelected={setNome}
                 dataIsValid={dataIsValid}
-                setState={setModelo}
+                setState={setModeloId}
                 placeholder="Prisma"
             />
             <Text style={Typography.regular}>
                 Ano
             </Text>
             <DropDown
-                url={"https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marca+"/modelos/"+modelo+"/anos"} 
+                url={"https://parallelum.com.br/fipe/api/v1/carros/marcas/"+marcaId+"/modelos/"+modeloId+"/anos"} 
                 dataIsValid={dataIsValid}
-                setState={setAno}   
+                setState={setAnoId}   
                 placeholder="2008"        
             />
             <Button
                 title={"Pesquisar"}
                 onPress={()=>{
-                    console.log(marca)
-                    console.log(modelo)
-                    console.log(ano)
                     handleBtnPesquisar()
                 }}
             />

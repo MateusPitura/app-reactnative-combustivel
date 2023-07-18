@@ -31,9 +31,9 @@ export default function({navigation}: any){
 
     const handleCalcularRelacao = () => {
         setRelacaoCombustivel(((
-            parseFloat(precoEtanol.replace(',','.'))
+            parseFloat(precoEtanol?precoEtanol.replace(',','.'):"0")
             /
-            parseFloat(precoGasolina.replace(',','.'))
+            parseFloat(precoGasolina?precoGasolina.replace(',','.'):"0")
         )*100).toFixed(2)); //Calcula a relação entre etanol e gasolina (etanol/gasolina) e multiplica por 100 para transformar em porcentagem. Então limita a 2 casas decimais
     }
 
@@ -126,7 +126,7 @@ export default function({navigation}: any){
                         {'\n'}
                     </Text>
                     <Text style={Typography.modal}>
-                        A relação entre etanol e gasolina é de {relacaoCombustivel.replace('.',',')}%, já o rendimento do seu {CarData.nomeCarro} é de {CarData.rendimento.replace('.',',')}%{'\n'}
+                        A relação entre etanol e gasolina é de {relacaoCombustivel?relacaoCombustivel.replace('.',','):"0"}%, já o rendimento do seu {CarData.nomeCarro} é de {CarData.rendimento?CarData.rendimento.replace('.',','):"0"}%{'\n'}
                     </Text>
                     <View style={Style.button}>
                         <Button
