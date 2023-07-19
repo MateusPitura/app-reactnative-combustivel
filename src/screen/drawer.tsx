@@ -115,11 +115,16 @@ export default function(props: any){
         <View style={Style.container}>
             <View style={Style.header}>
                 <View style={Style.title}>
-                    <Text style={Typography.drawerHeader}>{CarData.nomeCarro}</Text>
+                    <Text 
+                        style={Typography.drawerHeader}
+                        numberOfLines={1}
+                    >
+                        {CarData.nomeCarro}
+                    </Text>
                 </View>
                 <View style={Style.display}>
                     <View style={Style.icon}>
-                        <Car width={"80%"} height={"80%"}/>
+                        <Car width={"100"} height={"100"}/>
                     </View>
                     <View style={Style.text}>
                         <Text style={Typography.drawerRegular}>
