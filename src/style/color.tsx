@@ -9,4 +9,7 @@ export default class Color{
     static vermelhoAcinzentado: any = "#d5c5c5"
     static preto: any = "#000"
     static vermelhoAviso: any = "#f00"
+    static keyboardBackground: any = "#ECEFF1"
+    static keyBackground: any = "#FBFCFC"
+    static keyColor: any = "#2E414A"
 }

@@ -12,7 +12,7 @@ export default function(){
     return(
         <NavigationContainer>
             <DrawerNavigator.Navigator
-                initialRouteName="Adicionar"
+                initialRouteName="Calcular"
                 drawerContent={(props) => <Drawer {...props}/>}
                 screenOptions={{
                     headerShown: false,

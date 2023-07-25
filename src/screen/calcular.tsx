@@ -20,6 +20,7 @@ import Shadow from "../component/shadow";
 import Button from "../component/button";
 import Modal from "../component/modal";
 import CarData from "../data/car";
+import CustomKeyboard from "../component/custom-keyboard";
 
 export default function({navigation}: any){
 
@@ -135,6 +136,7 @@ export default function({navigation}: any){
                         />
                     </View>
                 </Modal>
+                <CustomKeyboard/>
             </View>
         </View>
     );

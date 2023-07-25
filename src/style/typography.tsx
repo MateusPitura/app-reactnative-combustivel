@@ -49,4 +49,9 @@ export default StyleSheet.create({
         fontSize: 16,
         color: Color.vermelhoAviso,
     },
+    keyboard:{
+        fontFamily: "ubuntu-regular",
+        fontSize: 96,
+        color: Color.keyColor,
+    }
 });
