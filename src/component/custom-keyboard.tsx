@@ -1,21 +1,25 @@
 import React from "react";
-import {View, Text} from 'react-native';
+import {View, Text, Keyboard} from 'react-native';
 import Modal from 'react-native-modal'
 import Style from '../style/component-custom-keyboard'
 import Display from "./display";
 import Typography from "../style/typography";
 
-export default function(){
+export default function(props: any){
     return(
         <Modal
-            isVisible={true}
-            animationInTiming={1000}
-            animationOutTiming={1500}
+            isVisible={props.visible}
+            animationInTiming={500}
+            animationOutTiming={500}
             animationIn="slideInUp"
             animationOut="slideOutDown"
             style={Style.modal}
             hasBackdrop={false}
             coverScreen={false}
+            onBackButtonPress={()=>{
+                Keyboard.dismiss() //Apesar de não haver teclado nativo, essa propriedade remove o focus() também
+                props.isVisible(false)
+            }}
         >
             <View style={Style.container}>
                 <Display placeholder={3}/>

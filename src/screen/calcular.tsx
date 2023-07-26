@@ -28,6 +28,7 @@ export default function({navigation}: any){
     const [precoGasolina, setPrecoGasolina] = useState("");
     const [relacaoCombustivel, setRelacaoCombustivel] = useState("");
     const [modalIsVisible, setModalIsVisible] = useState(false);
+    const [keyboardIsVisible, setKeyboardIsVisible] = useState(false);
     const [dataIsValid, setDataIsValid] = useState(true);
 
     const handleCalcularRelacao = () => {
@@ -36,6 +37,10 @@ export default function({navigation}: any){
             /
             parseFloat(precoGasolina?precoGasolina.replace(',','.'):"0")
         )*100).toFixed(2)); //Calcula a relação entre etanol e gasolina (etanol/gasolina) e multiplica por 100 para transformar em porcentagem. Então limita a 2 casas decimais
+    }
+
+    const handleKeyboardIsVisible = (state: boolean) => {
+        setKeyboardIsVisible(state);
     }
 
     const handleToggleModalIsVisible = () => {
@@ -72,13 +77,13 @@ export default function({navigation}: any){
                 backgroundColor={Color.vermelho}
                 barStyle={"light-content"}
             />
-            <TouchableOpacity
-                onPress={()=>navigation.toggleDrawer()}
-            >
-                <View style={Style.header}>
+            <View style={Style.header}>
+                <TouchableOpacity
+                    onPress={()=>navigation.toggleDrawer()}
+                >
                     <Stack fill={Color.branco} width={50} height={50}/>
-                </View>
-            </TouchableOpacity>
+                </TouchableOpacity>
+            </View>
             <Shadow style={Style.shadow}>
                 <View style={Style.corner}></View>
             </Shadow>
@@ -92,6 +97,7 @@ export default function({navigation}: any){
                     inputMode="numeric"
                     maxLength={4}
                     setState={setPrecoEtanol}
+                    keyboard={handleKeyboardIsVisible}
                     returnKeyType="next"
                     next={inputPrecoEtanol}
                 />
@@ -104,6 +110,7 @@ export default function({navigation}: any){
                     inputMode="numeric"
                     maxLength={4}
                     setState={setPrecoGasolina}
+                    keyboard={handleKeyboardIsVisible}
                     returnKeyType="done"
                     identifier={inputPrecoEtanol}
                     action={handleBtnCalcular}
@@ -136,7 +143,10 @@ export default function({navigation}: any){
                         />
                     </View>
                 </Modal>
-                <CustomKeyboard/>
+                <CustomKeyboard
+                    visible={keyboardIsVisible}
+                    isVisible={handleKeyboardIsVisible}
+                />
             </View>
         </View>
     );

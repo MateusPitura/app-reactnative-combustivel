@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { View, Text, TextInput, Keyboard } from "react-native";
+import { View, Text, TextInput, Keyboard} from "react-native";
 
 import Style from "../style/component-input";
 import Typography from "../style/typography";
@@ -19,6 +19,17 @@ export default function(props: any){
                 blurOnSubmit={false}
                 ref={props.identifier?(input)=>{props.identifier.current = input}:useRef(null)} //Caso seja informado a propriedade identifier (props.identifier != null) ref receberá uma referência. Caso não seja informado ref receberá uma referência genérica/qualquer
                 returnKeyType={props.returnKeyType}
+                showSoftInputOnFocus={props.keyboard==undefined?true:false}
+                onFocus=
+                {
+                    props.keyboard==undefined
+                    ?
+                    undefined
+                    :
+                    ()=>{
+                        props.keyboard(true)
+                    }
+                }
                 onSubmitEditing=
                 {
                     props.returnKeyType=="done"
