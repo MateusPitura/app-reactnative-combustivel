@@ -1,16 +1,12 @@
 import { StyleSheet } from "react-native";
 import Color from "./color";
-import Material from './material'
 
 export default StyleSheet.create({
     modal:{
         flex: 1,
-        padding: 0,
-        margin: 0,
-    },
-    container:{
-        flex: 1,
         marginTop: "100%",
+        marginHorizontal: 0,
+        marginBottom: 0,
         backgroundColor: Color.keyboardBackground,
         padding: 5,
         flexDirection: 'row',

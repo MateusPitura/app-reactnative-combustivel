@@ -18,23 +18,21 @@ export default function(props: any){
             coverScreen={false}
             onBackButtonPress={()=>{
                 Keyboard.dismiss() //Apesar de não haver teclado nativo, essa propriedade remove o focus() também
-                props.isVisible(false)
+                props.setVisible(false)
             }}
         >
-            <View style={Style.container}>
-                <Display placeholder={3}/>
-                <View style={Style.virgula}>
-                    <View style={Style.flexHeader}></View>
-                    <View style={Style.flexBody}>
-                        <Text style={Typography.keyboard}>
-                            ,
-                        </Text>
-                    </View>
-                    <View style={Style.flexHeader}></View>
+            <Display placeholder={props.number[0]}/>
+            <View style={Style.virgula}>
+                <View style={Style.flexHeader}></View>
+                <View style={Style.flexBody}>
+                    <Text style={Typography.keyboard}>
+                        ,
+                    </Text>
                 </View>
-                <Display placeholder={8}/>
-                <Display placeholder={4}/>
+                <View style={Style.flexHeader}></View>
             </View>
+            <Display placeholder={props.number[1]}/>
+            <Display placeholder={props.number[2]}/>
         </Modal>
     );
 }
