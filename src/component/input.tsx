@@ -4,7 +4,6 @@ import { View, Text, TextInput, Keyboard} from "react-native";
 import Style from "../style/component-input";
 import Typography from "../style/typography";
 import Color from "../style/color";
-import CustomKeyboard from "./custom-keyboard";
 
 export default function(props: any){
     return(

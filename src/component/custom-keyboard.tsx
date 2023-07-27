@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {View, Text, Keyboard} from 'react-native';
 import Modal from 'react-native-modal'
 import Style from '../style/component-custom-keyboard'
@@ -6,6 +6,15 @@ import Display from "./display";
 import Typography from "../style/typography";
 
 export default function(props: any){
+
+    const [firstValue, setFirstValue] = useState(props.number[0]);
+    const [secondValue, setSecondValue] = useState(props.number[1]);
+    const [thirdValue, setThirdValue] = useState(props.number[2]);
+
+    const handleChangeNumber = () => {
+        props.setNumber([firstValue, secondValue, thirdValue])
+    }
+
     return(
         <Modal
             isVisible={props.visible}
@@ -21,7 +30,11 @@ export default function(props: any){
                 props.setVisible(false)
             }}
         >
-            <Display placeholder={props.number[0]}/>
+            <Display 
+                number={firstValue}
+                setValue={setFirstValue}
+                setNumber={handleChangeNumber}
+            />
             <View style={Style.virgula}>
                 <View style={Style.flexHeader}></View>
                 <View style={Style.flexBody}>
@@ -31,8 +44,16 @@ export default function(props: any){
                 </View>
                 <View style={Style.flexHeader}></View>
             </View>
-            <Display placeholder={props.number[1]}/>
-            <Display placeholder={props.number[2]}/>
+            <Display
+                number={secondValue}
+                setValue={setSecondValue}
+                setNumber={handleChangeNumber}
+            />
+            <Display 
+                number={thirdValue}
+                setValue={setThirdValue}
+                setNumber={handleChangeNumber}
+            />
         </Modal>
     );
 }

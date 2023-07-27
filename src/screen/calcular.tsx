@@ -25,7 +25,9 @@ import CustomKeyboard from "../component/custom-keyboard";
 export default function({navigation}: any){
 
     const [precoEtanol, setPrecoEtanol] = useState("");
+    const [etanol, setEtanol] = useState([3, 8, 4]);
     const [precoGasolina, setPrecoGasolina] = useState("");
+    const [gasolina, setGasolina] = useState([5, 4, 3]);
     const [keyboardEtanol, setKeyboardEtanol] = useState(false);
     const [keyboardGasolina, setKeyboardGasolina] = useState(false);
     const [relacaoCombustivel, setRelacaoCombustivel] = useState("");
@@ -109,7 +111,8 @@ export default function({navigation}: any){
                 <CustomKeyboard
                     visible={keyboardEtanol}
                     setVisible={handleKeyboardEtanolIsVisible}
-                    number={[3, 8, 4]}
+                    number={etanol}
+                    setNumber={setEtanol}
                 />
                 <Text style={Typography.regular}>
                     Preço da gasolina
@@ -128,7 +131,8 @@ export default function({navigation}: any){
                 <CustomKeyboard
                     visible={keyboardGasolina}
                     setVisible={handleKeyboardGasolinaIsVisible}
-                    number={[5, 4, 3]}
+                    number={gasolina}
+                    setNumber={setGasolina}
                 />
                 <Button
                     title="calcular"

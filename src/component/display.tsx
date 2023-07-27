@@ -11,18 +11,26 @@ export default function(props: any){
         <View style={Style.display}>
             <TouchableOpacity 
                 style={Style.button}
-                onPress={()=>{}}
+                onPress={()=>{
+                    const result = props.number+1;
+                    props.setValue(result>9?props.number:result)
+                    props.setNumber()
+                }}
             >
                 <ArrowUp fill={Color.keyColor} height={50} width={50}/>
             </TouchableOpacity>
             <View style={Style.number}>
                 <Text style={Typography.keyboard}>
-                    {props.placeholder}
+                    {props.number}
                 </Text>
             </View>
             <TouchableOpacity 
                 style={Style.button}
-                onPress={()=>{}}
+                onPress={()=>{
+                    const result = props.number-1;
+                    props.setValue(result<0?props.number:result)
+                    props.setNumber()
+                }}
             >
                 <ArrowDown fill={Color.keyColor} height={50} width={50}/>
             </TouchableOpacity>
