@@ -6,12 +6,15 @@ import Typography from "../style/typography";
 import Color from "../style/color";
 
 export default function(props: any){
+
+    const [firstClick, setFirstClick] = useState(true)
+
     return(
         <View>
             <TextInput
                 style={[props.dataIsValid==true?Style.valid:Style.invalid, Typography.regular]}
                 placeholder={props.placeholder}
-                value={props.value}
+                value={firstClick==true?undefined:props.value} //Depois do primeiro click aparece apenas o placeholder, depois de clicar aparece o valor
                 placeholderTextColor={Color.placeholder}
                 cursorColor={Color.vermelho}
                 inputMode={props.inputMode}
@@ -28,6 +31,7 @@ export default function(props: any){
                     undefined
                     :
                     ()=>{
+                        setFirstClick(false)
                         props.keyboard(true)
                     }
                 }

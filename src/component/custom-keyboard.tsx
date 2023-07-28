@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {View, Text, Keyboard} from 'react-native';
 import Modal from 'react-native-modal'
 import Style from '../style/component-custom-keyboard'
@@ -11,10 +11,12 @@ export default function(props: any){
     const [secondValue, setSecondValue] = useState(props.number[2]);
     const [thirdValue, setThirdValue] = useState(props.number[3]);
 
-    const handleChangeNumber = () => {
-        const value = firstValue + "," + secondValue + thirdValue;
-        props.setNumber(value)
-    }
+    useEffect(
+        useCallback(()=>{
+            const value = firstValue + "," + secondValue + thirdValue;
+            props.setNumber(value);
+        }, [firstValue, secondValue, thirdValue]), [firstValue, secondValue, thirdValue]
+    )
 
     return(
         <Modal
@@ -34,7 +36,6 @@ export default function(props: any){
             <Display 
                 number={firstValue}
                 setValue={setFirstValue}
-                setNumber={handleChangeNumber}
             />
             <View style={Style.virgula}>
                 <View style={Style.flexHeader}></View>
@@ -48,12 +49,10 @@ export default function(props: any){
             <Display
                 number={secondValue}
                 setValue={setSecondValue}
-                setNumber={handleChangeNumber}
             />
             <Display 
                 number={thirdValue}
                 setValue={setThirdValue}
-                setNumber={handleChangeNumber}
             />
         </Modal>
     );

@@ -15,7 +15,6 @@ export default function(props: any){
                     const result = parseInt(props.number)+1;
                     const compare = result>9?props.number:result
                     props.setValue(compare.toString())
-                    props.setNumber()
                 }}
             >
                 <ArrowUp fill={Color.keyColor} height={50} width={50}/>
@@ -31,7 +30,6 @@ export default function(props: any){
                     const result = parseInt(props.number)-1;
                     const compare = result<0?props.number:result
                     props.setValue(compare.toString())
-                    props.setNumber()
                 }}
             >
                 <ArrowDown fill={Color.keyColor} height={50} width={50}/>
