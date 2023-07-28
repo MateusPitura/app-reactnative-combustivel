@@ -35,9 +35,16 @@ export default function(props: any){
                         props.keyboard(true)
                     }
                 }
-                onBlur={()=>{
-                    props.keyboard(false)
-                }}
+                onBlur=
+                {
+                    props.keyboard==undefined
+                    ?
+                    undefined
+                    :
+                    ()=>{
+                        props.keyboard(false)
+                    }
+                }
                 onSubmitEditing=
                 {
                     props.returnKeyType=="done"

@@ -57,7 +57,7 @@ export default function({navigation}: any){
 
     const handleBtnCalcular = () => {
         if(checkInput(
-            "^(?!0$)(^([0-9])([\,][0-9]{1,2})?$)", //Rejeita apenas 0. Aceita 1 número inteiro e, opcionalmente, seguido de ponto ou vírgula e 1 ou 2 números
+            "^(?!(^([0])([\,][0]{1,2})?$)$)(^([0-9])([\,][0-9]{1,2})?$)", //Rejeita 0, 0,0 ou 0,00. Aceita 1 número inteiro e, opcionalmente, seguido de vírgula e 1 ou 2 números
             [precoEtanol, precoGasolina], 
             setDataIsValid
         )){

@@ -70,7 +70,7 @@ export default function({navigation}: any){
             [nomeCarro], 
             setDataIsValid
         ) && checkInput(
-            "^(?!0$)(^([0-9]{1,2})([\,][0-9]{1,2})?$)", //Rejeita apenas 0. Aceita 1 ou 2 números inteiros e, opcionalmente, seguido de ponto ou vírgula e 1 ou 2 números
+            "^(?!(^([0])([\,][0]{1,2})?$)$)(^([0-9])([\,][0-9]{1,2})?$)", //Rejeita apenas 0. Aceita 1 ou 2 números inteiros e, opcionalmente, seguido de ponto ou vírgula e 1 ou 2 números
             [consumoEtanol, consumoGasolina], 
             setDataIsValid
         )){
