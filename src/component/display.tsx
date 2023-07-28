@@ -12,8 +12,9 @@ export default function(props: any){
             <TouchableOpacity 
                 style={Style.button}
                 onPress={()=>{
-                    const result = props.number+1;
-                    props.setValue(result>9?props.number:result)
+                    const result = parseInt(props.number)+1;
+                    const compare = result>9?props.number:result
+                    props.setValue(compare.toString())
                     props.setNumber()
                 }}
             >
@@ -27,8 +28,9 @@ export default function(props: any){
             <TouchableOpacity 
                 style={Style.button}
                 onPress={()=>{
-                    const result = props.number-1;
-                    props.setValue(result<0?props.number:result)
+                    const result = parseInt(props.number)-1;
+                    const compare = result<0?props.number:result
+                    props.setValue(compare.toString())
                     props.setNumber()
                 }}
             >

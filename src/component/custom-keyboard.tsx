@@ -8,11 +8,12 @@ import Typography from "../style/typography";
 export default function(props: any){
 
     const [firstValue, setFirstValue] = useState(props.number[0]);
-    const [secondValue, setSecondValue] = useState(props.number[1]);
-    const [thirdValue, setThirdValue] = useState(props.number[2]);
+    const [secondValue, setSecondValue] = useState(props.number[2]);
+    const [thirdValue, setThirdValue] = useState(props.number[3]);
 
     const handleChangeNumber = () => {
-        props.setNumber([firstValue, secondValue, thirdValue])
+        const value = firstValue + "," + secondValue + thirdValue;
+        props.setNumber(value)
     }
 
     return(

@@ -24,10 +24,8 @@ import CustomKeyboard from "../component/custom-keyboard";
 
 export default function({navigation}: any){
 
-    const [precoEtanol, setPrecoEtanol] = useState("");
-    const [etanol, setEtanol] = useState([3, 8, 4]);
-    const [precoGasolina, setPrecoGasolina] = useState("");
-    const [gasolina, setGasolina] = useState([5, 4, 3]);
+    const [precoEtanol, setPrecoEtanol] = useState("3,84");
+    const [precoGasolina, setPrecoGasolina] = useState("5,43");
     const [keyboardEtanol, setKeyboardEtanol] = useState(false);
     const [keyboardGasolina, setKeyboardGasolina] = useState(false);
     const [relacaoCombustivel, setRelacaoCombustivel] = useState("");
@@ -68,14 +66,6 @@ export default function({navigation}: any){
         }
     }
 
-    const handleKeyboardEtanolIsVisible = (state: boolean) => {
-        setKeyboardEtanol(state);
-    }
-
-    const handleKeyboardGasolinaIsVisible = (state: boolean) => {
-        setKeyboardGasolina(state);
-    }
-
     const inputPrecoEtanol = useRef(null);
 
     return(
@@ -100,19 +90,20 @@ export default function({navigation}: any){
                 </Text>
                 <Input
                     dataIsValid={dataIsValid}
-                    placeholder="3,84"
+                    placeholder={"3,84"}
+                    value={precoEtanol}
                     inputMode="numeric"
                     maxLength={4}
                     setState={setPrecoEtanol}
-                    keyboard={handleKeyboardEtanolIsVisible}
+                    keyboard={setKeyboardEtanol}
                     returnKeyType="next"
                     next={inputPrecoEtanol}
                 />
                 <CustomKeyboard
                     visible={keyboardEtanol}
-                    setVisible={handleKeyboardEtanolIsVisible}
-                    number={etanol}
-                    setNumber={setEtanol}
+                    setVisible={setKeyboardEtanol}
+                    number={precoEtanol}
+                    setNumber={setPrecoEtanol}
                 />
                 <Text style={Typography.regular}>
                     Preço da gasolina
@@ -120,19 +111,20 @@ export default function({navigation}: any){
                 <Input
                     dataIsValid={dataIsValid}
                     placeholder="5,43"
+                    value={precoGasolina}
                     inputMode="numeric"
                     maxLength={4}
                     setState={setPrecoGasolina}
-                    keyboard={handleKeyboardGasolinaIsVisible}
+                    keyboard={setKeyboardGasolina}
                     returnKeyType="done"
                     identifier={inputPrecoEtanol}
                     action={handleBtnCalcular}
                 />
                 <CustomKeyboard
                     visible={keyboardGasolina}
-                    setVisible={handleKeyboardGasolinaIsVisible}
-                    number={gasolina}
-                    setNumber={setGasolina}
+                    setVisible={setKeyboardGasolina}
+                    number={precoGasolina}
+                    setNumber={setPrecoGasolina}
                 />
                 <Button
                     title="calcular"

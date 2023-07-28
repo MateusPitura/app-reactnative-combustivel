@@ -11,6 +11,7 @@ export default function(props: any){
             <TextInput
                 style={[props.dataIsValid==true?Style.valid:Style.invalid, Typography.regular]}
                 placeholder={props.placeholder}
+                value={props.value}
                 placeholderTextColor={Color.placeholder}
                 cursorColor={Color.vermelho}
                 inputMode={props.inputMode}
