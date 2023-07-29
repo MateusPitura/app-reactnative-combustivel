@@ -7,14 +7,19 @@ import Color from "../style/color";
 import Typography from "../style/typography";
 
 export default function(props: any){
+
+    const handleBtnChangeValue = (increment: number, comparison: number) => {
+        const result = parseFloat(props.number)+increment;
+        const compare = result>comparison?props.number:result
+        props.setValue(compare.toString())
+    }
+
     return(
         <View style={Style.display}>
             <TouchableOpacity 
                 style={Style.button}
                 onPress={()=>{
-                    const result = parseInt(props.number)+1;
-                    const compare = result>9?props.number:result
-                    props.setValue(compare.toString())
+                    handleBtnChangeValue(1, 9)
                 }}
             >
                 <ArrowUp fill={Color.keyColor} height={50} width={50}/>
@@ -27,9 +32,7 @@ export default function(props: any){
             <TouchableOpacity 
                 style={Style.button}
                 onPress={()=>{
-                    const result = parseInt(props.number)-1;
-                    const compare = result<0?props.number:result
-                    props.setValue(compare.toString())
+                    handleBtnChangeValue(-1, -1)
                 }}
             >
                 <ArrowDown fill={Color.keyColor} height={50} width={50}/>

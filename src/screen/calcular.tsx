@@ -90,7 +90,7 @@ export default function({navigation}: any){
                 </Text>
                 <Input
                     dataIsValid={dataIsValid}
-                    placeholder={"3,84"}
+                    placeholder="3,84"
                     value={precoEtanol}
                     inputMode="numeric"
                     maxLength={4}
