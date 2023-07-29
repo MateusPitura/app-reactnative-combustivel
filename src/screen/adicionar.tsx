@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { 
     View, 
     StatusBar, 
@@ -18,7 +18,17 @@ import Arrow from "../asset/icon/arrow.svg";
 import Criar from "./criar";
 import Pesquisar from "./pesquisar";
 
+//Import Component
+import ConsumeKeyboard from "../component/consume-keyboard";
+
 export default function({navigation}: any){
+
+    const [consumoEtanol, setConsumoEtanol] = useState("07,00");
+    const [keyboardEtanol, setKeyboardEtanol] = useState(false);
+
+    const [consumoGasolina, setConsumoGasolina] = useState("10,40");
+    const [keyboardGasolina, setKeyboardGasolina] = useState(false);
+
     return(
         <SafeAreaView style={Style.layout}>
             <StatusBar
@@ -37,10 +47,28 @@ export default function({navigation}: any){
                 keyboardShouldPersistTaps='handled'
             >
                 <View style={Style.border}>
-                    <Criar navigation={navigation}/>
+                    <Criar 
+                        navigation={navigation}
+                        consumoEtanol={consumoEtanol}
+                        setKeyboardEtanol={setKeyboardEtanol}
+                        consumoGasolina={consumoGasolina}
+                        setKeyboardGasolina={setKeyboardGasolina}
+                    />
                     <Pesquisar navigation={navigation}/>
                 </View>
             </ScrollView>
+            <ConsumeKeyboard
+                visible={keyboardEtanol}
+                setVisible={setKeyboardEtanol}
+                value={consumoEtanol}
+                setValue={setConsumoEtanol}
+            />
+            <ConsumeKeyboard
+                visible={keyboardGasolina}
+                setVisible={setKeyboardGasolina}
+                value={consumoGasolina}
+                setValue={setConsumoGasolina}
+            />
         </SafeAreaView>
     );
 }

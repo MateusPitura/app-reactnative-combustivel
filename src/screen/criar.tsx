@@ -14,17 +14,18 @@ import Typography from "../style/typography";
 //Import Component
 import Input from "../component/input";
 import Button from "../component/button";
+import ConsumeKeyboard from "../component/consume-keyboard";
 
-export default function({navigation}: any){
+export default function(props: any){
 
     const [nomeCarro, setNomeCarro] = useState("");
-    const [consumoEtanol, setConsumoEtanol] = useState("");
-    const [consumoGasolina, setConsumoGasolina] = useState("");
-
     const [dataIsValid, setDataIsValid] = useState(true);
 
     const createCar = async () => {
         try{
+            const consumoEtanol = props.consumoEtanol;
+            const consumoGasolina = props.consumoGasolina;
+
             const id = Uuid.v4();
             const rendimento = ((
                 parseFloat(consumoEtanol?consumoEtanol.replace(',','.'):"0")
@@ -71,12 +72,12 @@ export default function({navigation}: any){
             setDataIsValid
         ) && checkInput(
             "^(?!0$)(^([0-9]{1,2})([\,][0-9]{1,2})?$)", //Rejeita apenas 0. Aceita 1 ou 2 números inteiros e, opcionalmente, seguido de ponto ou vírgula e 1 ou 2 números
-            [consumoEtanol, consumoGasolina], 
+            [props.consumoEtanol, props.consumoGasolina], 
             setDataIsValid
         )){
             createCar();
             showToast();
-            navigation.goBack();
+            props.navigation.goBack();
         }
     }
 
@@ -97,21 +98,23 @@ export default function({navigation}: any){
                 inputMode="text"
                 maxLength={255}
                 setState={setNomeCarro}
-                returnKeyType="next"
-                next={inputConsumoEtanol}
+                returnKeyType="done"
+                //next={inputConsumoEtanol}
             />
             <Text style={Typography.regular}>
                 Consumo de etanol em km/l
             </Text>
             <Input
                 dataIsValid={dataIsValid}
-                placeholder="7"
+                placeholder="07,00"
+                value={props.consumoEtanol}
                 inputMode="numeric"
                 maxLength={5}
-                setState={setConsumoEtanol}
-                returnKeyType="next"
-                identifier={inputConsumoEtanol}
-                next={inputConsumoGasolina}
+                setState={props.setConsumoEtanol}
+                keyboard={props.setKeyboardEtanol}
+                //returnKeyType="next"
+                //identifier={inputConsumoEtanol}
+                //next={inputConsumoGasolina}
             />
             <Text style={Typography.regular}>
                 Consumo de gasolina em km/l
@@ -119,12 +122,14 @@ export default function({navigation}: any){
             <Input
                 dataIsValid={dataIsValid}
                 placeholder="10,40"
+                value={props.consumoGasolina}
                 inputMode="numeric"
                 maxLength={5}
-                setState={setConsumoGasolina}
-                returnKeyType="done"
-                identifier={inputConsumoGasolina}
-                action={handleBtnCriar}
+                setState={props.setConsumoGasolina}
+                keyboard={props.setKeyboardGasolina}
+                //returnKeyType="done"
+                //identifier={inputConsumoGasolina}
+                //action={handleBtnCriar}
             />
             <Button
                 title={"Criar"}

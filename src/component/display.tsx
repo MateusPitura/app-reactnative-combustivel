@@ -8,9 +8,15 @@ import Typography from "../style/typography";
 
 export default function(props: any){
 
-    const handleBtnChangeValue = (increment: number, comparison: number) => {
-        const result = parseFloat(props.number)+increment;
-        const compare = result>comparison?props.number:result
+    const handleBtnChangeValueGreaterThan = () => {
+        const result = parseFloat(props.number)+1;
+        const compare = result>9?props.number:result
+        props.setValue(compare.toString())
+    }
+
+    const handleBtnChangeValueLowerThan = () => {
+        const result = parseFloat(props.number)-1;
+        const compare = result<0?props.number:result
         props.setValue(compare.toString())
     }
 
@@ -18,9 +24,7 @@ export default function(props: any){
         <View style={Style.display}>
             <TouchableOpacity 
                 style={Style.button}
-                onPress={()=>{
-                    handleBtnChangeValue(1, 9)
-                }}
+                onPress={()=>{handleBtnChangeValueGreaterThan()}}
             >
                 <ArrowUp fill={Color.keyColor} height={50} width={50}/>
             </TouchableOpacity>
@@ -31,9 +35,7 @@ export default function(props: any){
             </View>
             <TouchableOpacity 
                 style={Style.button}
-                onPress={()=>{
-                    handleBtnChangeValue(-1, -1)
-                }}
+                onPress={()=>{handleBtnChangeValueLowerThan()}}
             >
                 <ArrowDown fill={Color.keyColor} height={50} width={50}/>
             </TouchableOpacity>

@@ -20,7 +20,7 @@ import Shadow from "../component/shadow";
 import Button from "../component/button";
 import Modal from "../component/modal";
 import CarData from "../data/car";
-import CustomKeyboard from "../component/custom-keyboard";
+import PriceKeyboard from "../component/price-keyboard";
 
 export default function({navigation}: any){
 
@@ -57,7 +57,7 @@ export default function({navigation}: any){
 
     const handleBtnCalcular = () => {
         if(checkInput(
-            "^(?!(^([0])([\,][0]{1,2})?$)$)(^([0-9])([\,][0-9]{1,2})?$)", //Rejeita 0, 0,0 ou 0,00. Aceita 1 número inteiro e, opcionalmente, seguido de vírgula e 1 ou 2 números
+            "^(?!(^([0]{1,2})([\,][0]{1,2})?$)$)(^([0-9]{1,2})([\,][0-9]{1,2})?$)", //Rejeita 0, 0,0 ou 0,00. Aceita 1 número inteiro e, opcionalmente, seguido de vírgula e 1 ou 2 números
             [precoEtanol, precoGasolina], 
             setDataIsValid
         )){
@@ -99,11 +99,11 @@ export default function({navigation}: any){
                     returnKeyType="next"
                     next={inputPrecoEtanol}
                 />
-                <CustomKeyboard
+                <PriceKeyboard
                     visible={keyboardEtanol}
                     setVisible={setKeyboardEtanol}
-                    number={precoEtanol}
-                    setNumber={setPrecoEtanol}
+                    value={precoEtanol}
+                    setValue={setPrecoEtanol}
                 />
                 <Text style={Typography.regular}>
                     Preço da gasolina
@@ -120,11 +120,11 @@ export default function({navigation}: any){
                     identifier={inputPrecoEtanol}
                     action={handleBtnCalcular}
                 />
-                <CustomKeyboard
+                <PriceKeyboard
                     visible={keyboardGasolina}
                     setVisible={setKeyboardGasolina}
-                    number={precoGasolina}
-                    setNumber={setPrecoGasolina}
+                    value={precoGasolina}
+                    setValue={setPrecoGasolina}
                 />
                 <Button
                     title="calcular"
