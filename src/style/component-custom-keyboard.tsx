@@ -8,6 +8,10 @@ export default StyleSheet.create({
         marginHorizontal: 0,
         marginBottom: 0,
         backgroundColor: Color.keyboardBackground,
+    },
+    body:{
+        flex: 1,
+        width: "100%",
         padding: 5,
         flexDirection: 'row',
     },
