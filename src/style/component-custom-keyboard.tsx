@@ -1,10 +1,11 @@
 import { StyleSheet, Dimensions } from "react-native";
 import Color from "./color";
 
+const windowHeight = Dimensions.get('screen').height;
+
 export default StyleSheet.create({
     modal:{
-        flex: 1,
-        marginTop: "100%",
+        marginTop: (windowHeight/10)*6,
         marginHorizontal: 0,
         marginBottom: 0,
         backgroundColor: Color.keyboardBackground,

@@ -16,7 +16,7 @@ import Stack from '../asset/icon/stack-drawer-navigation.svg';
 
 //Import Component
 import Input from "../component/input";
-import Shadow from "../component/shadow";
+import { Shadow } from 'react-native-shadow-2';
 import Button from "../component/button";
 import Modal from "../component/modal";
 import CarData from "../data/car";
@@ -81,80 +81,82 @@ export default function({navigation}: any){
                     <Stack fill={Color.branco} width={50} height={50}/>
                 </TouchableOpacity>
             </View>
-            <Shadow style={Style.shadow}>
-                <View style={Style.corner}></View>
-            </Shadow>
-            <View style={Style.container}>
-                <Text style={Typography.regular}>
-                    Preço do etanol
-                </Text>
-                <Input
-                    dataIsValid={dataIsValid}
-                    placeholder="3,84"
-                    value={precoEtanol}
-                    inputMode="numeric"
-                    maxLength={4}
-                    setState={setPrecoEtanol}
-                    keyboard={setKeyboardEtanol}
-                    returnKeyType="next"
-                    next={inputPrecoEtanol}
-                />
-                <PriceKeyboard
-                    visible={keyboardEtanol}
-                    setVisible={setKeyboardEtanol}
-                    value={precoEtanol}
-                    setValue={setPrecoEtanol}
-                />
-                <Text style={Typography.regular}>
-                    Preço da gasolina
-                </Text>
-                <Input
-                    dataIsValid={dataIsValid}
-                    placeholder="5,43"
-                    value={precoGasolina}
-                    inputMode="numeric"
-                    maxLength={4}
-                    setState={setPrecoGasolina}
-                    keyboard={setKeyboardGasolina}
-                    returnKeyType="done"
-                    identifier={inputPrecoEtanol}
-                    action={handleBtnCalcular}
-                />
-                <PriceKeyboard
-                    visible={keyboardGasolina}
-                    setVisible={setKeyboardGasolina}
-                    value={precoGasolina}
-                    setValue={setPrecoGasolina}
-                />
-                <Button
-                    title="calcular"
-                    onPress={handleBtnCalcular}
-                />
-                <Modal
-                    visible={modalIsVisible}
-                >
-                    <StatusBar
-                        backgroundColor={Color.vermelhoAcinzentado}
+            <Shadow 
+                sides={{"end": false, "start": false, "bottom": false, "top": true}}
+                stretch={true}
+            >
+                <View style={Style.container}>
+                    <Text style={Typography.regular}>
+                        Preço do etanol
+                    </Text>
+                    <Input
+                        dataIsValid={dataIsValid}
+                        placeholder="3,84"
+                        value={precoEtanol}
+                        inputMode="numeric"
+                        maxLength={4}
+                        setState={setPrecoEtanol}
+                        keyboard={setKeyboardEtanol}
+                        returnKeyType="next"
+                        next={inputPrecoEtanol}
                     />
-                    <Text style={Typography.header}> 
-                        Resultado{'\n'}
+                    <Text style={Typography.regular}>
+                        Preço da gasolina
                     </Text>
-                    <Text style={Typography.modal}>
-                        É mais vantajoso abastecer seu {CarData.nomeCarro} com
-                        <Text style={Typography.highlight}> {relacaoCombustivel<CarData.rendimento?"etanol":"gasolina"}</Text>
-                        {'\n'}
-                    </Text>
-                    <Text style={Typography.modal}>
-                        A relação entre etanol e gasolina é de {relacaoCombustivel?relacaoCombustivel.replace('.',','):"0"}%, já o rendimento do seu {CarData.nomeCarro} é de {CarData.rendimento?CarData.rendimento.replace('.',','):"0"}%{'\n'}
-                    </Text>
-                    <View style={Style.button}>
-                        <Button
-                            title="ok"
-                            onPress={handleToggleModalIsVisible}
-                        />
-                    </View>
-                </Modal>
-            </View>
+                    <Input
+                        dataIsValid={dataIsValid}
+                        placeholder="5,43"
+                        value={precoGasolina}
+                        inputMode="numeric"
+                        maxLength={4}
+                        setState={setPrecoGasolina}
+                        keyboard={setKeyboardGasolina}
+                        returnKeyType="done"
+                        identifier={inputPrecoEtanol}
+                        action={handleBtnCalcular}
+                    />
+                    <Button
+                        title="calcular"
+                        onPress={handleBtnCalcular}
+                    />
+                </View>
+            </Shadow>
+            <Modal
+                visible={modalIsVisible}
+            >
+                <StatusBar
+                    backgroundColor={Color.vermelhoAcinzentado}
+                />
+                <Text style={Typography.header}> 
+                    Resultado{'\n'}
+                </Text>
+                <Text style={Typography.modal}>
+                    É mais vantajoso abastecer seu {CarData.nomeCarro} com
+                    <Text style={Typography.highlight}> {relacaoCombustivel<CarData.rendimento?"etanol":"gasolina"}</Text>
+                    {'\n'}
+                </Text>
+                <Text style={Typography.modal}>
+                    A relação entre etanol e gasolina é de {relacaoCombustivel?relacaoCombustivel.replace('.',','):"0"}%, já o rendimento do seu {CarData.nomeCarro} é de {CarData.rendimento?CarData.rendimento.replace('.',','):"0"}%{'\n'}
+                </Text>
+                <View style={Style.button}>
+                    <Button
+                        title="ok"
+                        onPress={handleToggleModalIsVisible}
+                    />
+                </View>
+            </Modal>
+            <PriceKeyboard
+                visible={keyboardEtanol}
+                setVisible={setKeyboardEtanol}
+                value={precoEtanol}
+                setValue={setPrecoEtanol}
+            />
+            <PriceKeyboard
+                visible={keyboardGasolina}
+                setVisible={setKeyboardGasolina}
+                value={precoGasolina}
+                setValue={setPrecoGasolina}
+            />
         </View>
     );
 }

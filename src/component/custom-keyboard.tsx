@@ -20,7 +20,7 @@ export default function(props: any){
                 props.setVisible(false)
             }}
         >
-            <Shadow>
+            <Shadow sides={{"end": false, "start": false, "bottom": false, "top": true}}>
                 <View style={Style.body}>
                     {props.children}
                 </View>
