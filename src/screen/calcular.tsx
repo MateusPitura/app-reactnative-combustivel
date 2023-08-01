@@ -77,6 +77,7 @@ export default function({navigation}: any){
             <View style={Style.header}>
                 <TouchableOpacity
                     onPress={()=>navigation.toggleDrawer()}
+                    style={Style.touchable}
                 >
                     <Stack fill={Color.branco} width={50} height={50}/>
                 </TouchableOpacity>

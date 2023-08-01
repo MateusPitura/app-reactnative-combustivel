@@ -11,6 +11,10 @@ export default StyleSheet.create({
     header:{
         padding: 5,
     },
+    touchable:{
+        height: 50,
+        width: 50,
+    },
     container:{
         backgroundColor: Color.branco,
         paddingHorizontal: 30,
