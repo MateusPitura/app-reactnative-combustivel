@@ -14,7 +14,6 @@ import Typography from "../style/typography";
 //Import Component
 import Input from "../component/input";
 import Button from "../component/button";
-import ConsumeKeyboard from "../component/consume-keyboard";
 
 export default function(props: any){
 
@@ -81,8 +80,8 @@ export default function(props: any){
         }
     }
 
-    const inputConsumoEtanol = useRef(null);
-    const inputConsumoGasolina = useRef(null);
+    //const inputConsumoEtanol = useRef(null);
+    //const inputConsumoGasolina = useRef(null);
 
     return(
         <View style={Style.criar}>
@@ -110,7 +109,7 @@ export default function(props: any){
                 value={props.consumoEtanol}
                 inputMode="numeric"
                 maxLength={5}
-                setState={props.setConsumoEtanol}
+                //setState={props.setConsumoEtanol}
                 keyboard={props.setKeyboardEtanol}
                 //returnKeyType="next"
                 //identifier={inputConsumoEtanol}
@@ -125,7 +124,7 @@ export default function(props: any){
                 value={props.consumoGasolina}
                 inputMode="numeric"
                 maxLength={5}
-                setState={props.setConsumoGasolina}
+                //setState={props.setConsumoGasolina}
                 keyboard={props.setKeyboardGasolina}
                 //returnKeyType="done"
                 //identifier={inputConsumoGasolina}

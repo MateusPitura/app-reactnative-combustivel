@@ -26,6 +26,8 @@ export default function({navigation}: any){
 
     const [precoEtanol, setPrecoEtanol] = useState("3,84");
     const [precoGasolina, setPrecoGasolina] = useState("5,43");
+    const [firstClickEtanol, setFirstClickEtanol] = useState(true)
+    const [firstClickGasolina, setFirstClickGasolina] = useState(true)
     const [keyboardEtanol, setKeyboardEtanol] = useState(false);
     const [keyboardGasolina, setKeyboardGasolina] = useState(false);
     const [relacaoCombustivel, setRelacaoCombustivel] = useState("");
@@ -56,6 +58,10 @@ export default function({navigation}: any){
     }
 
     const handleBtnCalcular = () => {
+        if(firstClickEtanol==true && firstClickGasolina==true){
+            setDataIsValid(false);
+            return;
+        }
         if(checkInput(
             "^(?!(^([0]{1,2})([\,][0]{1,2})?$)$)(^([0-9]{1,2})([\,][0-9]{1,2})?$)", //Rejeita 0, 0,0 ou 0,00. Aceita 1 número inteiro e, opcionalmente, seguido de vírgula e 1 ou 2 números
             [precoEtanol, precoGasolina], 
@@ -96,10 +102,12 @@ export default function({navigation}: any){
                         value={precoEtanol}
                         inputMode="numeric"
                         maxLength={4}
-                        setState={setPrecoEtanol}
+                        firstClick={firstClickEtanol}
+                        setFirstClick={setFirstClickEtanol}
+                        //setState={setPrecoEtanol}
                         keyboard={setKeyboardEtanol}
-                        returnKeyType="next"
-                        next={inputPrecoEtanol}
+                        //returnKeyType="next"
+                        //next={inputPrecoEtanol}
                     />
                     <Text style={Typography.regular}>
                         Preço da gasolina
@@ -110,11 +118,13 @@ export default function({navigation}: any){
                         value={precoGasolina}
                         inputMode="numeric"
                         maxLength={4}
-                        setState={setPrecoGasolina}
+                        firstClick={firstClickGasolina}
+                        setFirstClick={setFirstClickGasolina}
+                        //setState={setPrecoGasolina}
                         keyboard={setKeyboardGasolina}
-                        returnKeyType="done"
-                        identifier={inputPrecoEtanol}
-                        action={handleBtnCalcular}
+                        //returnKeyType="done"
+                        //identifier={inputPrecoEtanol}
+                        //action={handleBtnCalcular}
                     />
                     <Button
                         title="calcular"
