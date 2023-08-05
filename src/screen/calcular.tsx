@@ -68,6 +68,8 @@ export default function({navigation}: any){
             setDataIsValid
         )){
             handleCalcularRelacao();
+            setKeyboardEtanol(false);
+            setKeyboardGasolina(false);
             handleToggleModalIsVisible();
         }
     }
