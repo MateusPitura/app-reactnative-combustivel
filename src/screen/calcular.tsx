@@ -63,7 +63,7 @@ export default function({navigation}: any){
             return;
         }
         if(checkInput(
-            "^(?!(^([0]{1,2})([\,][0]{1,2})?$)$)(^([0-9]{1,2})([\,][0-9]{1,2})?$)", //Rejeita 0, 0,0 ou 0,00. Aceita 1 número inteiro e, opcionalmente, seguido de vírgula e 1 ou 2 números
+            "^(?!(^([0])([\,][0]{1,2})?$)$)(^([0-9]{1,2})([\,][0-9]{1,2})?$)", //Rejeita 0, 0,0 ou 0,00. Aceita 1 número inteiro e, opcionalmente, seguido de vírgula e 1 ou 2 números
             [precoEtanol, precoGasolina], 
             setDataIsValid
         )){
@@ -104,10 +104,7 @@ export default function({navigation}: any){
                         maxLength={4}
                         firstClick={firstClickEtanol}
                         setFirstClick={setFirstClickEtanol}
-                        //setState={setPrecoEtanol}
                         keyboard={setKeyboardEtanol}
-                        //returnKeyType="next"
-                        //next={inputPrecoEtanol}
                     />
                     <Text style={Typography.regular}>
                         Preço da gasolina
@@ -120,11 +117,7 @@ export default function({navigation}: any){
                         maxLength={4}
                         firstClick={firstClickGasolina}
                         setFirstClick={setFirstClickGasolina}
-                        //setState={setPrecoGasolina}
                         keyboard={setKeyboardGasolina}
-                        //returnKeyType="done"
-                        //identifier={inputPrecoEtanol}
-                        //action={handleBtnCalcular}
                     />
                     <Button
                         title="calcular"

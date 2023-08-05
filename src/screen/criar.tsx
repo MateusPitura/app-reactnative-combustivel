@@ -1,4 +1,4 @@
-import React, { useState, useRef} from "react";
+import React, { useState } from "react";
 import { 
     View, 
     Text,
@@ -19,6 +19,8 @@ export default function(props: any){
 
     const [nomeCarro, setNomeCarro] = useState("");
     const [dataIsValid, setDataIsValid] = useState(true);
+    const [firstClickEtanol, setFirstClickEtanol] = useState(true)
+    const [firstClickGasolina, setFirstClickGasolina] = useState(true)
 
     const createCar = async () => {
         try{
@@ -65,12 +67,16 @@ export default function(props: any){
     };
 
     const handleBtnCriar = () => {
+        if(firstClickEtanol==true && firstClickGasolina==true){
+            setDataIsValid(false);
+            return;
+        }
         if(checkInput(
             ".",
             [nomeCarro], 
             setDataIsValid
         ) && checkInput(
-            "^(?!0$)(^([0-9]{1,2})([\,][0-9]{1,2})?$)", //Rejeita apenas 0. Aceita 1 ou 2 números inteiros e, opcionalmente, seguido de ponto ou vírgula e 1 ou 2 números
+            "^(?!(^([0]{1,2})([\,][0]{1,2})?$)$)(^([0-9]{1,2})([\,][0-9]{1,2})?$)", //Rejeita apenas 0. Aceita 1 ou 2 números inteiros e, opcionalmente, seguido de ponto ou vírgula e 1 ou 2 números
             [props.consumoEtanol, props.consumoGasolina], 
             setDataIsValid
         )){
@@ -79,9 +85,6 @@ export default function(props: any){
             props.navigation.goBack();
         }
     }
-
-    //const inputConsumoEtanol = useRef(null);
-    //const inputConsumoGasolina = useRef(null);
 
     return(
         <View style={Style.criar}>
@@ -98,7 +101,6 @@ export default function(props: any){
                 maxLength={255}
                 setState={setNomeCarro}
                 returnKeyType="done"
-                //next={inputConsumoEtanol}
             />
             <Text style={Typography.regular}>
                 Consumo de etanol em km/l
@@ -109,11 +111,9 @@ export default function(props: any){
                 value={props.consumoEtanol}
                 inputMode="numeric"
                 maxLength={5}
-                //setState={props.setConsumoEtanol}
+                firstClick={firstClickEtanol}
+                setFirstClick={setFirstClickEtanol}
                 keyboard={props.setKeyboardEtanol}
-                //returnKeyType="next"
-                //identifier={inputConsumoEtanol}
-                //next={inputConsumoGasolina}
             />
             <Text style={Typography.regular}>
                 Consumo de gasolina em km/l
@@ -124,11 +124,9 @@ export default function(props: any){
                 value={props.consumoGasolina}
                 inputMode="numeric"
                 maxLength={5}
-                //setState={props.setConsumoGasolina}
+                firstClick={firstClickGasolina}
+                setFirstClick={setFirstClickGasolina}
                 keyboard={props.setKeyboardGasolina}
-                //returnKeyType="done"
-                //identifier={inputConsumoGasolina}
-                //action={handleBtnCriar}
             />
             <Button
                 title={"Criar"}
