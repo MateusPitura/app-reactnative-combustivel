@@ -8,8 +8,8 @@ export default function(props: any){
     return(
         <Modal
             isVisible={props.visible}
-            animationInTiming={500}
-            animationOutTiming={500}
+            animationInTiming={250}
+            animationOutTiming={250}
             animationIn="slideInUp"
             animationOut="slideOutDown"
             style={Style.modal}

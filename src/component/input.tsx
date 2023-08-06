@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import { View, Text, TextInput, Keyboard} from "react-native";
 
 import Style from "../style/component-input";
@@ -6,6 +6,9 @@ import Typography from "../style/typography";
 import Color from "../style/color";
 
 export default function(props: any){
+
+    const [keyboardIsHidden, setKeyboardIsHidden] = useState(false);
+
     return(
         <View>
             <TextInput
@@ -27,10 +30,24 @@ export default function(props: any){
                     ?
                     undefined
                     :
-                    ()=>{
-                        props.setFirstClick(false)
-                        props.keyboard(true)
-                    }
+                        props.identifier==undefined
+                        ?
+                        ()=>{
+                            props.setFirstClick(false)
+                            props.keyboard(true)
+                        }
+                        :
+                        ()=>{
+                            if(keyboardIsHidden==true){
+                                props.setFirstClick(false)
+                                props.keyboard(true)
+                                setKeyboardIsHidden(false)
+                                return
+                            }
+                            Keyboard.dismiss()
+                            setKeyboardIsHidden(true)
+                            props.identifier.current.focus()
+                        }
                 }
                 onBlur=
                 {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { 
     View, 
     Text,
@@ -21,6 +21,9 @@ export default function(props: any){
     const [dataIsValid, setDataIsValid] = useState(true);
     const [firstClickEtanol, setFirstClickEtanol] = useState(true)
     const [firstClickGasolina, setFirstClickGasolina] = useState(true)
+
+    const referenceConsumoEtanol = useRef(null)
+    const referenceConsumoGasolina = useRef(null)
 
     const createCar = async () => {
         try{
@@ -114,6 +117,7 @@ export default function(props: any){
                 firstClick={firstClickEtanol}
                 setFirstClick={setFirstClickEtanol}
                 keyboard={props.setKeyboardEtanol}
+                identifier={referenceConsumoEtanol}
             />
             <Text style={Typography.regular}>
                 Consumo de gasolina em km/l
@@ -127,6 +131,7 @@ export default function(props: any){
                 firstClick={firstClickGasolina}
                 setFirstClick={setFirstClickGasolina}
                 keyboard={props.setKeyboardGasolina}
+                identifier={referenceConsumoGasolina}
             />
             <Button
                 title={"Criar"}
