@@ -122,7 +122,7 @@ export default function(props: any){
                 </View>
                 <View style={Style.display}>
                     <View style={Style.icon}>
-                        <Car width={"100"} height={"100"}/>
+                        <Car height={"100%"} width={"100%"}/>
                     </View>
                     <View style={Style.text}>
                         <Text style={Typography.drawerRegular}>

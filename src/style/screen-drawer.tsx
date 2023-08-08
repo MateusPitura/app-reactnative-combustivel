@@ -26,6 +26,7 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
+        padding: 5,
     },
     text:{
         flex: 1,
