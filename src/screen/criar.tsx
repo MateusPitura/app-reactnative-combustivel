@@ -43,6 +43,7 @@ export default function(props: any){
                 consumoEtanol,
                 consumoGasolina,
                 rendimento,
+                active: false,
             }]
     
             const response = await AsyncStorage.getItem("@meucarroflex:carro");

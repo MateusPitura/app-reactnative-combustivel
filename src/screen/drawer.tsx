@@ -55,12 +55,20 @@ export default function(props: any){
     );
 
     const recoveryData = async() => {
-        if(!CarData.id){
-            CarData.id = await AsyncStorage.getItem("@meucarroflex:currentCarId");
-            CarData.nomeCarro = await AsyncStorage.getItem("@meucarroflex:currentCarNomeCarro");
-            CarData.consumoEtanol = await AsyncStorage.getItem("@meucarroflex:currentCarConsumoEtanol");
-            CarData.consumoGasolina = await AsyncStorage.getItem("@meucarroflex:currentCarConsumoGasolina");
-            CarData.rendimento = await AsyncStorage.getItem("@meucarroflex:currentCarRendimento");
+        if(CarData.id){
+            return
+        }
+        try{
+            const response = await AsyncStorage.getItem("@meucarroflex:carro");
+            const data = response ? JSON.parse(response) : [];
+            const filterData = data.filter((item: any) => item.active === true);
+            CarData.id = filterData.id;
+            CarData.nomeCarro = filterData.nomeCarro;
+            CarData.consumoEtanol = filterData.consumoEtanol;
+            CarData.consumoGasolina = filterData.consumoGasolina;
+            CarData.rendimento = filterData.rendimento;
+        } catch(error){
+            console.log(error);
         }
         setfirstInicialization(true);
     }
@@ -69,7 +77,7 @@ export default function(props: any){
         try{
             const response = await AsyncStorage.getItem("@meucarroflex:carro");
             const data = response ? JSON.parse(response) : [];
-            const filterData = data.filter((item: any) => item.id !== CarData.id);
+            const filterData = data.filter((item: any) => item.active === false);
             setCarro(filterData);
         } catch(error){
             console.log(error);
@@ -89,12 +97,29 @@ export default function(props: any){
         }
     }
 
-    const setCurrentCar = () => {
-        AsyncStorage.setItem("@meucarroflex:currentCarId", CarData.id);
-        AsyncStorage.setItem("@meucarroflex:currentCarNomeCarro", CarData.nomeCarro);
-        AsyncStorage.setItem("@meucarroflex:currentCarConsumoEtanol", CarData.consumoEtanol);
-        AsyncStorage.setItem("@meucarroflex:currentCarConsumoGasolina", CarData.consumoGasolina);
-        AsyncStorage.setItem("@meucarroflex:currentCarRendimento", CarData.rendimento);
+    const setCurrentCar = async(id: string) => {
+        try{
+            const response = await AsyncStorage.getItem("@meucarroflex:carro");
+            const previousData = response ? JSON.parse(response) : [];
+
+            const newCar = previousData.filter((item: any) => item.active === true);
+            if(newCar!=0){
+                newCar[0].active = false;
+            }
+
+            const oldCar = previousData.filter((item: any) => item.id === id);
+            oldCar[0].active = true;
+
+            const filterData = previousData.filter((item: any) => item.id !== id && item.active === false)
+            console.log(filterData)
+            console.log(oldCar)
+            console.log(newCar)
+            const data = [...filterData, ...oldCar, ...newCar]
+            console.log(data)
+            await AsyncStorage.setItem("@meucarroflex:carro", JSON.stringify(data));
+        } catch(error){
+            console.log(error);
+        }
     }
 
     const layoutAnimConfig = {
@@ -154,7 +179,7 @@ export default function(props: any){
                                 CarData.consumoEtanol = item.consumoEtanol;
                                 CarData.consumoGasolina = item.consumoGasolina;
                                 CarData.rendimento = item.rendimento;
-                                setCurrentCar();
+                                setCurrentCar(item.id);
                                 readCar();
                             }}
                         />
