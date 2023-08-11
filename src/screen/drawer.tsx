@@ -3,9 +3,9 @@ import {
     View, 
     Text, 
     FlatList, 
-    TouchableWithoutFeedback,
     LayoutAnimation,
     Keyboard,
+    TouchableOpacity,
 } from "react-native";
 import { 
     DrawerItem,
@@ -85,7 +85,7 @@ export default function(props: any){
         try{
             const response = await AsyncStorage.getItem("@meucarroflex:carro");
             const previousData = response ? JSON.parse(response) : [];
-            const data = previousData.filter((item: any) => item.id !== id);
+            const data = previousData.filter((item: any) => (item.id !== id && item.active === false));
             await AsyncStorage.setItem("@meucarroflex:carro", JSON.stringify(data));
             setCarro(data);
             LayoutAnimation.configureNext(layoutAnimConfig);
@@ -157,16 +157,20 @@ export default function(props: any){
                     data={carro}
                     keyExtractor={item => item.id}
                     renderItem={({item}: any)=>
+                    <View style={Style.item}>
+                        <View style={Style.bin}>
+                            <TouchableOpacity
+                                onPress={()=>{
+                                    deleteCar(item.id)
+                                }}
+                            >
+                                <Bin width={20} height={20}/>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={Style.label}>
                         <DrawerItem
                             label={item.nomeCarro}
                             labelStyle={Typography.regular}
-                            icon={()=>
-                                <TouchableWithoutFeedback
-                                    onPress={()=>deleteCar(item.id)}
-                                >
-                                    <Bin width={20} height={"100%"}/>
-                                </TouchableWithoutFeedback>
-                            }
                             onPress={()=>{
                                 CarData.id = item.id;
                                 CarData.nomeCarro = item.nomeCarro;
@@ -177,6 +181,8 @@ export default function(props: any){
                                 setTimeout(()=>readCar(), 10);
                             }}
                         />
+                        </View>
+                    </View>
                     }
                 />
             </View>

@@ -38,5 +38,18 @@ export default StyleSheet.create({
     },
     button:{
         alignItems: "flex-end",
+    },
+    item:{
+        flexDirection: "row",
+        flex: 1, 
+    },
+    bin:{
+        flex: 1,
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+    },
+    label:{
+        flex: 5, 
+        justifyContent: 'center',  
     }
 });
