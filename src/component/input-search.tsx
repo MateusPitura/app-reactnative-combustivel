@@ -14,7 +14,7 @@ export default function(props: any){
             cursorColor={Color.vermelho}
             inputMode={props.inputMode}
             maxLength={props.maxLength}
-            onChangeText={text=>props.setState(text)}
+            onChangeText={text=>{props.setState(text)}}
             blurOnSubmit={false}
             ref={props.identifier}
             returnKeyType={props.returnKeyType}

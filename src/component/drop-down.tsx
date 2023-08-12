@@ -25,7 +25,7 @@ export default function(props: any){
     
     const onSearch = (search: any) => {
         if(search !== ''){
-            const filterData = data.filter(item => {
+            const filterData = baseData.filter(item => {
                 return item.nome.toLowerCase().indexOf(search.toLowerCase()) > -1; //Função que realiza a busca
             });
             setData(filterData);
