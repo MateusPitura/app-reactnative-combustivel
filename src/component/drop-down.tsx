@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { 
     View,
     TouchableOpacity,
@@ -42,6 +42,16 @@ export default function(props: any){
                 }
             },
         ), 0}, [isClicked]
+    );
+
+    useEffect(
+        useCallback(
+            ()=>{
+                if(isClicked==true){
+                    fetchData();
+                }
+            }, [props.url]
+        ), [props.url]
     );
 
     const fetchData = async () => {
