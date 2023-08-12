@@ -36,22 +36,19 @@ export default function({navigation}: any){
 
     const createCar = async () => {
         try{
-            const id = Uuid.v4();
-            const nomeCarro = nome.toString();
-
             const newData = [{
-                id,
-                nomeCarro,
-                consumoEtanol: "10,2",
-                consumoGasolina: "14,6",
-                rendimento: "69,86",
+                id: Uuid.v4(),
+                nomeCarro: nome.toString(),
+                consumoEtanol: "07,00",
+                consumoGasolina: "10,40",
+                rendimento: "67.31",
                 active: false,
             }]
     
             const response = await AsyncStorage.getItem("@meucarroflex:carro");
             const previousData = response? JSON.parse(response) : [];
             const data = [...previousData, ...newData]
-            AsyncStorage.setItem("@meucarroflex:carro", JSON.stringify(data));
+            await AsyncStorage.setItem("@meucarroflex:carro", JSON.stringify(data));
         } catch(error){
             console.log(error);
         }

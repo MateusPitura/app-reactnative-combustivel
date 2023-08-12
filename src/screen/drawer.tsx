@@ -12,6 +12,7 @@ import {
     useDrawerStatus
 } from "@react-navigation/drawer";
 import AsyncStorage from "@react-native-community/async-storage";
+import Uuid from 'react-native-uuid';
 
 //Import Style
 import Style from "../style/screen-drawer";
@@ -54,10 +55,35 @@ export default function(props: any){
         ), []
     );
 
+    const createCar = async() => {
+        try{
+            const data = [{
+                id: Uuid.v4(),
+                nomeCarro: "Prisma Joy 1.4",
+                consumoEtanol: "07,00",
+                consumoGasolina: "10,40",
+                rendimento: "67.31",
+                active: true,
+            }]
+            CarData.id = data[0].id;
+            CarData.nomeCarro = data[0].nomeCarro;
+            CarData.consumoEtanol = data[0].consumoEtanol;
+            CarData.consumoGasolina = data[0].consumoGasolina;
+            CarData.rendimento = data[0].rendimento;
+            await AsyncStorage.setItem("@meucarroflex:carro", JSON.stringify(data));
+        } catch(error){
+            console.log(error);
+        }
+    }
+
     const recoveryData = async() => {
         try{
             const response = await AsyncStorage.getItem("@meucarroflex:carro");
             const data = response ? JSON.parse(response) : [];
+            if(data==0){
+                createCar();
+                return;
+            }
             const filterData = data.filter((item: any) => item.active === true);
             CarData.id = filterData[0].id;
             CarData.nomeCarro = filterData[0].nomeCarro;
@@ -85,9 +111,10 @@ export default function(props: any){
         try{
             const response = await AsyncStorage.getItem("@meucarroflex:carro");
             const previousData = response ? JSON.parse(response) : [];
-            const data = previousData.filter((item: any) => (item.id !== id && item.active === false));
+            const data = previousData.filter((item: any) => item.id !== id);
             await AsyncStorage.setItem("@meucarroflex:carro", JSON.stringify(data));
-            setCarro(data);
+            const list = data.filter((item: any) => item.active === false);
+            setCarro(list);
             LayoutAnimation.configureNext(layoutAnimConfig);
         } catch(error){
             console.log(error);

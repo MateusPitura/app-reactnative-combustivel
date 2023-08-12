@@ -30,7 +30,6 @@ export default function(props: any){
             const consumoEtanol = props.consumoEtanol;
             const consumoGasolina = props.consumoGasolina;
 
-            const id = Uuid.v4();
             const rendimento = ((
                 parseFloat(consumoEtanol?consumoEtanol.replace(',','.'):"0")
                 /
@@ -38,7 +37,7 @@ export default function(props: any){
             )*100).toFixed(2)
 
             const newData = [{
-                id,
+                id: Uuid.v4(),
                 nomeCarro,
                 consumoEtanol,
                 consumoGasolina,
@@ -49,7 +48,7 @@ export default function(props: any){
             const response = await AsyncStorage.getItem("@meucarroflex:carro");
             const previousData = response? JSON.parse(response) : [];
             const data = [...previousData, ...newData]
-            AsyncStorage.setItem("@meucarroflex:carro", JSON.stringify(data));
+            await AsyncStorage.setItem("@meucarroflex:carro", JSON.stringify(data));
         } catch(error){
             console.log(error);
         }
