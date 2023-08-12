@@ -4,6 +4,7 @@ import {
     Text, 
     TouchableOpacity,
     StatusBar,
+    Keyboard,
 } from "react-native";
 
 //Import Style
@@ -58,7 +59,7 @@ export default function({navigation}: any){
     }
 
     const handleBtnCalcular = () => {
-        if(firstClickEtanol==true && firstClickGasolina==true){
+        if(firstClickEtanol==true || firstClickGasolina==true){
             setDataIsValid(false);
             return;
         }
@@ -67,6 +68,7 @@ export default function({navigation}: any){
             [precoEtanol, precoGasolina], 
             setDataIsValid
         )){
+            Keyboard.dismiss();
             handleCalcularRelacao();
             setKeyboardEtanol(false);
             setKeyboardGasolina(false);

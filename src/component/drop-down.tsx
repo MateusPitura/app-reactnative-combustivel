@@ -61,11 +61,13 @@ export default function(props: any){
             const response = await fetch(props.url) 
             const json = await response.json()
             if(props.placeholder=="Prisma"){
-                setData(json.modelos)
-                setBaseData(json.modelos)
+                const data = json.modelos.filter((item: any) => (item.nome.toString().includes("32000") === false))
+                setData(data)
+                setBaseData(data)
             } else {
-                setData(json)
-                setBaseData(json)
+                const data = json.filter((item: any) => (item.nome.toString().includes("32000") === false))
+                setData(data)
+                setBaseData(data)
             }
             setRetrive(false)
         } catch(error){
