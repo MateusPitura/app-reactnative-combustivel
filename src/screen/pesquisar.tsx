@@ -8,14 +8,13 @@ import AsyncStorage from '@react-native-community/async-storage'
 import Uuid from 'react-native-uuid';
 
 //Import Style
-import Style from "../style/screen-pesquisar";
 import Typography from "../style/typography";
 
 //Import Component
 import Button from "../component/button";
 import DropDown from "../component/drop-down";
 
-export default function({navigation}: any){
+export default function(props: any){
 
     const [nome, setNome] = useState("");
     const [marcaId, setMarcaId] = useState("");
@@ -66,12 +65,13 @@ export default function({navigation}: any){
         )){
             createCar();
             showToast();
-            navigation.goBack();
+            props.navigation.goBack();
         }
     }
 
     return(
-        <View style={Style.pesquisar}>
+        <View style={props.style}>
+            {/* {Style.pesquisar}> */}
             <Text style={Typography.header}>
                 Pesquisar{'\n'}
             </Text>

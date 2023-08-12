@@ -54,7 +54,10 @@ export default function({navigation}: any){
                         consumoGasolina={consumoGasolina}
                         setKeyboardGasolina={setKeyboardGasolina}
                     />
-                    <Pesquisar navigation={navigation}/>
+                    <Pesquisar 
+                        navigation={navigation}
+                        style={(keyboardEtanol == true || keyboardGasolina == true)?{paddingBottom: 300,}:{paddingBottom: 100,}}
+                    />
                 </View>
             </ScrollView>
             <ConsumeKeyboard
