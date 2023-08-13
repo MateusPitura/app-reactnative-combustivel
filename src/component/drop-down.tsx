@@ -19,6 +19,7 @@ export default function(props: any){
     const [isClicked, setIsClicked] = useState(false);
     const [selected, setSelected] = useState("");
     const [retrive, setRetrive] = useState(false);
+    const [networkFailed, setNetworkFailed] = useState(false);
     const [falha, setFalha] = useState(false)
     const [baseData, setBaseData] = useState([]);
     const [data, setData] = useState([]);
@@ -58,6 +59,7 @@ export default function(props: any){
         try{
             setRetrive(true)
             setFalha(false)
+            setNetworkFailed(false)
             const response = await fetch(props.url) 
             const json = await response.json()
             if(props.placeholder=="Prisma"){
@@ -70,9 +72,11 @@ export default function(props: any){
                 setBaseData(data)
             }
             setRetrive(false)
-        } catch(error){
+        } catch({name, message}: any){
             setFalha(true)
-            console.log(error)
+            if(message=="Network request failed"){
+                setNetworkFailed(true);
+            }
         }
     }
 
@@ -153,6 +157,9 @@ export default function(props: any){
                             {retrive==true?
                                 <View>
                                     {falha==true?
+                                        networkFailed==true?
+                                        <Text style={Typography.regular}>Falha na conexão</Text>
+                                        :
                                         <Text style={Typography.regular}>Selecione um item antes</Text>
                                     :
                                         <ActivityIndicator size={'small'} color={Color.vermelho}/>
