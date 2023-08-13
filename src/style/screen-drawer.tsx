@@ -6,6 +6,7 @@ import Material from './material'
 export default StyleSheet.create({
     container:{
         flex: 1,
+        backgroundColor: Color.branco,
     },
     header:{
         flex: 3,

@@ -1,4 +1,4 @@
-import React, { useState, useRef} from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { 
     View, 
     Text, 
@@ -6,6 +6,9 @@ import {
     StatusBar,
     Keyboard,
 } from "react-native";
+import { 
+    useDrawerStatus
+} from "@react-navigation/drawer";
 
 //Import Style
 import Style from "../style/screen-calculadora";
@@ -34,6 +37,7 @@ export default function({navigation}: any){
     const [relacaoCombustivel, setRelacaoCombustivel] = useState("");
     const [modalIsVisible, setModalIsVisible] = useState(false);
     const [dataIsValid, setDataIsValid] = useState(true);
+    const [isDrawerClicked, setIsDrawerClicked] = useState(false);
 
     const handleCalcularRelacao = () => {
         setRelacaoCombustivel(((
@@ -77,16 +81,38 @@ export default function({navigation}: any){
     }
 
     const inputPrecoEtanol = useRef(null);
+    const isDrawerOpen = useDrawerStatus() === 'open';
+
+    useEffect(
+        useCallback(
+            ()=>{
+                if(isDrawerOpen){
+                    setIsDrawerClicked(true);
+                    return;
+                }
+                setIsDrawerClicked(false);
+            }, [isDrawerOpen]
+        ), [isDrawerOpen]
+    );
 
     return(
         <View style={Style.background}>
+            {isDrawerClicked==true?
+            <StatusBar
+                backgroundColor={Color.branco}
+                barStyle={"dark-content"}
+            />
+            :
             <StatusBar
                 backgroundColor={Color.vermelho}
                 barStyle={"light-content"}
             />
+            }
             <View style={Style.header}>
                 <TouchableOpacity
-                    onPress={()=>navigation.toggleDrawer()}
+                    onPress={()=>{
+                        navigation.toggleDrawer();
+                    }}
                     style={Style.touchable}
                 >
                     <Stack fill={Color.branco} width={50} height={50}/>
