@@ -8,12 +8,12 @@ export default StyleSheet.create({
     },
     header:{
         paddingHorizontal: 10,
-        backgroundColor: Color.branco,
+        backgroundColor: Color.branco1,
     },
     container:{
         flex: 1,
         paddingHorizontal: 20,
-        backgroundColor: Color.branco,
+        backgroundColor: Color.branco1,
     },
     border:{
         flex: 1,

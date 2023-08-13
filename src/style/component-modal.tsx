@@ -11,7 +11,7 @@ export default StyleSheet.create({
         flex: 1,
         margin: 20,
         padding: 20,
-        backgroundColor: Color.branco,
+        backgroundColor: Color.branco1,
         borderRadius: 20, 
     },
 });

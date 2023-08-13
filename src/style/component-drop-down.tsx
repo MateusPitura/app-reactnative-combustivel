@@ -37,7 +37,7 @@ export default StyleSheet.create({
     container:{
         flex: 1,
         borderRadius: Material.borderRadius,
-        backgroundColor: Color.branco,        
+        backgroundColor: Color.branco2,        
         padding: 20,
         marginBottom: 20,
         elevation: Material.elevation,

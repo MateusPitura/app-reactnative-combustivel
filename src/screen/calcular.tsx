@@ -99,13 +99,14 @@ export default function({navigation}: any){
         <View style={Style.background}>
             {isDrawerClicked==true?
             <StatusBar
-                backgroundColor={Color.branco}
-                barStyle={"dark-content"}
+                backgroundColor={Color.branco2}
+                //barStyle={"dark-content"}
+                barStyle={"light-content"} //Dark
             />
             :
             <StatusBar
                 backgroundColor={Color.vermelho}
-                barStyle={"light-content"}
+                //barStyle={"light-content"}
             />
             }
             <View style={Style.header}>
@@ -115,7 +116,7 @@ export default function({navigation}: any){
                     }}
                     style={Style.touchable}
                 >
-                    <Stack fill={Color.branco} width={50} height={50}/>
+                    <Stack fill={Color.branco1} width={50} height={50}/>
                 </TouchableOpacity>
             </View>
             <Shadow 

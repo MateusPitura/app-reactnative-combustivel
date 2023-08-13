@@ -10,8 +10,8 @@ import {
 import Style from '../style/component-drop-down';
 import Typography from "../style/typography";
 import InputSearch from "./input-search";
-import DropDownTop from "../asset/icon/drop-down-top.svg"
-import DropDownDown from "../asset/icon/drop-down-down.svg"
+import DropDownTop from "../asset/icon/arrow-up.svg"
+import DropDownDown from "../asset/icon/arrow-down.svg"
 import Color from "../style/color";
 
 export default function(props: any){
@@ -103,9 +103,9 @@ export default function(props: any){
                     <View style={Style.icon}>
                         {isClicked
                         ?
-                        <DropDownTop height={20} width={20}/>
+                        <DropDownTop fill={Color.placeholder} height={40} width={40}/>
                         :
-                        <DropDownDown height={20} width={20}/>
+                        <DropDownDown fill={Color.placeholder} height={40} width={40}/>
                         }
                     </View>
                 </View>

@@ -16,7 +16,7 @@ export default function(){
                 drawerContent={(props) => <Drawer {...props}/>}
                 screenOptions={{
                     headerShown: false,
-                    drawerType: 'front',    
+                    drawerType: 'slide',    
                 }}
             >
                 <DrawerNavigator.Screen

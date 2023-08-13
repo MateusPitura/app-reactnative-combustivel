@@ -13,7 +13,7 @@ export default function(props: any){
             underlayColor={Color.vermelhoEscuro}
         >
             <View style={Style.icon}>
-                <Add fill={Color.branco} height={"100%"} width={"100%"}/>
+                <Add fill={Color.branco1} height={"100%"} width={"100%"}/>
             </View>
         </TouchableHighlight>
     );

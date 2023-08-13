@@ -16,7 +16,7 @@ export default StyleSheet.create({
         width: 50,
     },
     container:{
-        backgroundColor: Color.branco,
+        backgroundColor: Color.branco1,
         padding: 30,
         borderTopStartRadius: Material.borderRadius,
         borderTopEndRadius: Material.borderRadius,

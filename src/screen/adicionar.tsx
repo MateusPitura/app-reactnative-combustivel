@@ -32,8 +32,9 @@ export default function({navigation}: any){
     return(
         <SafeAreaView style={Style.layout}>
             <StatusBar
-                backgroundColor={Color.branco}
-                barStyle={"dark-content"}
+                backgroundColor={Color.branco1}
+                //barStyle={"dark-content"}
+                barStyle={"light-content"} //Dark
             />
             <View style={Style.header}>
                 <TouchableOpacity

@@ -28,18 +28,20 @@ export default StyleSheet.create({
     drawerHeader:{
         fontFamily: "ubuntu-bold",
         fontSize: 20,
-        color: Color.branco,
+        //color: Color.branco1,
+        color: Color.cinzaEscuro, //Dark
     },
     drawerRegular:{
         fontFamily: "ubuntu-regular",
         fontSize: 18,
-        color: Color.branco,
+        //color: Color.branco1,
+        color: Color.cinzaEscuro, //Dark
     },
     button:{
         fontFamily: "ubuntu-regular",
         fontSize: 20,
         textTransform: "uppercase",
-        color: Color.branco,
+        color: Color.branco1,
     },
     highlight:{
         color: Color.vermelho,
