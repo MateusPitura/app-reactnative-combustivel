@@ -19,7 +19,7 @@ import Style from "../style/screen-drawer";
 import Typography from "../style/typography";
 
 //Import Asset
-import Car from "../asset/icon/car-light-off.svg"
+import Car from "../asset/icon/car-light-on.svg" //Dark
 import Bin from '../asset/icon/bin.svg';
 
 //Import Component
