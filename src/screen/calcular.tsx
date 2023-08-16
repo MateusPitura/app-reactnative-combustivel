@@ -5,6 +5,7 @@ import {
     TouchableOpacity,
     StatusBar,
     Keyboard,
+    useColorScheme,
 } from "react-native";
 import { 
     useDrawerStatus
@@ -27,6 +28,8 @@ import CarData from "../data/car";
 import PriceKeyboard from "../component/price-keyboard";
 
 export default function({navigation}: any){
+
+    const theme = useColorScheme();
 
     const [precoEtanol, setPrecoEtanol] = useState("3,84");
     const [precoGasolina, setPrecoGasolina] = useState("5,43");
@@ -63,6 +66,7 @@ export default function({navigation}: any){
     }
 
     const handleBtnCalcular = () => {
+        console.log(theme)
         if(firstClickEtanol==true || firstClickGasolina==true){
             setDataIsValid(false);
             return;

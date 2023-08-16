@@ -25,6 +25,7 @@ import Bin from '../asset/icon/bin.svg';
 //Import Component
 import DrawerButton from "../component/drawer-button";
 import CarData from "../data/car";
+import Button from "../component/button";
 
 export default function(props: any){
 
@@ -213,11 +214,19 @@ export default function(props: any){
                     }
                 />
             </View>
-            <View style={Style.button}>
-                <DrawerButton
-                    title="Adicionar"
-                    onPress={()=>props.navigation.navigate('Adicionar')}
-                />
+            <View style={{flexDirection: "row"}}>
+                <View style={{flex: 1, padding: 20}}>
+                    <Button
+                        title="Modo escuro"
+                        onPress={()=>{}}
+                    />
+                </View>
+                <View style={Style.button}>
+                    <DrawerButton
+                        title="Adicionar"
+                        onPress={()=>props.navigation.navigate('Adicionar')}
+                    />
+                </View>
             </View>
         </View>
     );
