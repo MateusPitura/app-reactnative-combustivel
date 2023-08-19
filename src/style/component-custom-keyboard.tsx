@@ -3,12 +3,12 @@ import Color from "./color";
 
 const windowHeight = Dimensions.get('screen').height;
 
-export default StyleSheet.create({
+StyleSheet.create({
     modal:{
         marginTop: (windowHeight/10)*6,
         marginHorizontal: 0,
         marginBottom: 0,
-        backgroundColor: Color.keyboardBackground,
+        backgroundColor: Color["dark"].keyboardBackground,
     },
     body:{
         flex: 1,
@@ -28,4 +28,4 @@ export default StyleSheet.create({
         alignItems: 'flex-end',
         justifyContent: 'center',
     }
-})
+});
