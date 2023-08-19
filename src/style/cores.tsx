@@ -6,7 +6,7 @@ const LightTheme = {
         card: 'rgb(255, 255, 255)',
         text: 'rgb(28, 28, 30)',
         border: 'rgb(199, 199, 204)',
-        notification: 'rgb(255, 69, 58)',
+        notification: 'rgb(255, 69, 58 )',
         // vermelho: "#AD1313",
         // vermelhoEscuro: "#660B0B",
         // branco1: "#fff",
