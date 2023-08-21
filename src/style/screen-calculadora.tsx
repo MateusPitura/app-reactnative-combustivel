@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import Theme from "./theme";
 
 import Color from "./color";
 import Material from "../style/material";
@@ -6,7 +7,7 @@ import Material from "../style/material";
 export default StyleSheet.create({
     background:{
         flex: 1,
-        backgroundColor: Color.vermelho,
+        backgroundColor: Color[Theme.theme].vermelho,
     },
     header:{
         padding: 5,
@@ -16,7 +17,7 @@ export default StyleSheet.create({
         width: 50,
     },
     container:{
-        backgroundColor: Color.branco1,
+        backgroundColor: Color[Theme.theme].branco1,
         padding: 30,
         borderTopStartRadius: Material.borderRadius,
         borderTopEndRadius: Material.borderRadius,

@@ -13,6 +13,7 @@ import {
 } from "@react-navigation/drawer";
 import AsyncStorage from "@react-native-community/async-storage";
 import Uuid from 'react-native-uuid';
+import { create, read } from '../model/storage'
 
 //Import Style
 import Style from "../style/screen-drawer";
@@ -20,6 +21,7 @@ import Typography from "../style/typography";
 
 //Import Asset
 import Car from "../asset/icon/car-light-on.svg" //Dark
+import Theme from '../style/theme'
 import Bin from '../asset/icon/bin.svg';
 
 //Import Component
@@ -32,6 +34,8 @@ export default function(props: any){
     const [carro, setCarro] = useState([]);
 
     const [firstInicialization, setfirstInicialization] = useState(false)
+
+    const [theme, setTheme] = useState('');
 
     const isDrawerOpen = useDrawerStatus() === 'open';
 
@@ -50,6 +54,7 @@ export default function(props: any){
         useCallback(
             ()=>{
                 if(!firstInicialization){
+                    recoveryTheme();
                     recoveryData();
                 }
             }, []
@@ -156,6 +161,26 @@ export default function(props: any){
         },
     };
 
+    const recoveryTheme = async() => {
+        const response = await read("@meucarroflex:theme");
+        console.log("G", response)
+        if(response==null){
+            setTheme('light');
+            Theme.theme = "light";
+            await create("@meucarroflex:theme", "light");
+            return
+        }
+        setTheme(response);
+        Theme.theme = response;
+    }
+
+    const handleToggleTheme = async() => {
+        const value = theme=='light'?'dark':'light';
+        setTheme(value)
+        Theme.theme = value;
+        await create("@meucarroflex:theme", value)
+    }
+
     return(
         <View style={Style.container}>
             <View style={Style.header}>
@@ -218,7 +243,7 @@ export default function(props: any){
                 <View style={{flex: 1, padding: 20}}>
                     <Button
                         title="Modo escuro"
-                        onPress={()=>{}}
+                        onPress={()=>{handleToggleTheme()}}
                     />
                 </View>
                 <View style={Style.button}>
