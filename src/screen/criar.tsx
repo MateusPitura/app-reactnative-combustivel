@@ -8,8 +8,8 @@ import AsyncStorage from '@react-native-community/async-storage'
 import Uuid from 'react-native-uuid';
 
 //Import Style
-import Style from "../style/screen-criar";
-import Typography from "../style/typography";
+import { estilo } from "../style/screen-criar";
+import { typography } from "../style/typography";
 
 //Import Component
 import Input from "../component/input";
@@ -88,6 +88,10 @@ export default function(props: any){
             props.navigation.goBack();
         }
     }
+
+    const Style = estilo("light");
+
+    const Typography = typography("light");
 
     return(
         <View style={Style.criar}>

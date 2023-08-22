@@ -1,9 +1,11 @@
 import { StyleSheet } from "react-native";
 
-import Color from "./color"
+export const estilo = (theme: any) => {
+    return StyleSheet.create({
+        criar:{
+            paddingBottom: 50,
+        },
+    });
+}
 
-export default StyleSheet.create({
-    criar:{
-        paddingBottom: 50,
-    },
-});
+export default { estilo }

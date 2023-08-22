@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import {View, Text } from 'react-native';
-import Style from '../style/component-custom-keyboard'
+import { estilo } from '../style/component-custom-keyboard'
 import Display from "./display";
-import Typography from "../style/typography";
+import { typography } from "../style/typography";
 import CustomKeyboard from "./custom-keyboard";
 
 export default function(props: any){
@@ -17,6 +17,10 @@ export default function(props: any){
             props.setValue(value);
         }, [firstValue, secondValue, thirdValue]), [firstValue, secondValue, thirdValue]
     )
+
+    const Style = estilo("light");
+
+    const Typography = typography("light")
 
     return(
         <CustomKeyboard

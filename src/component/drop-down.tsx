@@ -7,8 +7,8 @@ import {
     ActivityIndicator,
 } from 'react-native';
 
-import Style from '../style/component-drop-down';
-import Typography from "../style/typography";
+import { estilo } from '../style/component-drop-down';
+import { typography } from "../style/typography";
 import InputSearch from "./input-search";
 import DropDownTop from "../asset/icon/arrow-up.svg"
 import DropDownDown from "../asset/icon/arrow-down.svg"
@@ -82,6 +82,10 @@ export default function(props: any){
 
     const input = useRef(null);
 
+    const Style = estilo("light");
+
+    const Typography = typography("light")
+
     return(
         <View>
             <TouchableOpacity
@@ -103,9 +107,9 @@ export default function(props: any){
                     <View style={Style.icon}>
                         {isClicked
                         ?
-                        <DropDownTop fill={Color.placeholder} height={40} width={40}/>
+                        <DropDownTop fill={Color["light"].placeholder} height={40} width={40}/>
                         :
-                        <DropDownDown fill={Color.placeholder} height={40} width={40}/>
+                        <DropDownDown fill={Color["light"].placeholder} height={40} width={40}/>
                         }
                     </View>
                 </View>
@@ -162,7 +166,7 @@ export default function(props: any){
                                         :
                                         <Text style={Typography.regular}>Selecione um item antes</Text>
                                     :
-                                        <ActivityIndicator size={'small'} color={Color.vermelho}/>
+                                        <ActivityIndicator size={'small'} color={Color["light"].vermelho}/>
                                     }
                                 </View>
                             :

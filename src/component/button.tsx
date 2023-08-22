@@ -1,15 +1,20 @@
 import React from "react";
 import { TouchableHighlight, Text } from "react-native";
 
-import Style from "../style/component-button"
-import Typography from "../style/typography";
+import { estilo } from "../style/component-button"
+import { typography } from "../style/typography";
 import Color from "../style/color";
 
 export default function(props: any){
+
+    const Style = estilo("light")
+
+    const Typography = typography("light")
+
     return(
         <TouchableHighlight
             style={Style.container}
-            underlayColor={Color.vermelhoEscuro}
+            underlayColor={Color["light"].vermelhoEscuro}
             onPress={props.onPress}
         >
             <Text

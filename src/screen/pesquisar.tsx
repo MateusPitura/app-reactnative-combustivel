@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import Uuid from 'react-native-uuid';
 
 //Import Style
-import Typography from "../style/typography";
+import { typography } from "../style/typography";
 
 //Import Component
 import Button from "../component/button";
@@ -68,6 +68,8 @@ export default function(props: any){
             props.navigation.goBack();
         }
     }
+
+    const Typography = typography("light")
 
     return(
         <View style={props.style}>

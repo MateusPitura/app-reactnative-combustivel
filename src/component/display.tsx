@@ -1,10 +1,10 @@
 import React from "react";
 import {View, Text, TouchableOpacity} from 'react-native';
-import Style from '../style/component-display'
+import { estilo } from '../style/component-display'
 import ArrowUp from "../asset/icon/arrow-up.svg"
 import ArrowDown from "../asset/icon/arrow-down.svg"
 import Color from "../style/color";
-import Typography from "../style/typography";
+import { typography } from "../style/typography";
 
 export default function(props: any){
 
@@ -20,13 +20,17 @@ export default function(props: any){
         props.setValue(compare.toString())
     }
 
+    const Style = estilo("light");
+
+    const Typography = typography("light")
+
     return(
         <View style={Style.display}>
             <TouchableOpacity 
                 style={Style.button}
                 onPress={()=>{handleBtnChangeValueGreaterThan()}}
             >
-                <ArrowUp fill={Color.keyColor} height={50} width={50}/>
+                <ArrowUp fill={Color["light"].keyColor} height={50} width={50}/>
             </TouchableOpacity>
             <View style={Style.number}>
                 <Text style={Typography.keyboard}>
@@ -37,7 +41,7 @@ export default function(props: any){
                 style={Style.button}
                 onPress={()=>{handleBtnChangeValueLowerThan()}}
             >
-                <ArrowDown fill={Color.keyColor} height={50} width={50}/>
+                <ArrowDown fill={Color["light"].keyColor} height={50} width={50}/>
             </TouchableOpacity>
         </View>
     );

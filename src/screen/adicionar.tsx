@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 //Import Style
-import Style from "../style/screen-adicionar";
+import { estilo } from "../style/screen-adicionar";
 import Color from "../style/color";
 
 //Import Asset
@@ -29,10 +29,12 @@ export default function({navigation}: any){
     const [consumoGasolina, setConsumoGasolina] = useState("10,40");
     const [keyboardGasolina, setKeyboardGasolina] = useState(false);
 
+    const Style = estilo("light")
+
     return(
         <SafeAreaView style={Style.layout}>
             <StatusBar
-                backgroundColor={Color.branco1}
+                backgroundColor={Color["light"].branco1}
                 //barStyle={"dark-content"}
                 barStyle={"light-content"} //Dark
             />
@@ -40,7 +42,7 @@ export default function({navigation}: any){
                 <TouchableOpacity
                     onPress={()=>navigation.goBack()}
                 >
-                    <Arrow height={50} width={50} fill={Color.vermelho}/>
+                    <Arrow height={50} width={50} fill={Color["light"].vermelho}/>
                 </TouchableOpacity>
             </View>
             <ScrollView 

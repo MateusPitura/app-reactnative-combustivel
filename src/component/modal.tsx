@@ -2,9 +2,12 @@ import React from "react";
 
 import {View, Modal} from "react-native";
 
-import Style from "../style/component-modal"
+import { estilo } from "../style/component-modal"
 
 export default function(props: any){
+
+    const Style = estilo("light");
+
     return(
         <Modal
             animationType="slide"

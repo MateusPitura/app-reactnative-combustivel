@@ -1,17 +1,22 @@
-import React, { useRef } from "react";
-import { View, Text, TextInput, Keyboard } from "react-native";
+import React from "react";
+import { TextInput, Keyboard } from "react-native";
 
-import Style from "../style/component-input-search";
-import Typography from "../style/typography";
+import { estilo } from "../style/component-input-search";
+import { typography } from "../style/typography";
 import Color from "../style/color";
 
 export default function(props: any){
+
+    const Style = estilo("light");
+
+    const Typography = typography("light")
+
     return(
         <TextInput
             style={[Style.container, Typography.regular]}
             placeholder={props.placeholder}
-            placeholderTextColor={Color.placeholder}
-            cursorColor={Color.vermelho}
+            placeholderTextColor={Color["light"].placeholder}
+            cursorColor={Color["light"].vermelho}
             inputMode={props.inputMode}
             maxLength={props.maxLength}
             onChangeText={text=>{props.setState(text)}}

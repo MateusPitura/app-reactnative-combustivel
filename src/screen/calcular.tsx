@@ -5,15 +5,14 @@ import {
     TouchableOpacity,
     StatusBar,
     Keyboard,
-    useColorScheme,
 } from "react-native";
 import { 
     useDrawerStatus
 } from "@react-navigation/drawer";
 
 //Import Style
-import Style from "../style/screen-calculadora";
-import Typography from "../style/typography";
+import { estilo } from "../style/screen-calculadora";
+import { typography } from "../style/typography";
 import Color from "../style/color";
 
 //Import Asset
@@ -27,9 +26,7 @@ import Modal from "../component/modal";
 import CarData from "../data/car";
 import PriceKeyboard from "../component/price-keyboard";
 
-export default function({navigation}: any){
-
-    const theme = useColorScheme();
+export default function({navigation, route}: any){
 
     const [precoEtanol, setPrecoEtanol] = useState("3,84");
     const [precoGasolina, setPrecoGasolina] = useState("5,43");
@@ -66,7 +63,6 @@ export default function({navigation}: any){
     }
 
     const handleBtnCalcular = () => {
-        console.log(theme)
         if(firstClickEtanol==true || firstClickGasolina==true){
             setDataIsValid(false);
             return;
@@ -84,7 +80,6 @@ export default function({navigation}: any){
         }
     }
 
-    const inputPrecoEtanol = useRef(null);
     const isDrawerOpen = useDrawerStatus() === 'open';
 
     useEffect(
@@ -99,17 +94,23 @@ export default function({navigation}: any){
         ), [isDrawerOpen]
     );
 
+    const { theme } = route.params;
+
+    const Style = estilo(theme)
+
+    const Typography = typography(theme)
+
     return(
         <View style={Style.background}>
             {isDrawerClicked==true?
             <StatusBar
-                backgroundColor={Color.branco2}
+                backgroundColor={Color["light"].branco2}
                 //barStyle={"dark-content"}
                 barStyle={"light-content"} //Dark
             />
             :
             <StatusBar
-                backgroundColor={Color.vermelho}
+                backgroundColor={Color["light"].vermelho}
                 //barStyle={"light-content"}
             />
             }
@@ -120,7 +121,7 @@ export default function({navigation}: any){
                     }}
                     style={Style.touchable}
                 >
-                    <Stack fill={Color.branco1} width={50} height={50}/>
+                    <Stack fill={Color["light"].branco1} width={50} height={50}/>
                 </TouchableOpacity>
             </View>
             <Shadow 
@@ -164,7 +165,7 @@ export default function({navigation}: any){
                 visible={modalIsVisible}
             >
                 <StatusBar
-                    backgroundColor={Color.vermelhoAcinzentado}
+                    backgroundColor={Color["light"].vermelhoAcinzentado}
                 />
                 <Text style={Typography.header}> 
                     Resultado{'\n'}
