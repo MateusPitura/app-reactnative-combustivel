@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { 
     View, 
     Text, 
@@ -25,8 +25,9 @@ import Button from "../component/button";
 import Modal from "../component/modal";
 import CarData from "../data/car";
 import PriceKeyboard from "../component/price-keyboard";
+import Theme from "../data/theme";
 
-export default function({navigation, route}: any){
+export default function({navigation}: any){
 
     const [precoEtanol, setPrecoEtanol] = useState("3,84");
     const [precoGasolina, setPrecoGasolina] = useState("5,43");
@@ -38,6 +39,7 @@ export default function({navigation, route}: any){
     const [modalIsVisible, setModalIsVisible] = useState(false);
     const [dataIsValid, setDataIsValid] = useState(true);
     const [isDrawerClicked, setIsDrawerClicked] = useState(false);
+    const [theme, setTheme] = useState("light");
 
     const handleCalcularRelacao = () => {
         setRelacaoCombustivel(((
@@ -94,7 +96,14 @@ export default function({navigation, route}: any){
         ), [isDrawerOpen]
     );
 
-    const { theme } = route.params;
+    useEffect(
+        useCallback(
+            ()=>{
+                console.log("A")
+                setTheme(Theme.theme==null?"light":Theme.theme)
+            }, [Theme.theme]
+        ), [Theme.theme]
+    );
 
     const Style = estilo(theme)
 

@@ -1,17 +1,28 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { View, Text, TextInput, Keyboard} from "react-native";
 
 import { estilo } from "../style/component-input";
 import { typography } from "../style/typography";
 import Color from "../style/color";
+import Theme from "../data/theme";
 
 export default function(props: any){
 
     const [keyboardIsHidden, setKeyboardIsHidden] = useState(false);
+    const [theme, setTheme] = useState("light");
 
-    const Style = estilo("light");
+    useEffect(
+        useCallback(
+            ()=>{
+                console.log("A")
+                setTheme(Theme.theme==null?"light":Theme.theme)
+            }, [Theme.theme]
+        ), [Theme.theme]
+    );
 
-    const Typography = typography("light")
+    const Style = estilo(theme);
+
+    const Typography = typography(theme)
 
     return(
         <View>

@@ -6,6 +6,7 @@ import Calcular from "./calcular";
 import Adicionar from "./adicionar";
 import Drawer from "./drawer";
 import { create, read } from '../model/storage'
+import Theme from "../data/theme";
 
 const DrawerNavigator = createDrawerNavigator();
 
@@ -27,8 +28,8 @@ export default function(){
     const handleToggleTheme = async() => {
         const value = theme=='light'?'dark':'light';
         setTheme(value)
+        Theme.theme = value
         await create("@meucarroflex:theme", value)
-        console.log(theme)
     }
 
     return(
@@ -48,9 +49,9 @@ export default function(){
                         drawerItemStyle: {height: 0}, //Oculta o item da lista do drawer
                         unmountOnBlur:true,
                     }}
-                    initialParams={{
-                        theme: theme
-                    }}
+                    // initialParams={{
+                    //     theme: theme
+                    // }}
                 />
                 <DrawerNavigator.Screen
                     name="Adicionar"

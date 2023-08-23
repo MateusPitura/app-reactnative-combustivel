@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { 
     View, 
     StatusBar, 
@@ -6,6 +6,7 @@ import {
     ScrollView, 
     SafeAreaView, 
 } from "react-native";
+import Theme from "../data/theme";
 
 //Import Style
 import { estilo } from "../style/screen-adicionar";
@@ -29,7 +30,18 @@ export default function({navigation}: any){
     const [consumoGasolina, setConsumoGasolina] = useState("10,40");
     const [keyboardGasolina, setKeyboardGasolina] = useState(false);
 
-    const Style = estilo("light")
+    const [theme, setTheme] = useState("light");
+
+    const Style = estilo(theme)
+
+    useEffect(
+        useCallback(
+            ()=>{
+                console.log("A")
+                setTheme(Theme.theme==null?"light":Theme.theme)
+            }, [Theme.theme]
+        ), [Theme.theme]
+    );
 
     return(
         <SafeAreaView style={Style.layout}>
