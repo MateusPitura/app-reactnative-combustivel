@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState } from "react";
 import { 
     View, 
     StatusBar, 
@@ -30,18 +30,7 @@ export default function({navigation}: any){
     const [consumoGasolina, setConsumoGasolina] = useState("10,40");
     const [keyboardGasolina, setKeyboardGasolina] = useState(false);
 
-    const [theme, setTheme] = useState("light");
-
-    const Style = estilo(theme)
-
-    useEffect(
-        useCallback(
-            ()=>{
-                console.log("A")
-                setTheme(Theme.theme==null?"light":Theme.theme)
-            }, [Theme.theme]
-        ), [Theme.theme]
-    );
+    const Style = estilo(Theme.theme==null?"light":Theme.theme)
 
     return(
         <SafeAreaView style={Style.layout}>

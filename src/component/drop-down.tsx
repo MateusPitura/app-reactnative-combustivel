@@ -13,6 +13,7 @@ import InputSearch from "./input-search";
 import DropDownTop from "../asset/icon/arrow-up.svg"
 import DropDownDown from "../asset/icon/arrow-down.svg"
 import Color from "../style/color";
+import Theme from "../data/theme";
 
 export default function(props: any){
     
@@ -82,9 +83,9 @@ export default function(props: any){
 
     const input = useRef(null);
 
-    const Style = estilo("light");
+    const Style = estilo(Theme.theme==null?"light":Theme.theme);
 
-    const Typography = typography("light")
+    const Typography = typography(Theme.theme==null?"light":Theme.theme)
 
     return(
         <View>

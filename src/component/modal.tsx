@@ -3,10 +3,11 @@ import React from "react";
 import {View, Modal} from "react-native";
 
 import { estilo } from "../style/component-modal"
+import Theme from "../data/theme";
 
 export default function(props: any){
 
-    const Style = estilo("light");
+    const Style = estilo(Theme.theme==null?"light":Theme.theme);
 
     return(
         <Modal

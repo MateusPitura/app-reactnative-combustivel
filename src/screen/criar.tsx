@@ -14,6 +14,7 @@ import { typography } from "../style/typography";
 //Import Component
 import Input from "../component/input";
 import Button from "../component/button";
+import Theme from "../data/theme";
 
 export default function(props: any){
 
@@ -89,9 +90,9 @@ export default function(props: any){
         }
     }
 
-    const Style = estilo("light");
+    const Style = estilo(Theme.theme==null?"light":Theme.theme);
 
-    const Typography = typography("light");
+    const Typography = typography(Theme.theme==null?"light":Theme.theme);
 
     return(
         <View style={Style.criar}>

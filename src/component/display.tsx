@@ -5,6 +5,7 @@ import ArrowUp from "../asset/icon/arrow-up.svg"
 import ArrowDown from "../asset/icon/arrow-down.svg"
 import Color from "../style/color";
 import { typography } from "../style/typography";
+import Theme from "../data/theme";
 
 export default function(props: any){
 
@@ -20,9 +21,9 @@ export default function(props: any){
         props.setValue(compare.toString())
     }
 
-    const Style = estilo("light");
+    const Style = estilo(Theme.theme==null?"light":Theme.theme);
 
-    const Typography = typography("light")
+    const Typography = typography(Theme.theme==null?"light":Theme.theme)
 
     return(
         <View style={Style.display}>

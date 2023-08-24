@@ -4,12 +4,13 @@ import { TextInput, Keyboard } from "react-native";
 import { estilo } from "../style/component-input-search";
 import { typography } from "../style/typography";
 import Color from "../style/color";
+import Theme from "../data/theme";
 
 export default function(props: any){
 
-    const Style = estilo("light");
+    const Style = estilo(Theme.theme==null?"light":Theme.theme);
 
-    const Typography = typography("light")
+    const Typography = typography(Theme.theme==null?"light":Theme.theme)
 
     return(
         <TextInput

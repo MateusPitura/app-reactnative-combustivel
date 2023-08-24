@@ -13,6 +13,7 @@ import { typography } from "../style/typography";
 //Import Component
 import Button from "../component/button";
 import DropDown from "../component/drop-down";
+import Theme from "../data/theme";
 
 export default function(props: any){
 
@@ -69,7 +70,7 @@ export default function(props: any){
         }
     }
 
-    const Typography = typography("light")
+    const Typography = typography(Theme.theme==null?"light":Theme.theme)
 
     return(
         <View style={props.style}>

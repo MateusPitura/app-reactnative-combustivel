@@ -158,7 +158,7 @@ export default function(props: any){
 
     const Style = estilo(props.theme);
 
-    const Typography = typography("light")
+    const Typography = typography(props.theme)
 
     return(
         <View style={Style.container}>

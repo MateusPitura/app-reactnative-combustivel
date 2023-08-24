@@ -39,7 +39,6 @@ export default function({navigation}: any){
     const [modalIsVisible, setModalIsVisible] = useState(false);
     const [dataIsValid, setDataIsValid] = useState(true);
     const [isDrawerClicked, setIsDrawerClicked] = useState(false);
-    const [theme, setTheme] = useState("light");
 
     const handleCalcularRelacao = () => {
         setRelacaoCombustivel(((
@@ -96,18 +95,9 @@ export default function({navigation}: any){
         ), [isDrawerOpen]
     );
 
-    useEffect(
-        useCallback(
-            ()=>{
-                console.log("A")
-                setTheme(Theme.theme==null?"light":Theme.theme)
-            }, [Theme.theme]
-        ), [Theme.theme]
-    );
+    const Style = estilo(Theme.theme==null?"light":Theme.theme)
 
-    const Style = estilo(theme)
-
-    const Typography = typography(theme)
+    const Typography = typography(Theme.theme==null?"light":Theme.theme)
 
     return(
         <View style={Style.background}>

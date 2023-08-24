@@ -3,10 +3,11 @@ import { Keyboard, View }  from 'react-native';
 import Modal from 'react-native-modal'
 import { estilo } from '../style/component-custom-keyboard'
 import { Shadow } from 'react-native-shadow-2';
+import Theme from "../data/theme";
 
 export default function(props: any){
 
-    const Style = estilo("light");
+    const Style = estilo(Theme.theme==null?"light":Theme.theme);
 
     return(
         <Modal
