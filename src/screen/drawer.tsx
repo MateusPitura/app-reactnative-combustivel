@@ -13,13 +13,15 @@ import {
 } from "@react-navigation/drawer";
 import AsyncStorage from "@react-native-community/async-storage";
 import Uuid from 'react-native-uuid';
+import Theme from "../data/theme";
 
 //Import Style
 import { estilo } from "../style/screen-drawer";
 import { typography } from "../style/typography";
 
 //Import Asset
-import Car from "../asset/icon/car-light-on.svg" //Dark
+import CarLightOn from "../asset/icon/car-light-on.svg"
+import CarLightOff from "../asset/icon/car-light-off.svg"
 import Bin from '../asset/icon/bin.svg';
 
 //Import Component
@@ -156,9 +158,9 @@ export default function(props: any){
         },
     };
 
-    const Style = estilo(props.theme);
+    const Style = estilo(Theme.theme==null?"light":Theme.theme);
 
-    const Typography = typography(props.theme)
+    const Typography = typography(Theme.theme==null?"light":Theme.theme)
 
     return(
         <View style={Style.container}>
@@ -173,7 +175,15 @@ export default function(props: any){
                 </View>
                 <View style={Style.display}>
                     <View style={Style.icon}>
-                        <Car height={"100%"} width={"100%"}/>
+                        {
+                            Theme.theme==null?
+                            <CarLightOff height={"100%"} width={"100%"}/>
+                            :
+                            Theme.theme=="light"?
+                            <CarLightOff height={"100%"} width={"100%"}/>
+                            :
+                            <CarLightOn height={"100%"} width={"100%"}/>
+                        }
                     </View>
                     <View style={Style.text}>
                         <Text style={Typography.drawerRegular}>
@@ -217,14 +227,6 @@ export default function(props: any){
                     </View>
                     }
                 />
-            </View>
-            <View style={{flexDirection: "row"}}>
-                <View style={{flex: 1, padding: 20}}>
-                    <Button
-                        title="Modo escuro"
-                        onPress={()=>{props.handleToggleTheme()}}
-                    />
-                </View>
                 <View style={Style.button}>
                     <DrawerButton
                         title="Adicionar"

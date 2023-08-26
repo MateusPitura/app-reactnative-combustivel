@@ -29,14 +29,12 @@ export const typography = (theme: any) => {
         drawerHeader:{
             fontFamily: "ubuntu-bold",
             fontSize: 20,
-            //color: Color[theme].branco1,
-            color: Color[theme].cinzaEscuro, //Dark
+            color: Color[theme].text,
         },
         drawerRegular:{
             fontFamily: "ubuntu-regular",
             fontSize: 18,
-            //color: Color[theme].branco1,
-            color: Color[theme].cinzaEscuro, //Dark
+            color: Color[theme].text,
         },
         button:{
             fontFamily: "ubuntu-regular",

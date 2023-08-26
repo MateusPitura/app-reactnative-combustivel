@@ -74,7 +74,6 @@ export default function(props: any){
 
     return(
         <View style={props.style}>
-            {/* {Style.pesquisar}> */}
             <Text style={Typography.header}>
                 Pesquisar{'\n'}
             </Text>

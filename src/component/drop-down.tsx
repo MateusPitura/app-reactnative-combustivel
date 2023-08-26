@@ -108,9 +108,9 @@ export default function(props: any){
                     <View style={Style.icon}>
                         {isClicked
                         ?
-                        <DropDownTop fill={Color["light"].placeholder} height={40} width={40}/>
+                        <DropDownTop fill={Color[Theme.theme==null?"light":Theme.theme].placeholder} height={40} width={40}/>
                         :
-                        <DropDownDown fill={Color["light"].placeholder} height={40} width={40}/>
+                        <DropDownDown fill={Color[Theme.theme==null?"light":Theme.theme].placeholder} height={40} width={40}/>
                         }
                     </View>
                 </View>

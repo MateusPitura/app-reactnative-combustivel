@@ -16,8 +16,8 @@ export default function(props: any){
         <TextInput
             style={[Style.container, Typography.regular]}
             placeholder={props.placeholder}
-            placeholderTextColor={Color["light"].placeholder}
-            cursorColor={Color["light"].vermelho}
+            placeholderTextColor={Color[Theme.theme==null?"light":Theme.theme].placeholder}
+            cursorColor={Color[Theme.theme==null?"light":Theme.theme].vermelho}
             inputMode={props.inputMode}
             maxLength={props.maxLength}
             onChangeText={text=>{props.setState(text)}}

@@ -5,38 +5,28 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Calcular from "./calcular";
 import Adicionar from "./adicionar";
 import Drawer from "./drawer";
-import { create, read } from '../model/storage'
 import Theme from "../data/theme";
 
 const DrawerNavigator = createDrawerNavigator();
 
 export default function(){
 
-    const [theme, setTheme] = useState('light');
-
-    const recoveryTheme = async() => {
-        const response = await read("@meucarroflex:theme");
-        console.log("G", response)
-        if(response==null){
-            setTheme('light');
-            await create("@meucarroflex:theme", "light");
-            return
-        }
-        setTheme(response);
-    }
-
-    const handleToggleTheme = async() => {
-        const value = theme=='light'?'dark':'light';
-        setTheme(value)
-        Theme.theme = value
-        await create("@meucarroflex:theme", value)
-    }
+    // const recoveryTheme = async() => {
+    //     const response = await read("@meucarroflex:theme");
+    //     console.log("G", response)
+    //     if(response==null){
+    //         setTheme('light');
+    //         await create("@meucarroflex:theme", "light");
+    //         return
+    //     }
+    //     setTheme(response);
+    // }
 
     return(
         <NavigationContainer>
             <DrawerNavigator.Navigator
                 initialRouteName="Calcular"
-                drawerContent={(props) => <Drawer {...props} theme={theme} handleToggleTheme={handleToggleTheme}/>}
+                drawerContent={(props) => <Drawer {...props}/>}
                 screenOptions={{
                     headerShown: false,
                     drawerType: 'slide',    
@@ -49,9 +39,6 @@ export default function(){
                         drawerItemStyle: {height: 0}, //Oculta o item da lista do drawer
                         unmountOnBlur:true,
                     }}
-                    // initialParams={{
-                    //     theme: theme
-                    // }}
                 />
                 <DrawerNavigator.Screen
                     name="Adicionar"
@@ -60,9 +47,6 @@ export default function(){
                         drawerItemStyle: {height: 0}, //Oculta o item da lista do drawer
                         swipeEnabled: false, //Desativa o movimento de "puxar" o drawer
                         unmountOnBlur:true
-                    }}
-                    initialParams={{
-                        theme: theme
                     }}
                 />
             </DrawerNavigator.Navigator>

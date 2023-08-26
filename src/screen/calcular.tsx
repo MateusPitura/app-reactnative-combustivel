@@ -26,6 +26,7 @@ import Modal from "../component/modal";
 import CarData from "../data/car";
 import PriceKeyboard from "../component/price-keyboard";
 import Theme from "../data/theme";
+import { create, read } from '../model/storage'
 
 export default function({navigation}: any){
 
@@ -95,6 +96,12 @@ export default function({navigation}: any){
         ), [isDrawerOpen]
     );
 
+    const handleToggleTheme = async() => {
+        const value = Theme.theme=='light'?'dark':'light';
+        Theme.theme = value
+        await create("@meucarroflex:theme", value)
+    }
+
     const Style = estilo(Theme.theme==null?"light":Theme.theme)
 
     const Typography = typography(Theme.theme==null?"light":Theme.theme)
@@ -103,17 +110,16 @@ export default function({navigation}: any){
         <View style={Style.background}>
             {isDrawerClicked==true?
             <StatusBar
-                backgroundColor={Color["light"].branco2}
-                //barStyle={"dark-content"}
-                barStyle={"light-content"} //Dark
+                backgroundColor={Color[Theme.theme==null?"light":Theme.theme].branco2}
+                barStyle={Theme.theme==null?"dark-content":Theme.theme=="light"?"dark-content":"light-content"}
             />
             :
             <StatusBar
-                backgroundColor={Color["light"].vermelho}
-                //barStyle={"light-content"}
+                backgroundColor={Color["commom"].vermelho}
+                barStyle={"light-content"}
             />
             }
-            <View style={Style.header}>
+            <View style={[Style.header, {flexDirection: 'row'}]}>
                 <TouchableOpacity
                     onPress={()=>{
                         navigation.toggleDrawer();
@@ -122,6 +128,12 @@ export default function({navigation}: any){
                 >
                     <Stack fill={Color["light"].branco1} width={50} height={50}/>
                 </TouchableOpacity>
+                <View>
+                    <Button
+                        title="theme"
+                        onPress={()=>{handleToggleTheme()}}
+                    />
+                </View>
             </View>
             <Shadow 
                 sides={{"end": false, "start": false, "bottom": false, "top": true}}
@@ -164,7 +176,7 @@ export default function({navigation}: any){
                 visible={modalIsVisible}
             >
                 <StatusBar
-                    backgroundColor={Color["light"].vermelhoAcinzentado}
+                    backgroundColor={Color[Theme.theme==null?"light":Theme.theme].vermelhoAcinzentado}
                 />
                 <Text style={Typography.header}> 
                     Resultado{'\n'}
