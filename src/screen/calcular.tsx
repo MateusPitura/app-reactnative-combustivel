@@ -6,9 +6,7 @@ import {
     StatusBar,
     Keyboard,
 } from "react-native";
-import { 
-    useDrawerStatus
-} from "@react-navigation/drawer";
+import { useDrawerStatus } from "@react-navigation/drawer";
 
 //Import Style
 import { estilo } from "../style/screen-calculadora";
@@ -26,7 +24,7 @@ import Modal from "../component/modal";
 import CarData from "../data/car";
 import PriceKeyboard from "../component/price-keyboard";
 import Theme from "../data/theme";
-import { create, read } from '../model/storage'
+import { create } from '../model/storage'
 
 export default function({navigation}: any){
 
@@ -104,16 +102,16 @@ export default function({navigation}: any){
         await create("@meucarroflex:theme", value)
     }
 
-    const Style = estilo(Theme.theme==null?"light":Theme.theme)
+    const Style = estilo(Theme.theme)
 
-    const Typography = typography(Theme.theme==null?"light":Theme.theme)
+    const Typography = typography(Theme.theme)
 
     return(
         <View style={Style.background} key={keyView}>
             {isDrawerClicked==true?
             <StatusBar
-                backgroundColor={Color[Theme.theme==null?"light":Theme.theme].branco2}
-                barStyle={Theme.theme==null?"dark-content":Theme.theme=="light"?"dark-content":"light-content"}
+                backgroundColor={Color[Theme.theme].branco2}
+                barStyle={Theme.theme=="light"?"dark-content":"light-content"}
             />
             :
             <StatusBar
@@ -128,7 +126,7 @@ export default function({navigation}: any){
                     }}
                     style={Style.touchable}
                 >
-                    <Stack fill={Color["light"].branco1} width={50} height={50}/>
+                    <Stack fill={Color[Theme.theme].branco1} width={50} height={50}/>
                 </TouchableOpacity>
                 <View>
                     <Button
@@ -178,7 +176,7 @@ export default function({navigation}: any){
                 visible={modalIsVisible}
             >
                 <StatusBar
-                    backgroundColor={Color[Theme.theme==null?"light":Theme.theme].vermelhoAcinzentado}
+                    backgroundColor={Color[Theme.theme].vermelhoAcinzentado}
                 />
                 <Text style={Typography.header}> 
                     Resultado{'\n'}
