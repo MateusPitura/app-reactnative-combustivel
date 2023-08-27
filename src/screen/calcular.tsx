@@ -40,6 +40,7 @@ export default function({navigation}: any){
     const [modalIsVisible, setModalIsVisible] = useState(false);
     const [dataIsValid, setDataIsValid] = useState(true);
     const [isDrawerClicked, setIsDrawerClicked] = useState(false);
+    const [keyView, setKeyView] = useState(0);
 
     const handleCalcularRelacao = () => {
         setRelacaoCombustivel(((
@@ -99,6 +100,7 @@ export default function({navigation}: any){
     const handleToggleTheme = async() => {
         const value = Theme.theme=='light'?'dark':'light';
         Theme.theme = value
+        setKeyView(keyView+1);
         await create("@meucarroflex:theme", value)
     }
 
@@ -107,7 +109,7 @@ export default function({navigation}: any){
     const Typography = typography(Theme.theme==null?"light":Theme.theme)
 
     return(
-        <View style={Style.background}>
+        <View style={Style.background} key={keyView}>
             {isDrawerClicked==true?
             <StatusBar
                 backgroundColor={Color[Theme.theme==null?"light":Theme.theme].branco2}

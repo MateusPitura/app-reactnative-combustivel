@@ -1,27 +1,14 @@
-import React, {useState} from "react";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Calcular from "./calcular";
 import Adicionar from "./adicionar";
 import Drawer from "./drawer";
-import Theme from "../data/theme";
 
 const DrawerNavigator = createDrawerNavigator();
 
 export default function(){
-
-    // const recoveryTheme = async() => {
-    //     const response = await read("@meucarroflex:theme");
-    //     console.log("G", response)
-    //     if(response==null){
-    //         setTheme('light');
-    //         await create("@meucarroflex:theme", "light");
-    //         return
-    //     }
-    //     setTheme(response);
-    // }
-
     return(
         <NavigationContainer>
             <DrawerNavigator.Navigator
