@@ -21,9 +21,9 @@ export default function(props: any){
         props.setValue(compare.toString())
     }
 
-    const Style = estilo(Theme.theme==null?"light":Theme.theme);
+    const Style = estilo(Theme.theme);
 
-    const Typography = typography(Theme.theme==null?"light":Theme.theme)
+    const Typography = typography(Theme.theme)
 
     return(
         <View style={Style.display}>
@@ -31,7 +31,7 @@ export default function(props: any){
                 style={Style.button}
                 onPress={()=>{handleBtnChangeValueGreaterThan()}}
             >
-                <ArrowUp fill={Color[Theme.theme==null?"light":Theme.theme].keyColor} height={50} width={50}/>
+                <ArrowUp fill={Color[Theme.theme].keyColor} height={50} width={50}/>
             </TouchableOpacity>
             <View style={Style.number}>
                 <Text style={Typography.keyboard}>
@@ -42,7 +42,7 @@ export default function(props: any){
                 style={Style.button}
                 onPress={()=>{handleBtnChangeValueLowerThan()}}
             >
-                <ArrowDown fill={Color[Theme.theme==null?"light":Theme.theme].keyColor} height={50} width={50}/>
+                <ArrowDown fill={Color[Theme.theme].keyColor} height={50} width={50}/>
             </TouchableOpacity>
         </View>
     );

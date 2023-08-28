@@ -83,9 +83,9 @@ export default function(props: any){
 
     const input = useRef(null);
 
-    const Style = estilo(Theme.theme==null?"light":Theme.theme);
+    const Style = estilo(Theme.theme);
 
-    const Typography = typography(Theme.theme==null?"light":Theme.theme)
+    const Typography = typography(Theme.theme)
 
     return(
         <View>
@@ -108,9 +108,9 @@ export default function(props: any){
                     <View style={Style.icon}>
                         {isClicked
                         ?
-                        <DropDownTop fill={Color[Theme.theme==null?"light":Theme.theme].placeholder} height={40} width={40}/>
+                        <DropDownTop fill={Color[Theme.theme].placeholder} height={40} width={40}/>
                         :
-                        <DropDownDown fill={Color[Theme.theme==null?"light":Theme.theme].placeholder} height={40} width={40}/>
+                        <DropDownDown fill={Color[Theme.theme].placeholder} height={40} width={40}/>
                         }
                     </View>
                 </View>
@@ -167,7 +167,7 @@ export default function(props: any){
                                         :
                                         <Text style={Typography.regular}>Selecione um item antes</Text>
                                     :
-                                        <ActivityIndicator size={'small'} color={Color["light"].vermelho}/>
+                                        <ActivityIndicator size={'small'} color={Color["commom"].vermelho}/>
                                     }
                                 </View>
                             :

@@ -11,7 +11,7 @@ export const estilo = (theme: any) => {
         },
         header:{
             flex: 3,
-            backgroundColor: Color[theme].vermelho,
+            backgroundColor: Color["commom"].vermelho,
             margin: 10,
             borderRadius: Material.borderRadius,
             elevation: Material.elevation,

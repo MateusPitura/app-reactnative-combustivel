@@ -20,9 +20,9 @@ export default function(props: any){
         }, [firstValue, secondValue, thirdValue, fourthValue]), [firstValue, secondValue, thirdValue, fourthValue]
     )
 
-    const Style = estilo(Theme.theme==null?"light":Theme.theme);
+    const Style = estilo(Theme.theme);
 
-    const Typography = typography(Theme.theme==null?"light":Theme.theme)
+    const Typography = typography(Theme.theme)
 
     return(
         <CustomKeyboard

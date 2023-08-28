@@ -43,12 +43,12 @@ export const typography = (theme: any) => {
             color: Color[theme].branco1,
         },
         highlight:{
-            color: Color[theme].vermelho,
+            color: Color["commom"].vermelho,
         },
         aviso:{
             fontFamily: "ubuntu-regular",
             fontSize: 16,
-            color: Color[theme].vermelhoAviso,
+            color: Color["commom"].vermelhoAviso,
         },
         keyboard:{
             fontFamily: "ubuntu-regular",

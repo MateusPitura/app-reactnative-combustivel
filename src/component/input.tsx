@@ -10,9 +10,9 @@ export default function(props: any){
 
     const [keyboardIsHidden, setKeyboardIsHidden] = useState(false);
 
-    const Style = estilo(Theme.theme==null?"light":Theme.theme);
+    const Style = estilo(Theme.theme);
 
-    const Typography = typography(Theme.theme==null?"light":Theme.theme)
+    const Typography = typography(Theme.theme)
 
     return(
         <View>
@@ -20,8 +20,8 @@ export default function(props: any){
                 style={[props.dataIsValid==true?Style.valid:Style.invalid, Typography.regular]}
                 placeholder={props.placeholder}
                 value={props.firstClick==true?undefined:props.value} //Depois do primeiro click aparece apenas o placeholder, depois de clicar aparece o valor
-                placeholderTextColor={Color[Theme.theme==null?"light":Theme.theme].placeholder}
-                cursorColor={Color[Theme.theme==null?"light":Theme.theme].vermelho}
+                placeholderTextColor={Color[Theme.theme].placeholder}
+                cursorColor={Color["commom"].vermelho}
                 inputMode={props.inputMode}
                 maxLength={props.maxLength}
                 onChangeText={text=>props.setState(text)}

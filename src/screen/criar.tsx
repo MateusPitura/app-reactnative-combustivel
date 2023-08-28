@@ -90,9 +90,9 @@ export default function(props: any){
         }
     }
 
-    const Style = estilo(Theme.theme==null?"light":Theme.theme);
+    const Style = estilo(Theme.theme);
 
-    const Typography = typography(Theme.theme==null?"light":Theme.theme);
+    const Typography = typography(Theme.theme);
 
     return(
         <View style={Style.criar}>

@@ -7,7 +7,7 @@ import Theme from "../data/theme";
 
 export default function(props: any){
 
-    const Style = estilo(Theme.theme==null?"light":Theme.theme);
+    const Style = estilo(Theme.theme);
 
     return(
         <Modal

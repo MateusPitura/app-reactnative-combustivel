@@ -30,19 +30,19 @@ export default function({navigation}: any){
     const [consumoGasolina, setConsumoGasolina] = useState("10,40");
     const [keyboardGasolina, setKeyboardGasolina] = useState(false);
 
-    const Style = estilo(Theme.theme==null?"light":Theme.theme)
+    const Style = estilo(Theme.theme)
 
     return(
         <SafeAreaView style={Style.layout}>
             <StatusBar
-                backgroundColor={Color[Theme.theme==null?"light":Theme.theme].branco1}
-                barStyle={Theme.theme==null?"dark-content":Theme.theme=="light"?"dark-content":"light-content"}
+                backgroundColor={Color[Theme.theme].branco1}
+                barStyle={Theme.theme=="light"?"dark-content":"light-content"}
             />
             <View style={Style.header}>
                 <TouchableOpacity
                     onPress={()=>navigation.goBack()}
                 >
-                    <Arrow height={50} width={50} fill={Color["light"].vermelho}/>
+                    <Arrow height={50} width={50} fill={Color["commom"].vermelho}/>
                 </TouchableOpacity>
             </View>
             <ScrollView 

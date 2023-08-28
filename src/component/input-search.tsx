@@ -8,16 +8,16 @@ import Theme from "../data/theme";
 
 export default function(props: any){
 
-    const Style = estilo(Theme.theme==null?"light":Theme.theme);
+    const Style = estilo(Theme.theme);
 
-    const Typography = typography(Theme.theme==null?"light":Theme.theme)
+    const Typography = typography(Theme.theme)
 
     return(
         <TextInput
             style={[Style.container, Typography.regular]}
             placeholder={props.placeholder}
-            placeholderTextColor={Color[Theme.theme==null?"light":Theme.theme].placeholder}
-            cursorColor={Color[Theme.theme==null?"light":Theme.theme].vermelho}
+            placeholderTextColor={Color[Theme.theme].placeholder}
+            cursorColor={Color["commom"].vermelho}
             inputMode={props.inputMode}
             maxLength={props.maxLength}
             onChangeText={text=>{props.setState(text)}}

@@ -8,13 +8,13 @@ import Theme from "../data/theme";
 
 export default function(props: any){
 
-    const Style = estilo(Theme.theme==null?"light":Theme.theme);
+    const Style = estilo(Theme.theme);
 
     return(
         <TouchableHighlight
             style={Style.touchable}
             onPress={props.onPress}
-            underlayColor={Color["light"].vermelhoEscuro}
+            underlayColor={Color["commom"].vermelhoEscuro}
         >
             <View style={Style.icon}>
                 <Add fill={Color["light"].branco1} height={"100%"} width={"100%"}/>

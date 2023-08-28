@@ -6,7 +6,7 @@ import Material from './material'
 export const estilo = (theme: any) => {
     return StyleSheet.create({
         container:{
-            backgroundColor: Color[theme].vermelho,
+            backgroundColor: Color["commom"].vermelho,
             height: 50,
             marginVertical: 20, 
             elevation: Material.elevation,

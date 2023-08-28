@@ -11,7 +11,7 @@ export const estilo = (theme: any) => {
             marginTop: 10,
             elevation: Material.elevation,
             borderRadius: 60,
-            backgroundColor: Color[theme].vermelho,
+            backgroundColor: Color["commom"].vermelho,
             margin: 20,
         },
         icon:{

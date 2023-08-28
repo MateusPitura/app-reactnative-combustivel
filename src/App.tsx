@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text } from 'react-native';
+import {View, ActivityIndicator } from 'react-native';
 import Manager from './screen/manager';
 import Theme from './data/theme';
+import Color from './style/color';
+import Style from './style/App'
 import { create, read } from './model/storage'
 
 export default function(){ 
@@ -26,8 +28,11 @@ export default function(){
 
   return(
     isLoading==true?
-    <View>
-      <Text>Carregando</Text>
+    <View style={Style.container}>
+      <ActivityIndicator
+        size={"large"}
+        color={Color["commom"].vermelho}
+      />
     </View>
     :
     <Manager/>

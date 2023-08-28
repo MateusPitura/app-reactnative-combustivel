@@ -7,7 +7,7 @@ export const estilo = (theme: any) => {
     return StyleSheet.create({
         background:{
             flex: 1,
-            backgroundColor: Color[theme].vermelho,
+            backgroundColor: Color["commom"].vermelho,
         },
         header:{
             padding: 5,

@@ -19,7 +19,7 @@ export const estilo = (theme: any) => {
             borderRadius: Material.borderRadius,
             marginVertical: 20,
             paddingLeft: 15,
-            borderColor: Color[theme].vermelhoAviso,
+            borderColor: Color["commom"].vermelhoAviso,
             borderWidth: 2,
         },
         aviso:{

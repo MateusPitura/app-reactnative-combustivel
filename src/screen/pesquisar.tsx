@@ -70,7 +70,7 @@ export default function(props: any){
         }
     }
 
-    const Typography = typography(Theme.theme==null?"light":Theme.theme)
+    const Typography = typography(Theme.theme)
 
     return(
         <View style={props.style}>

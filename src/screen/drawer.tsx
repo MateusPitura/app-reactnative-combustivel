@@ -27,7 +27,6 @@ import Bin from '../asset/icon/bin.svg';
 //Import Component
 import DrawerButton from "../component/drawer-button";
 import CarData from "../data/car";
-import Button from "../component/button";
 
 export default function(props: any){
 
@@ -158,9 +157,9 @@ export default function(props: any){
         },
     };
 
-    const Style = estilo(Theme.theme==null?"light":Theme.theme);
+    const Style = estilo(Theme.theme);
 
-    const Typography = typography(Theme.theme==null?"light":Theme.theme)
+    const Typography = typography(Theme.theme)
 
     return(
         <View style={Style.container}>
@@ -176,9 +175,6 @@ export default function(props: any){
                 <View style={Style.display}>
                     <View style={Style.icon}>
                         {
-                            Theme.theme==null?
-                            <CarLightOff height={"100%"} width={"100%"}/>
-                            :
                             Theme.theme=="light"?
                             <CarLightOff height={"100%"} width={"100%"}/>
                             :
