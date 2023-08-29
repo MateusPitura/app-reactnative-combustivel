@@ -15,6 +15,8 @@ import Color from "../style/color";
 
 //Import Asset
 import Stack from '../asset/icon/stack-drawer-navigation.svg';
+import LightMode from '../asset/icon/light-mode.svg';
+import DarkMode from '../asset/icon/dark-mode.svg'
 
 //Import Component
 import Input from "../component/input";
@@ -119,20 +121,32 @@ export default function({navigation}: any){
                 barStyle={"light-content"}
             />
             }
-            <View style={[Style.header, {flexDirection: 'row'}]}>
-                <TouchableOpacity
-                    onPress={()=>{
-                        navigation.toggleDrawer();
-                    }}
-                    style={Style.touchable}
-                >
-                    <Stack fill={Color[Theme.theme].branco1} width={50} height={50}/>
-                </TouchableOpacity>
-                <View>
-                    <Button
-                        title="theme"
-                        onPress={()=>{handleToggleTheme()}}
-                    />
+            <View style={Style.header}>
+                <View style={Style.stack}>
+                    <TouchableOpacity
+                        onPress={()=>{
+                            navigation.toggleDrawer();
+                        }}
+                        style={Style.touchable}
+                    >
+                        <Stack fill={Color[Theme.theme].branco1} width={50} height={50}/>
+                    </TouchableOpacity>
+                </View>
+                <View style={Style.theme}>
+                    {
+                        Theme.theme=='light'?
+                        <TouchableOpacity
+                            onPress={handleToggleTheme}
+                        >
+                            <DarkMode fill={Color[Theme.theme].branco1} width={50} height={50}/>
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity
+                            onPress={handleToggleTheme}
+                        >
+                            <LightMode fill={Color[Theme.theme].branco1} width={50} height={50}/>
+                        </TouchableOpacity>
+                    }
                 </View>
             </View>
             <Shadow 

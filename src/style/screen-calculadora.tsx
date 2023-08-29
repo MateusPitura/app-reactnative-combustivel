@@ -11,6 +11,15 @@ export const estilo = (theme: any) => {
         },
         header:{
             padding: 5,
+            flexDirection: 'row',
+        },
+        stack:{
+            flex: 1,
+            alignItems: 'flex-start',
+        },
+        theme:{
+            flex: 1,
+            alignItems: 'flex-end',
         },
         touchable:{
             height: 50,
