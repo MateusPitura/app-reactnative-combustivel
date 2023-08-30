@@ -2,6 +2,7 @@ const commom = {
     vermelho: "#AD1313",
     vermelhoEscuro: "#660B0B",
     vermelhoAviso: "#f00",
+    white: '#FFF'
 }
 
 const light = {

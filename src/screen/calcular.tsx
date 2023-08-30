@@ -99,7 +99,9 @@ export default function({navigation}: any){
 
     const handleToggleTheme = async() => {
         const value = Theme.theme=='light'?'dark':'light';
+        const status = Theme.status=='light-content'?'dark-content':'light-content';
         Theme.theme = value
+        Theme.status = status
         setKeyView(keyView+1);
         await create("@meucarroflex:theme", value)
     }
@@ -113,7 +115,7 @@ export default function({navigation}: any){
             {isDrawerClicked==true?
             <StatusBar
                 backgroundColor={Color[Theme.theme].branco2}
-                barStyle={Theme.theme=="light"?"dark-content":"light-content"}
+                barStyle={Theme.status}
             />
             :
             <StatusBar

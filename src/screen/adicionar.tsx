@@ -36,7 +36,7 @@ export default function({navigation}: any){
         <SafeAreaView style={Style.layout}>
             <StatusBar
                 backgroundColor={Color[Theme.theme].branco1}
-                barStyle={Theme.theme=="light"?"dark-content":"light-content"}
+                barStyle={Theme.status}
             />
             <View style={Style.header}>
                 <TouchableOpacity
