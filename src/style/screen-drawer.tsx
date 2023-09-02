@@ -22,18 +22,20 @@ export const estilo = (theme: any) => {
         },
         display:{
             flex: 1,
-            flexDirection: "row",
+            flexDirection: "row"
         },
         icon:{
-            flex: 1,
+            flex: 2,
             alignItems: "center",
             justifyContent: "center",
-            padding: 5,
+            paddingLeft: 10,
+            paddingTop: 5
         },
         text:{
-            flex: 1,
+            flex: 3,
+            padding: 5,
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "center"
         },
         list:{
             flex: 10,
