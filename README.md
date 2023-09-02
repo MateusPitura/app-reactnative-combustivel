@@ -47,7 +47,7 @@ Meu Carro Flex é um aplicativo desenvolvido em React Native que ajuda os usuár
 
 **Para devs:** 
 
-1. `git clone git@github.com:MateusPitura/app-react-native-combustivel app` 
+1. `git clone git@github.com:MateusPitura/app-react-nativecombustivel app` 
 
 2. `npm install`  
 
