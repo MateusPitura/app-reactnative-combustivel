@@ -6,9 +6,8 @@
 </h1> 
 
 <p> 
-  <img src="https://img.shields.io/badge/Release-September%202023-green" alt="Badge da data de lançamento: Setembro de 2023">  
+  <img src="https://img.shields.io/badge/Release-Sep%202023-green" alt="Badge da data de lançamento: Setembro de 2023">  
   <img src="https://img.shields.io/badge/Version-0.1.0-blue" alt="Badge da versão do projeto: 0.1.0">  
-  <img src="https://img.shields.io/badge/Status-Closed-brightgreen" alt="Badge do status: fechado">  
   <img src="https://img.shields.io/badge/OS-Android-red" alt="Badge do sistema operacional: apenas Android">  
   <img src="https://img.shields.io/github/stars/MateusPitura/app-reactnative-combustivel?style=social" alt="Badge indicando quantidade de estrelas no repositório"> 
 </p> 
