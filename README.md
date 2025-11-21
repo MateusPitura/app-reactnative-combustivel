@@ -13,8 +13,6 @@
   <img src="https://img.shields.io/github/stars/MateusPitura/app-reactnative-combustivel?style=social" alt="Badge indicando quantidade de estrelas no repositório"> 
 </p> 
 
-> :checkered_flag: Este projeto está finalizado :checkered_flag:  
-
 ## Descrição 
 
 Meu Carro Flex é um aplicativo desenvolvido em React Native que ajuda os usuários a determinar qual combustível é mais econômico para seus veículos. Ele oferece uma série de funcionalidades úteis, como um teclado customizado para inserir o preço do combustível, suporte ao modo escuro, integração com uma API para buscar informações sobre o modelo do carro e a capacidade de salvar e alternar entre vários carros
